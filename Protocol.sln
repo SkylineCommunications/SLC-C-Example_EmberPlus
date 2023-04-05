@@ -9,6 +9,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "QActions", "QActions", "{66
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dlls", "Dlls", "{46F6D630-9786-4967-89E9-151352FDA5FE}"
 	ProjectSection(SolutionItems) = preProject
+		Dlls\BerLib.dll = Dlls\BerLib.dll
+		Dlls\EmberLib.dll = Dlls\EmberLib.dll
+		Dlls\EmberLib.Framing.dll = Dlls\EmberLib.Framing.dll
+		Dlls\EmberLib.Glow.dll = Dlls\EmberLib.Glow.dll
+		Dlls\Lawo.dll = Dlls\Lawo.dll
+		Dlls\Lawo.EmberPlusSharp.dll = Dlls\Lawo.EmberPlusSharp.dll
 		Dlls\readme.txt = Dlls\readme.txt
 	EndProjectSection
 EndProject
@@ -32,7 +38,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QAction_Helper", "QAction_H
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QAction_1", "QAction_1\QAction_1.csproj", "{53048084-333B-49BB-8C2F-4F2A18FD1C7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QAction_2", "QAction_2\QAction_2.csproj", "{D78DA462-E678-4D72-8E28-E462BAE4819C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QAction_3", "QAction_3\QAction_3.csproj", "{FFC3EE5C-A390-4E89-858A-844FC14146BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,10 +54,10 @@ Global
 		{53048084-333B-49BB-8C2F-4F2A18FD1C7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53048084-333B-49BB-8C2F-4F2A18FD1C7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53048084-333B-49BB-8C2F-4F2A18FD1C7B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D78DA462-E678-4D72-8E28-E462BAE4819C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D78DA462-E678-4D72-8E28-E462BAE4819C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D78DA462-E678-4D72-8E28-E462BAE4819C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D78DA462-E678-4D72-8E28-E462BAE4819C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFC3EE5C-A390-4E89-858A-844FC14146BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFC3EE5C-A390-4E89-858A-844FC14146BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFC3EE5C-A390-4E89-858A-844FC14146BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFC3EE5C-A390-4E89-858A-844FC14146BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,7 +66,7 @@ Global
 		{15834FE8-ED6C-4122-B080-735EE8A55A58} = {89D28826-4330-4737-830E-3D190AA54236}
 		{AD426E2D-764C-4308-9922-FA4DA45BA4F5} = {89D28826-4330-4737-830E-3D190AA54236}
 		{53048084-333B-49BB-8C2F-4F2A18FD1C7B} = {66A529C3-CCB1-427A-8C31-B175EC630941}
-		{D78DA462-E678-4D72-8E28-E462BAE4819C} = {66A529C3-CCB1-427A-8C31-B175EC630941}
+		{FFC3EE5C-A390-4E89-858A-844FC14146BB} = {66A529C3-CCB1-427A-8C31-B175EC630941}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {05D1F559-6E97-409D-9B0D-1B999D1E5945}

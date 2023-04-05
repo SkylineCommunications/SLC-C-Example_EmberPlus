@@ -8,12 +8,137 @@ namespace Skyline.DataMiner.Scripting
 {
 public static class Parameter
 {
+	/// <summary>PID: 1 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public const int discoverembertree_1 = 1;
+	/// <summary>PID: 1 | Type: read</summary>
+	public const int discoverembertree = 1;
+	/// <summary>PID: 10 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public const int polltables_10 = 10;
+	/// <summary>PID: 10 | Type: read</summary>
+	public const int polltables = 10;
+	/// <summary>PID: 11 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public const int pollparameters_11 = 11;
+	/// <summary>PID: 11 | Type: read</summary>
+	public const int pollparameters = 11;
+	/// <summary>PID: 52 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public const int s101requestdata_52 = 52;
+	/// <summary>PID: 52 | Type: read</summary>
+	public const int s101requestdata = 52;
+	/// <summary>PID: 53 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public const int s101responsedata_53 = 53;
+	/// <summary>PID: 53 | Type: read</summary>
+	public const int s101responsedata = 53;
+	/// <summary>PID: 60 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public const int discoverednodescount_60 = 60;
+	/// <summary>PID: 60 | Type: read</summary>
+	public const int discoverednodescount = 60;
+	/// <summary>PID: 61 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public const int nodediscoveryprogress_61 = 61;
+	/// <summary>PID: 61 | Type: read</summary>
+	public const int nodediscoveryprogress = 61;
+	/// <summary>PID: 500 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public const int identityproduct_500 = 500;
+	/// <summary>PID: 500 | Type: read</summary>
+	public const int identityproduct = 500;
+	/// <summary>PID: 501 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public const int identitycompany_501 = 501;
+	/// <summary>PID: 501 | Type: read</summary>
+	public const int identitycompany = 501;
+	/// <summary>PID: 502 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public const int identityversion_502 = 502;
+	/// <summary>PID: 502 | Type: read</summary>
+	public const int identityversion = 502;
+	/// <summary>PID: 503 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public const int identityrole_503 = 503;
+	/// <summary>PID: 503 | Type: read</summary>
+	public const int identityrole = 503;
+	/// <summary>PID: 504 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public const int identityserial_504 = 504;
+	/// <summary>PID: 504 | Type: read</summary>
+	public const int identityserial = 504;
 	public class Write
 	{
+		/// <summary>PID: 62 | Type: write</summary>
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public const int startnodediscovery_62 = 62;
+		/// <summary>PID: 62 | Type: write</summary>
+		public const int startnodediscovery = 62;
+	}
+	public class Channelreceiverstable
+	{
+		/// <summary>PID: 1000</summary>
+		public const int tablePid = 1000;
+		/// <summary>IDX: 0</summary>
+		public const int indexColumn = 0;
+		/// <summary>PID: 1001</summary>
+		public const int indexColumnPid = 1001;
+		public class Pid
+		{
+			/// <summary>PID: 1001 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int channelreceiversinstance_1001 = 1001;
+			/// <summary>PID: 1001 | Type: read</summary>
+			public const int channelreceiversinstance = 1001;
+			/// <summary>PID: 1002 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int channelreceiverssdp_1002 = 1002;
+			/// <summary>PID: 1002 | Type: read</summary>
+			public const int channelreceiverssdp = 1002;
+			/// <summary>PID: 1003 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int channelreceiversport_1003 = 1003;
+			/// <summary>PID: 1003 | Type: read</summary>
+			public const int channelreceiversport = 1003;
+			/// <summary>PID: 1004 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int channelreceiverslastupdatetimestamphidden_1004 = 1004;
+			/// <summary>PID: 1004 | Type: read</summary>
+			public const int channelreceiverslastupdatetimestamphidden = 1004;
+			public class Write
+			{
+			}
+		}
+		public class Idx
+		{
+			/// <summary>IDX: 0 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int channelreceiversinstance_1001 = 0;
+			/// <summary>IDX: 0 | Type: read</summary>
+			public const int channelreceiversinstance = 0;
+			/// <summary>IDX: 1 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int channelreceiverssdp_1002 = 1;
+			/// <summary>IDX: 1 | Type: read</summary>
+			public const int channelreceiverssdp = 1;
+			/// <summary>IDX: 2 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int channelreceiversport_1003 = 2;
+			/// <summary>IDX: 2 | Type: read</summary>
+			public const int channelreceiversport = 2;
+			/// <summary>IDX: 3 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int channelreceiverslastupdatetimestamphidden_1004 = 3;
+			/// <summary>IDX: 3 | Type: read</summary>
+			public const int channelreceiverslastupdatetimestamphidden = 3;
+		}
 	}
 }
 public class WriteParameters
 {
+	/// <summary>PID: 62  | Type: write | DISCREETS: Start Node Discovery = 1</summary>
+	public System.Object Startnodediscovery {get { return Protocol.GetParameter(62); }set { Protocol.SetParameter(62, value); }}
 	public SLProtocolExt Protocol;
 	public WriteParameters(SLProtocolExt protocol)
 	{
@@ -22,17 +147,178 @@ public class WriteParameters
 }
 public interface SLProtocolExt : SLProtocol
 {
-	object Afterstartup_dummy { get; set; }
+	/// <summary>PID: 1000</summary>
+	ChannelreceiverstableQActionTable channelreceiverstable { get; set; }
+	object Discoverembertree_1 { get; set; }
+	object Discoverembertree { get; set; }
+	object Polltables_10 { get; set; }
+	object Polltables { get; set; }
+	object Pollparameters_11 { get; set; }
+	object Pollparameters { get; set; }
+	object S101bof_header { get; set; }
+	object S101eof_trailer { get; set; }
+	object S101requestdata_52 { get; set; }
+	object S101requestdata { get; set; }
+	object S101responsedata_53 { get; set; }
+	object S101responsedata { get; set; }
+	object Discoverednodescount_60 { get; set; }
+	object Discoverednodescount { get; set; }
+	object Nodediscoveryprogress_61 { get; set; }
+	object Nodediscoveryprogress { get; set; }
+	object Startnodediscovery_62 { get; set; }
+	object Startnodediscovery { get; set; }
+	object Identityproduct_500 { get; set; }
+	object Identityproduct { get; set; }
+	object Identitycompany_501 { get; set; }
+	object Identitycompany { get; set; }
+	object Identityversion_502 { get; set; }
+	object Identityversion { get; set; }
+	object Identityrole_503 { get; set; }
+	object Identityrole { get; set; }
+	object Identityserial_504 { get; set; }
+	object Identityserial { get; set; }
+	object Channelreceiversinstance_1001 { get; set; }
+	object Channelreceiversinstance { get; set; }
+	object Channelreceiverssdp_1002 { get; set; }
+	object Channelreceiverssdp { get; set; }
+	object Channelreceiversport_1003 { get; set; }
+	object Channelreceiversport { get; set; }
+	object Channelreceiverslastupdatetimestamphidden_1004 { get; set; }
+	object Channelreceiverslastupdatetimestamphidden { get; set; }
 	WriteParameters Write { get; set; }
 }
 public class ConcreteSLProtocolExt : ConcreteSLProtocol, SLProtocolExt
 {
-	/// <summary>PID: 2  | Type: dummy</summary>
-	public System.Object Afterstartup_dummy {get { return GetParameter(2); }set { SetParameter(2, value); }}
+	/// <summary>PID: 1000</summary>
+	public ChannelreceiverstableQActionTable channelreceiverstable { get; set; }
+	/// <summary>PID: 1  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Discoverembertree_1 {get { return GetParameter(1); }set { SetParameter(1, value); }}
+	/// <summary>PID: 1  | Type: read</summary>
+	public System.Object Discoverembertree {get { return GetParameter(1); }set { SetParameter(1, value); }}
+	/// <summary>PID: 10  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Polltables_10 {get { return GetParameter(10); }set { SetParameter(10, value); }}
+	/// <summary>PID: 10  | Type: read</summary>
+	public System.Object Polltables {get { return GetParameter(10); }set { SetParameter(10, value); }}
+	/// <summary>PID: 11  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Pollparameters_11 {get { return GetParameter(11); }set { SetParameter(11, value); }}
+	/// <summary>PID: 11  | Type: read</summary>
+	public System.Object Pollparameters {get { return GetParameter(11); }set { SetParameter(11, value); }}
+	/// <summary>PID: 50  | Type: header</summary>
+	public System.Object S101bof_header {get { return GetParameter(50); }set { SetParameter(50, value); }}
+	/// <summary>PID: 51  | Type: trailer</summary>
+	public System.Object S101eof_trailer {get { return GetParameter(51); }set { SetParameter(51, value); }}
+	/// <summary>PID: 52  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object S101requestdata_52 {get { return GetParameter(52); }set { SetParameter(52, value); }}
+	/// <summary>PID: 52  | Type: read</summary>
+	public System.Object S101requestdata {get { return GetParameter(52); }set { SetParameter(52, value); }}
+	/// <summary>PID: 53  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object S101responsedata_53 {get { return GetParameter(53); }set { SetParameter(53, value); }}
+	/// <summary>PID: 53  | Type: read</summary>
+	public System.Object S101responsedata {get { return GetParameter(53); }set { SetParameter(53, value); }}
+	/// <summary>PID: 60  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Discoverednodescount_60 {get { return GetParameter(60); }set { SetParameter(60, value); }}
+	/// <summary>PID: 60  | Type: read</summary>
+	public System.Object Discoverednodescount {get { return GetParameter(60); }set { SetParameter(60, value); }}
+	/// <summary>PID: 61  | Type: read | EXCEPTIONS: N/A = 0, Finished = 1</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Nodediscoveryprogress_61 {get { return GetParameter(61); }set { SetParameter(61, value); }}
+	/// <summary>PID: 61  | Type: read | EXCEPTIONS: N/A = 0, Finished = 1</summary>
+	public System.Object Nodediscoveryprogress {get { return GetParameter(61); }set { SetParameter(61, value); }}
+	/// <summary>PID: 62  | Type: write | DISCREETS: Start Node Discovery = 1</summary>
+	public System.Object Startnodediscovery_62 {get { return GetParameter(62); }set { SetParameter(62, value); }}
+	/// <summary>PID: 62  | Type: write | DISCREETS: Start Node Discovery = 1</summary>
+	public System.Object Startnodediscovery {get { return Write.Startnodediscovery; }set { Write.Startnodediscovery = value; }}
+	/// <summary>PID: 500  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Identityproduct_500 {get { return GetParameter(500); }set { SetParameter(500, value); }}
+	/// <summary>PID: 500  | Type: read</summary>
+	public System.Object Identityproduct {get { return GetParameter(500); }set { SetParameter(500, value); }}
+	/// <summary>PID: 501  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Identitycompany_501 {get { return GetParameter(501); }set { SetParameter(501, value); }}
+	/// <summary>PID: 501  | Type: read</summary>
+	public System.Object Identitycompany {get { return GetParameter(501); }set { SetParameter(501, value); }}
+	/// <summary>PID: 502  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Identityversion_502 {get { return GetParameter(502); }set { SetParameter(502, value); }}
+	/// <summary>PID: 502  | Type: read</summary>
+	public System.Object Identityversion {get { return GetParameter(502); }set { SetParameter(502, value); }}
+	/// <summary>PID: 503  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Identityrole_503 {get { return GetParameter(503); }set { SetParameter(503, value); }}
+	/// <summary>PID: 503  | Type: read</summary>
+	public System.Object Identityrole {get { return GetParameter(503); }set { SetParameter(503, value); }}
+	/// <summary>PID: 504  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Identityserial_504 {get { return GetParameter(504); }set { SetParameter(504, value); }}
+	/// <summary>PID: 504  | Type: read</summary>
+	public System.Object Identityserial {get { return GetParameter(504); }set { SetParameter(504, value); }}
+	/// <summary>PID: 1001  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Channelreceiversinstance_1001 {get { return GetParameter(1001); }set { SetParameter(1001, value); }}
+	/// <summary>PID: 1001  | Type: read</summary>
+	public System.Object Channelreceiversinstance {get { return GetParameter(1001); }set { SetParameter(1001, value); }}
+	/// <summary>PID: 1002  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Channelreceiverssdp_1002 {get { return GetParameter(1002); }set { SetParameter(1002, value); }}
+	/// <summary>PID: 1002  | Type: read</summary>
+	public System.Object Channelreceiverssdp {get { return GetParameter(1002); }set { SetParameter(1002, value); }}
+	/// <summary>PID: 1003  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Channelreceiversport_1003 {get { return GetParameter(1003); }set { SetParameter(1003, value); }}
+	/// <summary>PID: 1003  | Type: read</summary>
+	public System.Object Channelreceiversport {get { return GetParameter(1003); }set { SetParameter(1003, value); }}
+	/// <summary>PID: 1004  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Channelreceiverslastupdatetimestamphidden_1004 {get { return GetParameter(1004); }set { SetParameter(1004, value); }}
+	/// <summary>PID: 1004  | Type: read</summary>
+	public System.Object Channelreceiverslastupdatetimestamphidden {get { return GetParameter(1004); }set { SetParameter(1004, value); }}
 	public WriteParameters Write { get; set; }
 	public ConcreteSLProtocolExt()
 	{
+		channelreceiverstable = new ChannelreceiverstableQActionTable(this, 1000, "channelreceiverstable");
 		Write = new WriteParameters(this);
 	}
+}
+/// <summary>IDX: 0</summary>
+public class ChannelreceiverstableQActionTable : QActionTable, IEnumerable<ChannelreceiverstableQActionRow>
+{
+	public ChannelreceiverstableQActionTable(SLProtocol protocol, int tableId, string tableName) : base(protocol, tableId, tableName) { }
+	IEnumerator IEnumerable.GetEnumerator() { return (IEnumerator) GetEnumerator(); }
+	public IEnumerator<ChannelreceiverstableQActionRow> GetEnumerator() { return new QActionTableEnumerator<ChannelreceiverstableQActionRow>(this); }
+}
+/// <summary>IDX: 0</summary>
+public class ChannelreceiverstableQActionRow : QActionTableRow
+{
+	/// <summary>PID: 1001 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Channelreceiversinstance_1001 { get { if (base.Columns.ContainsKey(0)) { return base.Columns[0]; } else { return null; } } set { if (base.Columns.ContainsKey(0)) { base.Columns[0] = value; } else { base.Columns.Add(0, value); } } }
+	/// <summary>PID: 1001 | Type: read</summary>
+	public System.Object Channelreceiversinstance { get { if (base.Columns.ContainsKey(0)) { return base.Columns[0]; } else { return null; } } set { if (base.Columns.ContainsKey(0)) { base.Columns[0] = value; } else { base.Columns.Add(0, value); } } }
+	/// <summary>PID: 1002 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Channelreceiverssdp_1002 { get { if (base.Columns.ContainsKey(1)) { return base.Columns[1]; } else { return null; } } set { if (base.Columns.ContainsKey(1)) { base.Columns[1] = value; } else { base.Columns.Add(1, value); } } }
+	/// <summary>PID: 1002 | Type: read</summary>
+	public System.Object Channelreceiverssdp { get { if (base.Columns.ContainsKey(1)) { return base.Columns[1]; } else { return null; } } set { if (base.Columns.ContainsKey(1)) { base.Columns[1] = value; } else { base.Columns.Add(1, value); } } }
+	/// <summary>PID: 1003 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Channelreceiversport_1003 { get { if (base.Columns.ContainsKey(2)) { return base.Columns[2]; } else { return null; } } set { if (base.Columns.ContainsKey(2)) { base.Columns[2] = value; } else { base.Columns.Add(2, value); } } }
+	/// <summary>PID: 1003 | Type: read</summary>
+	public System.Object Channelreceiversport { get { if (base.Columns.ContainsKey(2)) { return base.Columns[2]; } else { return null; } } set { if (base.Columns.ContainsKey(2)) { base.Columns[2] = value; } else { base.Columns.Add(2, value); } } }
+	/// <summary>PID: 1004 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Channelreceiverslastupdatetimestamphidden_1004 { get { if (base.Columns.ContainsKey(3)) { return base.Columns[3]; } else { return null; } } set { if (base.Columns.ContainsKey(3)) { base.Columns[3] = value; } else { base.Columns.Add(3, value); } } }
+	/// <summary>PID: 1004 | Type: read</summary>
+	public System.Object Channelreceiverslastupdatetimestamphidden { get { if (base.Columns.ContainsKey(3)) { return base.Columns[3]; } else { return null; } } set { if (base.Columns.ContainsKey(3)) { base.Columns[3] = value; } else { base.Columns.Add(3, value); } } }
+	public ChannelreceiverstableQActionRow() : base(0, 4) { }
+	public ChannelreceiverstableQActionRow(System.Object[] oRow) : base(0, 4, oRow) { }
+	public static implicit operator ChannelreceiverstableQActionRow(System.Object[] source) { return new ChannelreceiverstableQActionRow(source); }
+	public static implicit operator System.Object[](ChannelreceiverstableQActionRow source) { return source.ToObjectArray(); }
 }
 }

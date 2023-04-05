@@ -5,15 +5,14 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{D78DA462-E678-4D72-8E28-E462BAE4819C}</ProjectGuid>
+    <ProjectGuid>{FFC3EE5C-A390-4E89-858A-844FC14146BB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>QAction_2</RootNamespace>
-    <AssemblyName>QAction_2</AssemblyName>
+    <RootNamespace>QAction_3</RootNamespace>
+    <AssemblyName>QAction_3</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <LangVersion>
-    </LangVersion>
+    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -24,7 +23,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>..\Internal\Code Analysis\qaction-debug.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>bin\Debug\QAction_2.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\QAction_3.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -34,13 +33,17 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>..\Internal\Code Analysis\qaction-release.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>bin\Release\QAction_2.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\QAction_3.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <ProjectReference Include="..\QAction_1\QAction_1.csproj">
+      <Project>{53048084-333B-49BB-8C2F-4F2A18FD1C7B}</Project>
+      <Name>QAction_1</Name>
+    </ProjectReference>
     <ProjectReference Include="..\QAction_Helper\QAction_Helper.csproj">
       <Project>{AD426E2D-764C-4308-9922-FA4DA45BA4F5}</Project>
       <Name>QAction_Helper</Name>
@@ -50,7 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QAction_2.cs" />
+    <Compile Include="QAction_3.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Skyline.DataMiner.Dev.Protocol">
@@ -65,7 +68,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties DisLinkId="2" DisProjectType="qactionProject" DisLinkedXmlFile="..\protocol.xml" />
+      <UserProperties DisLinkedXmlFile="..\protocol.xml" DisProjectType="qactionProject" DisLinkId="3" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
