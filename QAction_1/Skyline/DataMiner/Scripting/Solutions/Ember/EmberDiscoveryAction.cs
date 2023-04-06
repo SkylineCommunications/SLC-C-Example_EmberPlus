@@ -10,6 +10,7 @@
 	public class EmberDiscoveryAction : EmberAction
 	{
 		private const string RootNumber = "1";
+
 		private const string RootString = "Root";
 
 		// ember path - user friendly path
@@ -17,7 +18,7 @@
 
 		private readonly Queue<int[]> pathsToPoll = new Queue<int[]>();
 
-		private string lastRequestPath = String.Empty;
+		private int[] lastRequestPath = Array.Empty<int>();
 
 		private bool updateReceivedForWrongRequestedNode;
 
@@ -32,7 +33,7 @@
 			PollNextPath();
 		}
 
-		public override string ProcessReceivedGlow(EmberData node, GlowContainer glowContainer, string validateLastRequestPath)
+		public override int[] ProcessReceivedGlow(EmberData emberData, GlowContainer glowContainer, int[] validateLastRequestPath)
 		{
 			// Check if the ValidateLastRequestPath matches the current Parent, else skip the request.
 			lastRequestPath = validateLastRequestPath;
@@ -55,7 +56,7 @@
 				Done = true;
 
 				// Update Ember tree and Reverse Ember Tree
-				UpdateEmberTrees(node);
+				UpdateEmberTrees(emberData);
 
 				// Clear the poll queue as it may contain invalid Ember paths
 				EmberData.PollActions.Clear();
@@ -68,15 +69,14 @@
 
 		protected override void OnNode(GlowNodeBase glow, int[] path)
 		{
-			string joinedPath = String.Join(".", path);
 			var parentPath = new int[path.Length - 1];
+			string joinedPath = String.Join(".", path);
 			Array.Copy(path, parentPath, parentPath.Length);
-			string joinedParentPath = String.Join(".", parentPath);
 
-			if (joinedParentPath != lastRequestPath && !joinedPath.Equals("1") /*root*/ && !lastRequestPath.Equals(joinedPath))
+			if (!parentPath.SequenceEqual(lastRequestPath) && !joinedPath.Equals("1") /*root*/ && !lastRequestPath.SequenceEqual(path))
 			{
 				protocol.Log(
-					"QA" + protocol.QActionID + "|Discovery.OnNode|joinedParentPath != LastRequestPath: " + lastRequestPath + " for incoming Node: " + joinedPath + " --> Skipping",
+					"QA" + protocol.QActionID + "|Discovery.OnNode|joinedParentPath != LastRequestPath: " + String.Join(".", lastRequestPath) + " for incoming Node: " + joinedPath + " --> Skipping",
 					LogType.Information,
 					LogLevel.NoLogging);
 
@@ -96,12 +96,10 @@
 		protected override void OnParameter(GlowParameterBase glow, int[] path)
 		{
 			// Do nothing - only interested in nodes
-			string joinedPath = String.Join(".", path);
 			var parentPath = new int[path.Length - 1];
 			Array.Copy(path, parentPath, parentPath.Length);
-			string joinedParentPath = String.Join(".", parentPath);
 
-			if (joinedParentPath != lastRequestPath && !joinedPath.Equals(RootNumber) && !lastRequestPath.Equals(joinedPath))
+			if (!parentPath.SequenceEqual(lastRequestPath) && !String.Join(".", path).Equals(RootNumber) && !lastRequestPath.SequenceEqual(path))
 			{
 				// if parentRequest doesn't match path,   abort mission!  don't execute the pollNextPath() !!!
 				updateReceivedForWrongRequestedNode = true;
@@ -135,7 +133,7 @@
 		private void PollNextPath()
 		{
 			int[] currentPollPath = pathsToPoll.Dequeue();
-			lastRequestPath = String.Join(".", currentPollPath ?? new int[] { });
+			lastRequestPath = currentPollPath ?? new int[] { };
 
 			int[] parametersToSet = new[] { Configurations.DiscoveredNodesCountPid, Configurations.DiscoveryNodeProgressPid };
 
@@ -143,34 +141,31 @@
 			SendGetDirectoryRequest(new[] { currentPollPath });
 		}
 
-		private void UpdateEmberTrees(EmberData node)
+		private void UpdateEmberTrees(EmberData emberData)
 		{
 			foreach (int[] key in emberTree.Keys)
 			{
-				string joinedFriendlyPath = String.Join(".", emberTree[key]);
-				string joinedEmberPath = String.Join(".", key);
-
-				if (!node.EmberTree.ContainsKey(joinedFriendlyPath))
+				if (!emberData.EmberTree.ContainsKey(emberTree[key]))
 				{
-					node.EmberTree.Add(String.Join(".", emberTree[key]), key);
-					node.ReverseEmberTree.Add(String.Join(".", key), emberTree[key]);
+					emberData.EmberTree.Add(emberTree[key], key);
+					emberData.ReverseEmberTree.Add(key, emberTree[key]);
 				}
 				else
 				{
 					// Friendly path is known -> check if ember path changed
-					if (node.ReverseEmberTree.ContainsKey(joinedEmberPath))
+					if (emberData.ReverseEmberTree.ContainsKey(key))
 					{
 						continue;
 					}
 
 					// Ember path changed
 					// Remove old entries
-					node.ReverseEmberTree.Remove(String.Join(".", node.EmberTree[joinedFriendlyPath]));
-					node.EmberTree.Remove(joinedFriendlyPath);
+					emberData.ReverseEmberTree.Remove(emberData.EmberTree[emberTree[key]]);
+					emberData.EmberTree.Remove(emberTree[key]);
 
 					// Add new entries
-					node.EmberTree.Add(String.Join(".", emberTree[key]), key);
-					node.ReverseEmberTree.Add(String.Join(".", key), emberTree[key]);
+					emberData.EmberTree.Add(emberTree[key], key);
+					emberData.ReverseEmberTree.Add(key, emberTree[key]);
 				}
 			}
 		}

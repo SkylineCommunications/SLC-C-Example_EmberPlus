@@ -7,8 +7,8 @@
 
 	public class EmberData
 	{
-		// Joined friendly path - ember id path
-		public Dictionary<string, int[]> EmberTree { get; } = new Dictionary<string, int[]>();
+		// Friendly path - ember id path
+		public Dictionary<string[], int[]> EmberTree { get; } = new Dictionary<string[], int[]>();
 
 		public int[][] ParameterPaths { get; set; }
 
@@ -16,17 +16,16 @@
 
 		public Dictionary<string[], object> PolledParameters { get; } = new Dictionary<string[], object>();
 
-		public Dictionary<string, string[]> ReverseEmberTree { get; } = new Dictionary<string, string[]>();
+		public Dictionary<int[], string[]> ReverseEmberTree { get; } = new Dictionary<int[], string[]>();
 
 		public void SetParameterPaths(string[] parameterPath)
 		{
-			string joinedPath = String.Join(".", parameterPath);
-			ParameterPaths = GetPaths(joinedPath);
+			ParameterPaths = GetPaths(parameterPath);
 		}
 
-		private int[][] GetPaths(string path)
+		private int[][] GetPaths(string[] parameterPath)
 		{
-			return EmberTree.Keys.Where(key => key.StartsWith(path)).Select(key => EmberTree[key]).ToArray();
+			return EmberTree.Keys.Where(key => String.Join(".", key).StartsWith(String.Join(".", parameterPath))).Select(key => EmberTree[key]).ToArray();
 		}
 	}
 }

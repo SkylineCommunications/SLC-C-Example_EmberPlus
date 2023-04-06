@@ -20,7 +20,7 @@ public class QAction
 	{
 		try
 		{
-			protocol.Log(Convert.ToString(protocol.GetParameter(53)));
+			protocol.Log(Convert.ToString(protocol.GetParameter(Parameter.s101responsedata_53)));
 
 			int trigger = protocol.GetTriggerParameter();
 

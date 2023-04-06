@@ -25,7 +25,7 @@
 
 		public abstract void Execute();
 
-		public abstract string ProcessReceivedGlow(EmberData node, GlowContainer glowContainer, string validateLastRequestPath);
+		public abstract int[] ProcessReceivedGlow(EmberData emberData, GlowContainer glowContainer, int[] validateLastRequestPath);
 
 		protected override void OnCommand(GlowCommand glow, int[] path)
 		{

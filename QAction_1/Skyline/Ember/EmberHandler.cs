@@ -19,7 +19,7 @@ namespace QAction_1.Skyline.Ember
 
 		private GlowReader glowReader;
 
-		private string lastRequestedPath;
+		private int[] lastRequestedPath;
 
 		public EmberHandler(
 			SLProtocol protocol,
@@ -106,9 +106,9 @@ namespace QAction_1.Skyline.Ember
 			}
 
 			bool isDiscoveryMode = currentPollAction is EmberDiscoveryAction;
-			string validateLastRequestPath = isDiscoveryMode ? lastRequestedPath : null;
-			string newLastRequestedPath = currentPollAction.ProcessReceivedGlow(EmberData, glowContainer, validateLastRequestPath);
-			lastRequestedPath = String.IsNullOrEmpty(newLastRequestedPath) ? lastRequestedPath : newLastRequestedPath;
+			int[] validateLastRequestPath = isDiscoveryMode ? lastRequestedPath : null;
+			int[] newLastRequestedPath = currentPollAction.ProcessReceivedGlow(EmberData, glowContainer, validateLastRequestPath);
+			lastRequestedPath = newLastRequestedPath == Array.Empty<int>() ? lastRequestedPath : newLastRequestedPath;
 
 			if (!currentPollAction.Done)
 			{

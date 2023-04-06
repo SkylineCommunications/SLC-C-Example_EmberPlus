@@ -41,14 +41,14 @@
 			return joinedPaths.GetHashCode();
 		}
 
-		public override string ProcessReceivedGlow(EmberData node, GlowContainer glowContainer, string validateLastRequestPath)
+		public override int[] ProcessReceivedGlow(EmberData emberData, GlowContainer glowContainer, int[] validateLastRequestPath)
 		{
 			Walk(glowContainer);
 
 			Done = true;
 			HandlePolledInformation();
 
-			return null;
+			return Array.Empty<int>();
 		}
 
 		protected override void OnNode(GlowNodeBase glow, int[] path)
@@ -57,21 +57,22 @@
 			// It could be that the communication failed during the discovery and that one or more nodes were not discovered.
 			var parentPath = new int[path.Length - 1];
 			Array.Copy(path, parentPath, parentPath.Length);
-			string joinedParentPath = String.Join(".", parentPath);
-			string joinedNodePath = String.Join(".", path);
 
-			if (EmberData.ReverseEmberTree.ContainsKey(joinedParentPath) && !EmberData.ReverseEmberTree.ContainsKey(joinedNodePath))
+			if (EmberData.ReverseEmberTree.ContainsKey(parentPath) && !EmberData.ReverseEmberTree.ContainsKey(path))
 			{
-				string[] friendlyParentPath = EmberData.ReverseEmberTree[joinedParentPath];
+				string[] friendlyParentPath = EmberData.ReverseEmberTree[parentPath];
 				var friendlyNodePath = new string[friendlyParentPath.Length + 1];
 				Array.Copy(friendlyParentPath, friendlyNodePath, friendlyParentPath.Length);
 				friendlyNodePath[friendlyParentPath.Length] = glow.Identifier;
-				string joinedFriendlyNodePath = String.Join(".", friendlyNodePath);
 
-				EmberData.ReverseEmberTree.Add(joinedNodePath, friendlyNodePath);
-				EmberData.EmberTree.Add(joinedFriendlyNodePath, path);
+				EmberData.ReverseEmberTree.Add(path, friendlyNodePath);
+				EmberData.EmberTree.Add(friendlyNodePath, path);
 
-				protocol.Log("QA" + protocol.QActionID + "|EmberPollAction.OnNode|Added missing path: " + joinedFriendlyNodePath + "; Path:" + joinedNodePath, LogType.Information, LogLevel.NoLogging);
+				protocol.Log(
+					"QA" + protocol.QActionID + "|EmberPollAction.OnNode|Added missing path: " + String.Join(".", friendlyNodePath) + "; Path:" + String.Join(".", path),
+					LogType.Information,
+					LogLevel.NoLogging);
+
 				protocol.SetParameter(Configurations.DiscoveredNodesCountPid, EmberData.EmberTree.Count);
 			}
 		}
@@ -80,14 +81,13 @@
 		{
 			var parentPath = new int[path.Length - 1];
 			Array.Copy(path, parentPath, parentPath.Length);
-			string joinedParentPath = String.Join(".", parentPath);
 
-			if (!EmberData.ReverseEmberTree.ContainsKey(joinedParentPath))
+			if (!EmberData.ReverseEmberTree.ContainsKey(parentPath))
 			{
 				return;
 			}
 
-			string[] friendlyParentPath = EmberData.ReverseEmberTree[joinedParentPath];
+			string[] friendlyParentPath = EmberData.ReverseEmberTree[parentPath];
 			var friendlyParameterPath = new string[friendlyParentPath.Length + 1];
 			Array.Copy(friendlyParentPath, friendlyParameterPath, friendlyParentPath.Length);
 			friendlyParameterPath[friendlyParentPath.Length] = glow.Identifier;
