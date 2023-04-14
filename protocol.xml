@@ -56,7 +56,7 @@ Any inquiries can be addressed to:
 	<DeviceOID>01</DeviceOID>
 	<ElementType>External Device</ElementType>
 	<Type relativeTimers="true">smart-serial</Type>
-	<Display defaultPage="General" pageOrder="General;Channels" wideColumnPages="" />
+	<Display defaultPage="General" pageOrder="General" wideColumnPages="" />
 	<SNMP includepages="true">auto</SNMP>
 
 	<Compliancies>
@@ -411,132 +411,11 @@ Any inquiries can be addressed to:
 				<Type>string</Type>
 			</Measurement>
 		</Param>
-		<Param id="1000">
-			<Name>ChannelReceiversTable</Name>
-			<Description>Channel Receivers</Description>
-			<Type>array</Type>
-			<ArrayOptions index="0">
-				<ColumnOption idx="0" pid="1001" type="retrieved" options="" />
-				<ColumnOption idx="1" pid="1002" type="retrieved" options="" />
-				<ColumnOption idx="2" pid="1003" type="retrieved" options="" />
-				<ColumnOption idx="3" pid="1004" type="retrieved" options="" />
-			</ArrayOptions>
-			<Information>
-				<Subtext>Channels</Subtext>
-			</Information>
-			<Display>
-				<RTDisplay>true</RTDisplay>
-				<Positions>
-					<Position>
-						<Page>Channels</Page>
-						<Column>0</Column>
-						<Row>0</Row>
-					</Position>
-				</Positions>
-			</Display>
-			<Measurement>
-				<!-- SuppressValidator 2.31.9 No sorting needed on date(time) -->
-				<Type options=";tab=columns:1001|0-1002|1-1003|2,width:80-41-43,sort:STRING-STRING-STRING,lines:0,filter:true">table</Type>
-				<!-- /SuppressValidator 2.31.9 -->
-			</Measurement>
-		</Param>
-		<Param id="1001" trending="false">
-			<Name>ChannelReceiversInstance</Name>
-			<Description>Instance (Channel Receivers)</Description>
-			<Type>read</Type>
-			<Information>
-				<Subtext>This is the key used internally by DataMiner to identify the table entries.</Subtext>
-			</Information>
-			<Interprete>
-				<RawType>other</RawType>
-				<Type>string</Type>
-				<LengthType>next param</LengthType>
-			</Interprete>
-			<Display>
-				<RTDisplay>true</RTDisplay>
-			</Display>
-			<Measurement>
-				<Type>string</Type>
-			</Measurement>
-		</Param>
-		<Param id="1002" trending="false">
-			<Name>ChannelReceiversSdp</Name>
-			<Description>SDP (Channel Receivers)</Description>
-			<Information>
-				<Subtext>SDP</Subtext>
-			</Information>
-			<Type>read</Type>
-			<Interprete>
-				<RawType>other</RawType>
-				<Type>string</Type>
-				<LengthType>next param</LengthType>
-			</Interprete>
-			<!-- SuppressValidator 2.5.1 Unable to define default thresholds -->
-			<Alarm>
-				<Monitored>true</Monitored>
-			</Alarm>
-			<!-- /SuppressValidator 2.5.1 -->
-			<Display>
-				<RTDisplay>true</RTDisplay>
-			</Display>
-			<Measurement>
-				<Type>string</Type>
-			</Measurement>
-		</Param>
-		<Param id="1003" trending="false">
-			<Name>ChannelReceiversPort</Name>
-			<Description>Port (Channel Receivers)</Description>
-			<Information>
-				<Subtext>Port</Subtext>
-			</Information>
-			<Type>read</Type>
-			<Interprete>
-				<RawType>other</RawType>
-				<Type>string</Type>
-				<LengthType>next param</LengthType>
-			</Interprete>
-			<!-- SuppressValidator 2.5.1 Unable to define default thresholds -->
-			<Alarm>
-				<Monitored>true</Monitored>
-			</Alarm>
-			<!-- /SuppressValidator 2.5.1 -->
-			<Display>
-				<RTDisplay>true</RTDisplay>
-			</Display>
-			<Measurement>
-				<Type>string</Type>
-			</Measurement>
-		</Param>
-		<Param id="1004" trending="false">
-			<Name>ChannelReceiversLastUpdateTimestampHidden</Name>
-			<Description>Last Update (Channel Receivers)</Description>
-			<Information>
-				<Subtext>Last Update Timestamp used internally to clean the table.</Subtext>
-			</Information>
-			<Type>read</Type>
-			<Interprete>
-				<RawType>numeric text</RawType>
-				<Type>double</Type>
-				<LengthType>next param</LengthType>
-				<Decimals>8</Decimals>
-			</Interprete>
-			<!-- SuppressValidator 2.5.1 Unable to define default thresholds -->
-			<Alarm>
-				<Monitored>false</Monitored>
-			</Alarm>
-			<!-- /SuppressValidator 2.5.1 -->
-			<Display>
-				<RTDisplay>true</RTDisplay>
-			</Display>
-			<Measurement>
-				<Type options="datetime">number</Type>
-			</Measurement>
-		</Param>
 	</Params>
 
 	<QActions>
 		<QAction id="1" name="Precompiled Code" encoding="csharp" options="precompile" />
-		<QAction id="3" name="Handle Ember Requests and Responses" encoding="csharp" triggers="1;10;11;53" />
+		<QAction id="3" name="Handle Ember Requests and Responses" encoding="csharp" triggers="1;10;53" />
 	</QActions>
 
 	<Pairs>
@@ -677,7 +556,7 @@ Any inquiries can be addressed to:
 	<Timers>
 		<Timer id="1">
 			<Name>Fast Timer (10s)</Name>
-			<Time initial="true">10000</Time>
+			<Time initial="false">10000</Time>
 			<Interval>75</Interval>
 			<Content>
 				<Group>10</Group>
@@ -685,7 +564,7 @@ Any inquiries can be addressed to:
 		</Timer>
 		<Timer id="2">
 			<Name>Medium Timer (1m)</Name>
-			<Time initial="true" dataDisplay="30000">60000</Time>
+			<Time initial="false" dataDisplay="30000">60000</Time>
 			<Interval>75</Interval>
 			<Content>
 				<Group>11</Group>
@@ -709,7 +588,7 @@ Any inquiries can be addressed to:
 			<DefaultValue>ip</DefaultValue>
 		</Type>
 		<IPport>
-			<DefaultValue>8888</DefaultValue>
+			<DefaultValue>9000</DefaultValue>
 		</IPport>
 		<PortTypeSerial>
 			<Disabled>true</Disabled>

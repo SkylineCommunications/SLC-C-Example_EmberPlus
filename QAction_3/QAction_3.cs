@@ -26,36 +26,30 @@ public class QAction
 
 			if (emberHandler == null)
 			{
-				var s101Params = new S101Params(50, 51, Parameter.s101requestdata_52, Parameter.s101responsedata_53);
+				var s101Params = new S101Params(Parameter.s101requestdata_52);
 				configurations = new Configuration(Parameter.discoverembertree_1, s101Params, 50, Parameter.discoverednodescount_60, Parameter.nodediscoveryprogress_61);
 
-				emberHandler = new EmberHandler(protocol, configurations);
+				emberHandler = new EmberHandler(configurations);
 			}
 
-			if (trigger == 100 /*pollParameters*/)
+			if (trigger == Parameter.polltables_10 /*pollParameters*/)
 			{
-				foreach (string[] path in ParameterMapping.Paths)
+				foreach (string[] path in Vendor.Device.Api.MyTree.Paths)
 				{
-					emberHandler.PollParameters(path);
+					emberHandler.PollParameters(protocol, path);
 				}
 			}
 			else if (trigger == configurations.DiscoverEmberTreePid)
 			{
-				emberHandler.DiscoverEmberTree();
+				emberHandler.DiscoverEmberTree(protocol);
 			}
-			else if (trigger == configurations.S101Pids.S101ResponseDataPid)
+			else if (trigger == Parameter.s101responsedata_53)
 			{
-				object receivedData = protocol.GetData("PARAMETER", trigger);
-				emberHandler.ResponseReceived(receivedData);
+				emberHandler.ResponseReceived(protocol, trigger);
 			}
 			else
 			{
-				emberHandler.Error.AppendLine("|Run|Trigger not implemented: " + trigger);
-			}
-
-			if (!String.IsNullOrEmpty(Convert.ToString(emberHandler.Error)))
-			{
-				protocol.Log("QA" + protocol.QActionID + Convert.ToString(emberHandler.Error), LogType.Error, LogLevel.NoLogging);
+				protocol.Log("QA" + protocol.QActionID + "|Run|Trigger not implemented: " + trigger, LogType.Error, LogLevel.NoLogging);
 			}
 		}
 		catch (Exception ex)

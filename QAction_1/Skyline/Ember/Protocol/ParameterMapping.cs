@@ -1,29 +1,28 @@
 namespace QAction_1.Skyline.Ember.Protocol
 {
+	using System;
 	using System.Collections.Generic;
+	using System.Linq;
 
-	public static class ParameterMapping
+	public class ParameterMapping
 	{
-		private const string Channels = "Channels";
+		// Friendly path - ember id path
+		public Dictionary<string[], int[]> EmberTree { get; } = new Dictionary<string[], int[]>();
 
-		private const string IdentityIden = "identity";
+		public int[][] ParameterPaths { get; set; }
 
-		private const string LvpIdentifier = "LVP";
+		
 
-		private const string LvpOut = "lvp--out";
+		public Dictionary<int[], string[]> ReverseEmberTree { get; } = new Dictionary<int[], string[]>();
 
-		private const string R3LayVirtualPatchBayIden = "R3LAYVirtualPatchBay";
-
-		private const string Root = "Root";
-
-		private static readonly string[] ChannelsPath = new[] { LvpOut, Root, LvpIdentifier, Channels };
-
-		private static readonly string[] IdentityPath = new[] { R3LayVirtualPatchBayIden, IdentityIden };
-
-		public static List<string[]> Paths => new List<string[]>
+		public void SetParameterPaths(string[] parameterPath)
 		{
-			IdentityPath,
-			ChannelsPath,
-		};
+			ParameterPaths = GetPaths(parameterPath);
+		}
+
+		private int[][] GetPaths(string[] parameterPath)
+		{
+			return EmberTree.Keys.Where(key => String.Join(".", key).StartsWith(String.Join(".", parameterPath))).Select(key => EmberTree[key]).ToArray();
+		}
 	}
 }

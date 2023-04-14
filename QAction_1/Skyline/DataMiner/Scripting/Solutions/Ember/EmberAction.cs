@@ -8,24 +8,28 @@
 
 	public abstract class EmberAction : GlowWalker
 	{
-		protected readonly EmberData EmberData;
-
-		protected readonly SLProtocol protocol;
-
-		protected EmberAction(SLProtocol protocol, Configuration configuration, EmberData emberData)
+		protected EmberAction(Configuration configuration)
 		{
 			Configurations = configuration;
-			this.protocol = protocol;
-			EmberData = emberData;
 		}
 
 		public bool Done { get; internal set; }
 
+		public bool RetriesExceeded => Retries > Configurations.MaxRetries;
+
 		protected Configuration Configurations { get; }
+
+		internal int Retries { get; set; }
+
+		internal double? LastExecutionTime { get; set; }
+
+		public bool Timeout => LastExecutionTime != null && DateTime.Now.Subtract(DateTime.FromOADate((double)LastExecutionTime)).TotalSeconds > Configurations.TimeOutSeconds;
+
+		public abstract void Continue();
 
 		public abstract void Execute();
 
-		public abstract int[] ProcessReceivedGlow(EmberData emberData, GlowContainer glowContainer, int[] validateLastRequestPath);
+		public abstract int[] ProcessReceivedGlow(ParameterMapping mapping, GlowContainer glowContainer, int[] validateLastRequestPath);
 
 		protected override void OnCommand(GlowCommand glow, int[] path)
 		{
@@ -91,21 +95,15 @@
 			return converted;
 		}
 
-		internal void GlowPackageReady(byte[] framedPackage)
-		{
-			protocol.SetParameterBinary(Configurations.S101Pids.S101RequestDataPid, framedPackage);
-			protocol.CheckTrigger(Configurations.SendEmberRequestTrigger);
-		}
-
-		internal void SendGetDirectoryRequest(int[][] path, bool nested = false)
+		internal void SendGetDirectoryRequest(SLProtocol protocol, int[][] path, bool nested = false)
 		{
 			var root = GlowRootElementCollection.CreateRoot();
 			var command = new GlowCommand(GlowCommandType.GetDirectory);
 
-			if (path == null || (path.Length == 1 && path[0] == null))
+			if (path == null || (path.Length == 1 && path[0] == Array.Empty<int>()))
 			{
 				root.Insert(command);
-				SendGlow(root);
+				SendGlow(protocol, root);
 
 				return;
 			}
@@ -140,12 +138,18 @@
 				}
 			}
 
-			SendGlow(root);
+			SendGlow(protocol, root);
 		}
 
-		internal void SendGlow(GlowContainer glow)
+		private void GlowPackageReady(SLProtocol protocol, byte[] framedPackage)
 		{
-			var glowOutPut = new GlowOutput(true, 1024, 0x00, (_, e) => GlowPackageReady(e.FramedPackage));
+			protocol.SetParameterBinary(Configurations.S101Pids.S101RequestDataPid, framedPackage);
+			protocol.CheckTrigger(Configurations.SendEmberRequestTrigger);
+		}
+
+		private void SendGlow(SLProtocol protocol, GlowContainer glow)
+		{
+			var glowOutPut = new GlowOutput(true, 1024, 0x00, (_, e) => GlowPackageReady(protocol, e.FramedPackage));
 
 			using (glowOutPut)
 			{

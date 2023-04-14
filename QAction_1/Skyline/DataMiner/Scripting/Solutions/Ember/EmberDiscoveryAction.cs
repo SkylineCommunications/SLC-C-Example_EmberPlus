@@ -13,27 +13,46 @@
 
 		private const string RootString = "Root";
 
+		private readonly List<string[]> branchesToSkip = new List<string[]>();
+
 		// ember path - user friendly path
 		private readonly Dictionary<int[], string[]> emberTree = new Dictionary<int[], string[]>();
 
 		private readonly Queue<int[]> pathsToPoll = new Queue<int[]>();
 
+		private readonly Queue<EmberAction> pollActions;
+
+		private readonly SLProtocol protocol;
+
+		private int[] currentPollPath = Array.Empty<int>();
+
 		private int[] lastRequestPath = Array.Empty<int>();
 
 		private bool updateReceivedForWrongRequestedNode;
 
-		public EmberDiscoveryAction(SLProtocol protocol, Configuration configuration, EmberData emberData)
-			: base(protocol, configuration, emberData)
+		public EmberDiscoveryAction(SLProtocol protocol, Configuration configuration, Queue<EmberAction> pollActions)
+			: base(configuration)
 		{
+			this.protocol = protocol;
+			this.pollActions = pollActions;
+			pathsToPoll.Enqueue(Array.Empty<int>());
+			LastExecutionTime = null;
+			Retries = 0;
+		}
+
+		public override void Continue()
+		{
+			Retries++;
+			SendGetDirectoryRequest(protocol, new[] { currentPollPath });
 		}
 
 		public override void Execute()
 		{
-			// SendGetDirectoryRequest(new[] { currentPollPath });
+			LastExecutionTime = DateTime.Now.ToOADate();
 			PollNextPath();
 		}
 
-		public override int[] ProcessReceivedGlow(EmberData emberData, GlowContainer glowContainer, int[] validateLastRequestPath)
+		public override int[] ProcessReceivedGlow(ParameterMapping mapping, GlowContainer glowContainer, int[] validateLastRequestPath)
 		{
 			// Check if the ValidateLastRequestPath matches the current Parent, else skip the request.
 			lastRequestPath = validateLastRequestPath;
@@ -46,6 +65,8 @@
 				return validateLastRequestPath;
 			}
 
+			LastExecutionTime = DateTime.Now.ToOADate();
+
 			if (pathsToPoll.Count != 0)
 			{
 				Done = false;
@@ -56,10 +77,10 @@
 				Done = true;
 
 				// Update Ember tree and Reverse Ember Tree
-				UpdateEmberTrees(emberData);
+				UpdateEmberTrees(mapping);
 
 				// Clear the poll queue as it may contain invalid Ember paths
-				EmberData.PollActions.Clear();
+				pollActions.Clear();
 
 				protocol.SetParameter(Configurations.DiscoveryNodeProgressPid, "done");
 			}
@@ -73,7 +94,7 @@
 			string joinedPath = String.Join(".", path);
 			Array.Copy(path, parentPath, parentPath.Length);
 
-			if (!parentPath.SequenceEqual(lastRequestPath) && !joinedPath.Equals("1") /*root*/ && !lastRequestPath.SequenceEqual(path))
+			if (!parentPath.SequenceEqual(lastRequestPath) && !joinedPath.Equals(RootNumber) /*root*/ && !lastRequestPath.SequenceEqual(path))
 			{
 				protocol.Log(
 					"QA" + protocol.QActionID + "|Discovery.OnNode|joinedParentPath != LastRequestPath: " + String.Join(".", lastRequestPath) + " for incoming Node: " + joinedPath + " --> Skipping",
@@ -106,6 +127,24 @@
 			}
 		}
 
+		private bool IsBranchToDiscover(string[] nodePath)
+		{
+			if (nodePath == null || nodePath.Length == 0)
+			{
+				return true;
+			}
+
+			foreach (string[] branch in branchesToSkip)
+			{
+				if (nodePath.SequenceEqual(branch))
+				{
+					return false;
+				}
+			}
+
+			return true;
+		}
+
 		private void NewEmberTreePath(GlowNodeBase glow, int[] path, int[] parentPath)
 		{
 			string glowIdentifier = glow.Identifier;
@@ -124,7 +163,7 @@
 
 			emberTree.Add(path, friendlyPath);
 
-			if (path.Length < Configurations.MaxDepth && !friendlyPath.Any())
+			if (path.Length < Configurations.MaxDepth && IsBranchToDiscover(friendlyPath))
 			{
 				pathsToPoll.Enqueue(path);
 			}
@@ -132,40 +171,40 @@
 
 		private void PollNextPath()
 		{
-			int[] currentPollPath = pathsToPoll.Dequeue();
-			lastRequestPath = currentPollPath ?? new int[] { };
+			currentPollPath = pathsToPoll.Dequeue();
+			lastRequestPath = currentPollPath ?? Array.Empty<int>();
 
 			int[] parametersToSet = new[] { Configurations.DiscoveredNodesCountPid, Configurations.DiscoveryNodeProgressPid };
 
-			protocol.SetParameters(parametersToSet, new object[] { emberTree.Count, currentPollPath == null ? RootString : String.Join(".", currentPollPath) });
-			SendGetDirectoryRequest(new[] { currentPollPath });
+			protocol.SetParameters(parametersToSet, new object[] { emberTree.Count, currentPollPath == Array.Empty<int>() ? RootString : String.Join(".", currentPollPath) });
+			SendGetDirectoryRequest(protocol, new[] { currentPollPath });
 		}
 
-		private void UpdateEmberTrees(EmberData emberData)
+		private void UpdateEmberTrees(ParameterMapping parameterMapping)
 		{
 			foreach (int[] key in emberTree.Keys)
 			{
-				if (!emberData.EmberTree.ContainsKey(emberTree[key]))
+				if (!parameterMapping.EmberTree.ContainsKey(emberTree[key]))
 				{
-					emberData.EmberTree.Add(emberTree[key], key);
-					emberData.ReverseEmberTree.Add(key, emberTree[key]);
+					parameterMapping.EmberTree.Add(emberTree[key], key);
+					parameterMapping.ReverseEmberTree.Add(key, emberTree[key]);
 				}
 				else
 				{
 					// Friendly path is known -> check if ember path changed
-					if (emberData.ReverseEmberTree.ContainsKey(key))
+					if (parameterMapping.ReverseEmberTree.ContainsKey(key))
 					{
 						continue;
 					}
 
 					// Ember path changed
 					// Remove old entries
-					emberData.ReverseEmberTree.Remove(emberData.EmberTree[emberTree[key]]);
-					emberData.EmberTree.Remove(emberTree[key]);
+					parameterMapping.ReverseEmberTree.Remove(parameterMapping.EmberTree[emberTree[key]]);
+					parameterMapping.EmberTree.Remove(emberTree[key]);
 
 					// Add new entries
-					emberData.EmberTree.Add(emberTree[key], key);
-					emberData.ReverseEmberTree.Add(key, emberTree[key]);
+					parameterMapping.EmberTree.Add(emberTree[key], key);
+					parameterMapping.ReverseEmberTree.Add(key, emberTree[key]);
 				}
 			}
 		}
