@@ -52,12 +52,6 @@
     <Reference Include="EmberLib.Glow">
       <HintPath>..\Dlls\EmberLib.Glow.dll</HintPath>
     </Reference>
-    <Reference Include="Lawo">
-      <HintPath>..\Dlls\Lawo.dll</HintPath>
-    </Reference>
-    <Reference Include="Lawo.EmberPlusSharp">
-      <HintPath>..\Dlls\Lawo.EmberPlusSharp.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <ProjectReference Include="..\QAction_Helper\QAction_Helper.csproj">
       <Project>{AD426E2D-764C-4308-9922-FA4DA45BA4F5}</Project>
@@ -67,16 +61,13 @@
     <Content Include=".editorconfig" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="Skyline\Ember\EmberHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Skyline\DataMiner\Scripting\Solutions\Ember\EmberAction.cs" />
     <Compile Include="Skyline\Ember\Protocol\Constants.cs" />
-    <Compile Include="Skyline\DataMiner\Scripting\Solutions\Ember\EmberDiscoveryAction.cs" />
-    <Compile Include="Skyline\DataMiner\Scripting\Solutions\Ember\EmberPollAction.cs" />
-    <Compile Include="Skyline\Ember\Protocol\ParameterMapping.cs" />
     <Compile Include="Skyline\Ember\Protocol\Configuration.cs" />
     <Compile Include="Skyline\Ember\Protocol\S101Params.cs" />
+    <Compile Include="Skyline\GlowRootReadyEventArgs.cs" />
+    <Compile Include="Skyline\NotificationEventArgs.cs" />
+    <Compile Include="Something.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json">
@@ -91,7 +82,9 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Skyline\DataMiner\Scripting\Solutions\Ember\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>

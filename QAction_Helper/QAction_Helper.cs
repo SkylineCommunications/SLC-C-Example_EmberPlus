@@ -8,21 +8,6 @@ namespace Skyline.DataMiner.Scripting
 {
 public static class Parameter
 {
-	/// <summary>PID: 1 | Type: read</summary>
-	[EditorBrowsable(EditorBrowsableState.Never)]
-	public const int discoverembertree_1 = 1;
-	/// <summary>PID: 1 | Type: read</summary>
-	public const int discoverembertree = 1;
-	/// <summary>PID: 10 | Type: read</summary>
-	[EditorBrowsable(EditorBrowsableState.Never)]
-	public const int polltables_10 = 10;
-	/// <summary>PID: 10 | Type: read</summary>
-	public const int polltables = 10;
-	/// <summary>PID: 11 | Type: read</summary>
-	[EditorBrowsable(EditorBrowsableState.Never)]
-	public const int pollparameters_11 = 11;
-	/// <summary>PID: 11 | Type: read</summary>
-	public const int pollparameters = 11;
 	/// <summary>PID: 52 | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public const int s101requestdata_52 = 52;
@@ -89,12 +74,9 @@ public class WriteParameters
 }
 public interface SLProtocolExt : SLProtocol
 {
-	object Discoverembertree_1 { get; set; }
-	object Discoverembertree { get; set; }
-	object Polltables_10 { get; set; }
-	object Polltables { get; set; }
-	object Pollparameters_11 { get; set; }
-	object Pollparameters { get; set; }
+	object Discoverembertree_dummy { get; set; }
+	object Polltables_dummy { get; set; }
+	object Pollparameters_dummy { get; set; }
 	object S101bof_header { get; set; }
 	object S101eof_trailer { get; set; }
 	object S101requestdata_52 { get; set; }
@@ -121,21 +103,12 @@ public interface SLProtocolExt : SLProtocol
 }
 public class ConcreteSLProtocolExt : ConcreteSLProtocol, SLProtocolExt
 {
-	/// <summary>PID: 1  | Type: read</summary>
-	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Discoverembertree_1 {get { return GetParameter(1); }set { SetParameter(1, value); }}
-	/// <summary>PID: 1  | Type: read</summary>
-	public System.Object Discoverembertree {get { return GetParameter(1); }set { SetParameter(1, value); }}
-	/// <summary>PID: 10  | Type: read</summary>
-	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Polltables_10 {get { return GetParameter(10); }set { SetParameter(10, value); }}
-	/// <summary>PID: 10  | Type: read</summary>
-	public System.Object Polltables {get { return GetParameter(10); }set { SetParameter(10, value); }}
-	/// <summary>PID: 11  | Type: read</summary>
-	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Pollparameters_11 {get { return GetParameter(11); }set { SetParameter(11, value); }}
-	/// <summary>PID: 11  | Type: read</summary>
-	public System.Object Pollparameters {get { return GetParameter(11); }set { SetParameter(11, value); }}
+	/// <summary>PID: 1  | Type: dummy</summary>
+	public System.Object Discoverembertree_dummy {get { return GetParameter(1); }set { SetParameter(1, value); }}
+	/// <summary>PID: 10  | Type: dummy</summary>
+	public System.Object Polltables_dummy {get { return GetParameter(10); }set { SetParameter(10, value); }}
+	/// <summary>PID: 11  | Type: dummy</summary>
+	public System.Object Pollparameters_dummy {get { return GetParameter(11); }set { SetParameter(11, value); }}
 	/// <summary>PID: 50  | Type: header</summary>
 	public System.Object S101bof_header {get { return GetParameter(50); }set { SetParameter(50, value); }}
 	/// <summary>PID: 51  | Type: trailer</summary>

@@ -3,7 +3,7 @@
 	public class S101Params
 	{
 		/// <summary>
-		/// Initializes a new instance of the <see cref="S101Params"/> class.
+		///     Initializes a new instance of the <see cref="S101Params" /> class.
 		/// </summary>
 		/// <param name="s101RequestDataPid">The parameter ID of the request data.</param>
 		public S101Params(int s101RequestDataPid)
