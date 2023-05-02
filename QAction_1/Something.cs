@@ -12,19 +12,10 @@ namespace Skyline.Protocol.Communication.Serial
 
 	public static class RequestHandler
 	{
-		public static void SendRequest(SLProtocol protocol, byte[] requestBytes)
+		public static void SendRequest(SLProtocolExt protocol, byte[] requestBytes)
 		{
 			protocol.SetParameterBinary(Parameter.s101requestdata_52, requestBytes);
 			protocol.CheckTrigger(Trigger.SendEmberRequest_50);
-		}
-	}
-
-	public static class ResponseHandler
-	{
-		public static void HandleResponse(SLProtocol protocol, object response)
-		{
-			//protocol.SetParameter()
-			//FillArray
 		}
 	}
 }

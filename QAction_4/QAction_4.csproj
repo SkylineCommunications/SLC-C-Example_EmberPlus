@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Element.cs" />
     <Compile Include="ElementType.cs" />
+    <Compile Include="EmberHandler.cs" />
     <Compile Include="GlowEndPoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QAction_4.cs" />
@@ -86,7 +87,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties DisLinkedXmlFile="..\protocol.xml" DisProjectType="qactionProject" DisLinkId="4" />
+      <UserProperties DisLinkId="4" DisProjectType="qactionProject" DisLinkedXmlFile="..\protocol.xml" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

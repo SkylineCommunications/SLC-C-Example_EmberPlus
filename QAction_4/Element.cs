@@ -4,10 +4,8 @@
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
-	using System.Xml;
-	using EmberLib;
 	using EmberLib.Glow;
-	using EmberLib.Xml;
+	using Skyline.DataMiner.Scripting;
 
 	/// <summary>
 	///     The only class used for the local object model.
@@ -19,18 +17,19 @@
 		private readonly List<Element> children = new List<Element>();
 
 		/// <summary>
-		///     Constructs a new instance of Element.
+		///     Initializes a new instance of the <see cref="Element" /> class.
 		/// </summary>
 		/// <param name="parent">The parent element. Null if the new instance is the root element.</param>
 		/// <param name="number">The node/parameter number of the new instance.</param>
 		/// <param name="identifier">The node/parameter identifier of the new instance.</param>
 		/// <param name="type">The type of the new instance.</param>
-		/// <param name="xml">The XML representation of the GlowNode/GlowParameter used to create the new instance from.</param>
-		public Element(Element parent, int number, string identifier, ElementType type, string xml)
+		/// <param name="protocol"></param>
+		private Element(Element parent, int number, string identifier, ElementType type, SLProtocolExt protocol)
 		{
+			Protocol = protocol;
 			Parent = parent;
 			Number = number;
-			Update(identifier, type, xml);
+			Update(identifier, type);
 		}
 
 		/// <summary>
@@ -59,29 +58,64 @@
 		/// </summary>
 		public Element Parent { get; }
 
+		public SLProtocolExt Protocol { get; }
+
 		/// <summary>
 		///     Gets the type of the element.
 		/// </summary>
 		public ElementType Type { get; private set; }
 
-		/// <summary>
-		///     Gets the XML representation of the node/parameter that has been
-		///     used to create this element from.
-		/// </summary>
-		public string Xml { get; private set; }
+		public object Value { get; set; }
 
-		/// <summary>
-		/// Creates a new instance of Element which is initialized as root.
-		/// </summary>
-		/// <param name="parent"></param>
-		/// <param name="number"></param>
-		/// <param name="identifier"></param>
-		/// <param name="type"></param>
-		/// <param name="xml"></param>
-		/// <returns></returns>
-		public static Element CreateRoot(Element parent, int number, string identifier, ElementType type, string xml)
+		public static Element CreateElement(SLProtocolExt protocol, Element parent, int number, string identifier, ElementType type)
 		{
-			return new Element(parent, number, identifier, type, xml);
+			return new Element(parent, number, identifier, type, protocol);
+		}
+
+		public void AddEmberElementToTable(SLProtocolExt protocol)
+		{
+			var emberNodeRows = new List<QActionTableRow>();
+			var emberNodeTableRow = new EmbernodestableQActionRow
+			{
+				Embernodesidentifier_101 = Identifier,
+				Embernodesnumber_102 = Number,
+				Embernodesparent_103 = Parent.Identifier,
+			};
+
+			emberNodeRows.Add(emberNodeTableRow);
+
+			var emberParameterRows = new List<QActionTableRow>();
+
+			foreach (var child in children)
+			{
+				if (child.Type == ElementType.Node)
+				{
+					var emberNodeRow = new EmbernodestableQActionRow
+					{
+						Embernodesidentifier_101 = child.Identifier,
+						Embernodesnumber_102 = child.Number,
+						Embernodesparent_103 = Identifier,
+					};
+
+					emberNodeRows.Add(emberNodeRow);
+
+					continue;
+				}
+
+				var emberParameterTableRow = new EmberparameterstableQActionRow
+				{
+					Emberparametersidentifier_111 = child.Identifier,
+					Emberparametersnumber_112 = child.Number,
+					Emberparametersparent_113 = child.Parent.Identifier,
+					Emberparameterstype_114 = child.ParameterType,
+					Emberparametersvalue_115 = child.Value,
+				};
+
+				emberParameterRows.Add(emberParameterTableRow);
+			}
+
+			protocol.emberparameterstable.FillArrayNoDelete(emberParameterRows);
+			protocol.embernodestable.FillArrayNoDelete(emberNodeRows);
 		}
 
 		/// <summary>
@@ -99,43 +133,11 @@
 
 			// this builds a QualifiedNode or QualifiedParameter,
 			// containing the GetDirectory Command
-			return BuildQualified(this, glow);
+			// return BuildQualified(this, glow);
 
 			// this builds a complete glow tree using the Node and
 			// Parameter types (more verbose).
-			//return BuildGlowTree(this, glow);
-		}
-
-		/// <summary>
-		///     Gets the descendant element with the specified path.
-		///     This call only makes sense on the root element.
-		/// </summary>
-		/// <param name="path">Path to the element to get.</param>
-		/// <param name="parent">Receives the parent element of the found element.</param>
-		/// <returns>The found element or null if not found.</returns>
-		public Element GetElementAt(int[] path, out Element parent)
-		{
-			var current = this;
-			parent = null;
-
-			for (var index = 0; index < path.Length; index++)
-			{
-				var child = current.Children.FirstOrDefault(elem => elem.Number == path[index]);
-
-				if (child == null)
-				{
-					parent = index == path.Length - 1
-						? current
-						: null;
-
-					return null;
-				}
-
-				parent = current;
-				current = child;
-			}
-
-			return current;
+			return BuildGlowTree(this, glow);
 		}
 
 		/// <summary>
@@ -145,57 +147,62 @@
 		/// <returns>A string containing information about the passed element.</returns>
 		public string PrintElement()
 		{
-			string type;
+			var sb = new StringBuilder();
 
-			switch (Type)
+			foreach (var child in children)
 			{
-				case ElementType.Node:
-					type = "Node";
-
-					break;
-
-				case ElementType.Parameter:
-					type = "Parameter";
-
-					break;
-
-				default:
-					type = String.Empty;
-
-					break;
+				sb.AppendLine(
+					$"\t\tChild: Type: {child.Type}, Parent: {child.Parent.Identifier}, Number: {child.Number:000}, Identifier: {child.Identifier}, ParameterType: {child.ParameterType}, Value: {child.Value}");
 			}
 
-			return $"{type} {Number:000} {Identifier}";
+			return $"\nType: {Type}, Number: {Number:000}, Identifier: {Identifier}, ParameterType: {ParameterType}" +
+				   "\n\tChildren:" +
+				   $"\n{sb}";
 		}
 
 		/// <summary>
-		///     Creates an ember/glow tree which can be used to issue
-		///     a parameter value change to the remote host.
+		///     Writes out information about an element to a string.
+		///     Used for listing the current cursor's children.
 		/// </summary>
-		/// <returns>
-		///     The GlowContainer object that is the root of
-		///     a glow tree that mirrors the element tree up this element,
-		///     having a GlowParameter object as the single leaf.
-		/// </returns>
-		public GlowContainer SetParameterValue(GlowValue value)
+		/// <returns>A string containing information about the passed element.</returns>
+		public string PrintNode()
 		{
-			if (Type != ElementType.Parameter)
-			{
-				throw new InvalidOperationException();
-			}
-
-			var glow = new GlowParameter(Number)
-			{
-				Value = value,
-			};
-
-			// this builds a QualifiedNode or QualifiedParameter
-			return BuildQualified(Parent, glow);
-
-			// this builds a complete glow tree using the Node and
-			// Parameter types (more verbose).
-			//return BuildGlowTree(Parent, glow);
+			return $"Type: {Type}, Number: {Number:000}, Identifier: {Identifier}, ParameterType: {ParameterType}";
 		}
+
+		public string PrintParameter()
+		{
+			return $"Type: {Type}, Number: {Number:000}, Identifier: {Identifier}, ParameterType: {ParameterType}, Value: {Value}";
+		}
+
+		///// <summary>
+		/////     Creates an ember/glow tree which can be used to issue
+		/////     a parameter value change to the remote host.
+		///// </summary>
+		///// <returns>
+		/////     The GlowContainer object that is the root of
+		/////     a glow tree that mirrors the element tree up this element,
+		/////     having a GlowParameter object as the single leaf.
+		///// </returns>
+		//public GlowContainer SetParameterValue(GlowValue value)
+		//{
+		//	if (Type != ElementType.Parameter)
+		//	{
+		//		throw new InvalidOperationException();
+		//	}
+
+		//	var glow = new GlowParameter(Number)
+		//	{
+		//		Value = value,
+		//	};
+
+		//	// this builds a QualifiedNode or QualifiedParameter
+		//	// return BuildQualified(Parent, glow);
+
+		//	// this builds a complete glow tree using the Node and
+		//	// Parameter types (more verbose).
+		//	//return BuildGlowTree(Parent, glow);
+		//}
 
 		private static GlowRootElementCollection BuildGlowTree(Element local, GlowElement glow)
 		{
@@ -238,12 +245,14 @@
 		{
 			var qualified = null as GlowElement;
 
-			if (local.Type != ElementType.Root)
+			switch (local.Type)
 			{
-				int[] path = local.BuildPath();
+				case ElementType.Root:
+					qualified = glow;
 
-				if (local.Type == ElementType.Parameter)
-				{
+					break;
+				case ElementType.Parameter:
+					int[] path = local.BuildPath();
 					var qparam = new GlowQualifiedParameter(path)
 					{
 						Children = new GlowElementCollection(GlowTags.QualifiedParameter.Children),
@@ -251,9 +260,10 @@
 
 					qparam.Children.Insert(glow);
 					qualified = qparam;
-				}
-				else if (local.Type == ElementType.Node)
-				{
+
+					break;
+				case ElementType.Node:
+					path = local.BuildPath();
 					var qnode = new GlowQualifiedNode(path)
 					{
 						Children = new GlowElementCollection(GlowTags.QualifiedNode.Children),
@@ -261,42 +271,55 @@
 
 					qnode.Children.Insert(glow);
 					qualified = qnode;
-				}
+
+					break;
 			}
-			else
+
+			if (qualified == null)
 			{
-				qualified = glow;
+				return null;
 			}
 
-			if (qualified != null)
-			{
-				var root = GlowRootElementCollection.CreateRoot();
-				root.Insert(qualified);
+			var root = GlowRootElementCollection.CreateRoot();
+			root.Insert(qualified);
 
-				return root;
-			}
-
-			return null;
+			return root;
 		}
 
-		private static string BuildXml(EmberNode node)
+		private static void GetValue(GlowParameterBase glow, GlowValue value, Element local)
 		{
-			var settings = new XmlWriterSettings
+			switch (value.Type)
 			{
-				Indent = true,
-				IndentChars = "  ",
-				CloseOutput = false,
-				OmitXmlDeclaration = true,
-			};
+				case GlowParameterType.Boolean:
+					local.Value = Convert.ToInt32(value.Boolean);
 
-			var buffer = new StringBuilder();
+					break;
 
-			using (var writer = XmlWriter.Create(buffer, settings))
-			{
-				XmlExport.Export(node, writer);
+				case GlowParameterType.Integer:
+					local.Value = glow.Factor != null && glow.Factor != 0 ? (double)value.Integer / glow.Factor : value.Integer;
+
+					break;
+
+				case GlowParameterType.Real:
+					local.Value = value.Real;
+
+					break;
+
+				case GlowParameterType.String:
+					local.Value = value.String.Trim();
+
+					break;
+
+				case GlowParameterType.Enum:
+					local.Value = value.Integer;
+
+					break;
+
+				default:
+					local.Value = null;
+
+					break;
 			}
-
-			return buffer.ToString();
 		}
 
 		private int[] BuildPath()
@@ -313,7 +336,39 @@
 			return path.ToArray();
 		}
 
-		private void Update(string identifier, ElementType type, string xml)
+		/// <summary>
+		///     Gets the descendant element with the specified path.
+		///     This call only makes sense on the root element.
+		/// </summary>
+		/// <param name="path">Path to the element to get.</param>
+		/// <param name="parent">Receives the parent element of the found element.</param>
+		/// <returns>The found element or null if not found.</returns>
+		private Element GetElementAt(int[] path, out Element parent)
+		{
+			var current = this;
+			parent = null;
+
+			for (var index = 0; index < path.Length; index++)
+			{
+				var child = current.Children.FirstOrDefault(elem => elem.Number == path[index]);
+
+				if (child == null)
+				{
+					parent = index == path.Length - 1
+						? current
+						: null;
+
+					return null;
+				}
+
+				parent = current;
+				current = child;
+			}
+
+			return current;
+		}
+
+		private void Update(string identifier, ElementType type)
 		{
 			if (identifier != null)
 			{
@@ -321,11 +376,6 @@
 			}
 
 			Type = type;
-
-			if (xml != null)
-			{
-				Xml = xml;
-			}
 		}
 
 		bool IGlowVisitor<object, bool>.Visit(GlowCommand glow, object state)
@@ -362,19 +412,16 @@
 			var local = children.FirstOrDefault(elem => elem.Number == glow.Number);
 
 			bool isComplete = glow.Identifier != null;
-			string xml = isComplete
-				? BuildXml(glow)
-				: null;
 
 			if (local == null)
 			{
-				local = new Element(this, glow.Number, glow.Identifier, ElementType.Node, xml);
+				local = new Element(this, glow.Number, glow.Identifier, ElementType.Node, Protocol);
 
 				children.Add(local);
 			}
 			else
 			{
-				local.Update(glow.Identifier, ElementType.Node, xml);
+				local.Update(glow.Identifier, ElementType.Node);
 			}
 
 			var glowChildren = glow.Children;
@@ -397,19 +444,15 @@
 				return isComplete;
 			}
 
-			string xml = isComplete
-				? BuildXml(glow)
-				: null;
-
 			if (local == null)
 			{
-				local = new Element(parent, glow.Path.Last(), glow.Identifier, ElementType.Node, xml);
+				local = new Element(parent, glow.Path.Last(), glow.Identifier, ElementType.Node, Protocol);
 
 				parent.children.Add(local);
 			}
 			else
 			{
-				local.Update(glow.Identifier, ElementType.Node, xml);
+				local.Update(glow.Identifier, ElementType.Node);
 			}
 
 			var glowChildren = glow.Children;
@@ -426,17 +469,15 @@
 		{
 			var local = children.FirstOrDefault(elem => elem.Number == glow.Number);
 
-			string xml = BuildXml(glow);
-
 			if (local == null)
 			{
-				local = new Element(this, glow.Number, glow.Identifier, ElementType.Parameter, xml);
+				local = new Element(this, glow.Number, glow.Identifier, ElementType.Parameter, Protocol);
 
 				children.Add(local);
 			}
 			else
 			{
-				local.Update(glow.Identifier, ElementType.Parameter, xml);
+				local.Update(glow.Identifier, ElementType.Parameter);
 			}
 
 			var value = glow.Value;
@@ -444,6 +485,8 @@
 			if (value != null)
 			{
 				local.ParameterType = value.Type;
+
+				GetValue(glow, value, local);
 			}
 
 			return true;
@@ -452,7 +495,6 @@
 		bool IGlowVisitor<object, bool>.Visit(GlowQualifiedParameter glow, object state)
 		{
 			var local = GetElementAt(glow.Path, out var parent);
-			string xml = BuildXml(glow);
 
 			if (parent == null)
 			{
@@ -461,13 +503,13 @@
 
 			if (local == null)
 			{
-				local = new Element(parent, glow.Path.Last(), glow.Identifier, ElementType.Parameter, xml);
+				local = new Element(parent, glow.Path.Last(), glow.Identifier, ElementType.Parameter, Protocol);
 
 				parent.children.Add(local);
 			}
 			else
 			{
-				local.Update(glow.Identifier, ElementType.Parameter, xml);
+				local.Update(glow.Identifier, ElementType.Parameter);
 			}
 
 			var value = glow.Value;
@@ -475,6 +517,8 @@
 			if (value != null)
 			{
 				local.ParameterType = value.Type;
+
+				GetValue(glow, value, local);
 			}
 
 			return true;

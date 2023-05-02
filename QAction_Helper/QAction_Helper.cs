@@ -61,6 +61,160 @@ public static class Parameter
 		/// <summary>PID: 62 | Type: write</summary>
 		public const int startnodediscovery = 62;
 	}
+	public class Embernodestable
+	{
+		/// <summary>PID: 100</summary>
+		public const int tablePid = 100;
+		/// <summary>IDX: 0</summary>
+		public const int indexColumn = 0;
+		/// <summary>PID: 101</summary>
+		public const int indexColumnPid = 101;
+		public class Pid
+		{
+			/// <summary>PID: 101 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embernodesidentifier_101 = 101;
+			/// <summary>PID: 101 | Type: read</summary>
+			public const int embernodesidentifier = 101;
+			/// <summary>PID: 102 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embernodesnumber_102 = 102;
+			/// <summary>PID: 102 | Type: read</summary>
+			public const int embernodesnumber = 102;
+			/// <summary>PID: 103 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embernodesparent_103 = 103;
+			/// <summary>PID: 103 | Type: read</summary>
+			public const int embernodesparent = 103;
+			public class Write
+			{
+			}
+		}
+		public class Idx
+		{
+			/// <summary>IDX: 0 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embernodesidentifier_101 = 0;
+			/// <summary>IDX: 0 | Type: read</summary>
+			public const int embernodesidentifier = 0;
+			/// <summary>IDX: 1 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embernodesnumber_102 = 1;
+			/// <summary>IDX: 1 | Type: read</summary>
+			public const int embernodesnumber = 1;
+			/// <summary>IDX: 2 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embernodesparent_103 = 2;
+			/// <summary>IDX: 2 | Type: read</summary>
+			public const int embernodesparent = 2;
+		}
+	}
+	public class Emberparameterstable
+	{
+		/// <summary>PID: 110</summary>
+		public const int tablePid = 110;
+		/// <summary>IDX: 0</summary>
+		public const int indexColumn = 0;
+		/// <summary>PID: 111</summary>
+		public const int indexColumnPid = 111;
+		public class Pid
+		{
+			/// <summary>PID: 111 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparametersidentifier_111 = 111;
+			/// <summary>PID: 111 | Type: read</summary>
+			public const int emberparametersidentifier = 111;
+			/// <summary>PID: 112 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparametersnumber_112 = 112;
+			/// <summary>PID: 112 | Type: read</summary>
+			public const int emberparametersnumber = 112;
+			/// <summary>PID: 113 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparametersparent_113 = 113;
+			/// <summary>PID: 113 | Type: read</summary>
+			public const int emberparametersparent = 113;
+			/// <summary>PID: 114 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparameterstype_114 = 114;
+			/// <summary>PID: 114 | Type: read</summary>
+			public const int emberparameterstype = 114;
+			/// <summary>PID: 115 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparametersvalue_115 = 115;
+			/// <summary>PID: 115 | Type: read</summary>
+			public const int emberparametersvalue = 115;
+			public class Write
+			{
+			}
+		}
+		public class Idx
+		{
+			/// <summary>IDX: 0 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparametersidentifier_111 = 0;
+			/// <summary>IDX: 0 | Type: read</summary>
+			public const int emberparametersidentifier = 0;
+			/// <summary>IDX: 1 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparametersnumber_112 = 1;
+			/// <summary>IDX: 1 | Type: read</summary>
+			public const int emberparametersnumber = 1;
+			/// <summary>IDX: 2 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparametersparent_113 = 2;
+			/// <summary>IDX: 2 | Type: read</summary>
+			public const int emberparametersparent = 2;
+			/// <summary>IDX: 3 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparameterstype_114 = 3;
+			/// <summary>IDX: 3 | Type: read</summary>
+			public const int emberparameterstype = 3;
+			/// <summary>IDX: 4 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparametersvalue_115 = 4;
+			/// <summary>IDX: 4 | Type: read</summary>
+			public const int emberparametersvalue = 4;
+		}
+	}
+	public class Requestednodestable
+	{
+		/// <summary>PID: 120</summary>
+		public const int tablePid = 120;
+		/// <summary>IDX: 0</summary>
+		public const int indexColumn = 0;
+		/// <summary>PID: 121</summary>
+		public const int indexColumnPid = 121;
+		public class Pid
+		{
+			/// <summary>PID: 121 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int requestednodesidentifier_121 = 121;
+			/// <summary>PID: 121 | Type: read</summary>
+			public const int requestednodesidentifier = 121;
+			/// <summary>PID: 122 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int requestednodesnumber_122 = 122;
+			/// <summary>PID: 122 | Type: read</summary>
+			public const int requestednodesnumber = 122;
+			public class Write
+			{
+			}
+		}
+		public class Idx
+		{
+			/// <summary>IDX: 0 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int requestednodesidentifier_121 = 0;
+			/// <summary>IDX: 0 | Type: read</summary>
+			public const int requestednodesidentifier = 0;
+			/// <summary>IDX: 1 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int requestednodesnumber_122 = 1;
+			/// <summary>IDX: 1 | Type: read</summary>
+			public const int requestednodesnumber = 1;
+		}
+	}
 }
 public class WriteParameters
 {
@@ -74,9 +228,13 @@ public class WriteParameters
 }
 public interface SLProtocolExt : SLProtocol
 {
+	/// <summary>PID: 100</summary>
+	EmbernodestableQActionTable embernodestable { get; set; }
+	/// <summary>PID: 110</summary>
+	EmberparameterstableQActionTable emberparameterstable { get; set; }
+	/// <summary>PID: 120</summary>
+	RequestednodestableQActionTable requestednodestable { get; set; }
 	object Discoverembertree_dummy { get; set; }
-	object Polltables_dummy { get; set; }
-	object Pollparameters_dummy { get; set; }
 	object S101bof_header { get; set; }
 	object S101eof_trailer { get; set; }
 	object S101requestdata_52 { get; set; }
@@ -89,6 +247,26 @@ public interface SLProtocolExt : SLProtocol
 	object Nodediscoveryprogress { get; set; }
 	object Startnodediscovery_62 { get; set; }
 	object Startnodediscovery { get; set; }
+	object Embernodesidentifier_101 { get; set; }
+	object Embernodesidentifier { get; set; }
+	object Embernodesnumber_102 { get; set; }
+	object Embernodesnumber { get; set; }
+	object Embernodesparent_103 { get; set; }
+	object Embernodesparent { get; set; }
+	object Emberparametersidentifier_111 { get; set; }
+	object Emberparametersidentifier { get; set; }
+	object Emberparametersnumber_112 { get; set; }
+	object Emberparametersnumber { get; set; }
+	object Emberparametersparent_113 { get; set; }
+	object Emberparametersparent { get; set; }
+	object Emberparameterstype_114 { get; set; }
+	object Emberparameterstype { get; set; }
+	object Emberparametersvalue_115 { get; set; }
+	object Emberparametersvalue { get; set; }
+	object Requestednodesidentifier_121 { get; set; }
+	object Requestednodesidentifier { get; set; }
+	object Requestednodesnumber_122 { get; set; }
+	object Requestednodesnumber { get; set; }
 	object Identityproduct_500 { get; set; }
 	object Identityproduct { get; set; }
 	object Identitycompany_501 { get; set; }
@@ -103,12 +281,14 @@ public interface SLProtocolExt : SLProtocol
 }
 public class ConcreteSLProtocolExt : ConcreteSLProtocol, SLProtocolExt
 {
+	/// <summary>PID: 100</summary>
+	public EmbernodestableQActionTable embernodestable { get; set; }
+	/// <summary>PID: 110</summary>
+	public EmberparameterstableQActionTable emberparameterstable { get; set; }
+	/// <summary>PID: 120</summary>
+	public RequestednodestableQActionTable requestednodestable { get; set; }
 	/// <summary>PID: 1  | Type: dummy</summary>
 	public System.Object Discoverembertree_dummy {get { return GetParameter(1); }set { SetParameter(1, value); }}
-	/// <summary>PID: 10  | Type: dummy</summary>
-	public System.Object Polltables_dummy {get { return GetParameter(10); }set { SetParameter(10, value); }}
-	/// <summary>PID: 11  | Type: dummy</summary>
-	public System.Object Pollparameters_dummy {get { return GetParameter(11); }set { SetParameter(11, value); }}
 	/// <summary>PID: 50  | Type: header</summary>
 	public System.Object S101bof_header {get { return GetParameter(50); }set { SetParameter(50, value); }}
 	/// <summary>PID: 51  | Type: trailer</summary>
@@ -137,6 +317,56 @@ public class ConcreteSLProtocolExt : ConcreteSLProtocol, SLProtocolExt
 	public System.Object Startnodediscovery_62 {get { return GetParameter(62); }set { SetParameter(62, value); }}
 	/// <summary>PID: 62  | Type: write | DISCREETS: Start Node Discovery = 1</summary>
 	public System.Object Startnodediscovery {get { return Write.Startnodediscovery; }set { Write.Startnodediscovery = value; }}
+	/// <summary>PID: 101  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embernodesidentifier_101 {get { return GetParameter(101); }set { SetParameter(101, value); }}
+	/// <summary>PID: 101  | Type: read</summary>
+	public System.Object Embernodesidentifier {get { return GetParameter(101); }set { SetParameter(101, value); }}
+	/// <summary>PID: 102  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embernodesnumber_102 {get { return GetParameter(102); }set { SetParameter(102, value); }}
+	/// <summary>PID: 102  | Type: read</summary>
+	public System.Object Embernodesnumber {get { return GetParameter(102); }set { SetParameter(102, value); }}
+	/// <summary>PID: 103  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embernodesparent_103 {get { return GetParameter(103); }set { SetParameter(103, value); }}
+	/// <summary>PID: 103  | Type: read</summary>
+	public System.Object Embernodesparent {get { return GetParameter(103); }set { SetParameter(103, value); }}
+	/// <summary>PID: 111  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberparametersidentifier_111 {get { return GetParameter(111); }set { SetParameter(111, value); }}
+	/// <summary>PID: 111  | Type: read</summary>
+	public System.Object Emberparametersidentifier {get { return GetParameter(111); }set { SetParameter(111, value); }}
+	/// <summary>PID: 112  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberparametersnumber_112 {get { return GetParameter(112); }set { SetParameter(112, value); }}
+	/// <summary>PID: 112  | Type: read</summary>
+	public System.Object Emberparametersnumber {get { return GetParameter(112); }set { SetParameter(112, value); }}
+	/// <summary>PID: 113  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberparametersparent_113 {get { return GetParameter(113); }set { SetParameter(113, value); }}
+	/// <summary>PID: 113  | Type: read</summary>
+	public System.Object Emberparametersparent {get { return GetParameter(113); }set { SetParameter(113, value); }}
+	/// <summary>PID: 114  | Type: read | DISCREETS: None = 0, Integer = 1, Real = 2, String = 3, Boolean = 4, Trigger = 5, Enum = 6, Octets = 7</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberparameterstype_114 {get { return GetParameter(114); }set { SetParameter(114, value); }}
+	/// <summary>PID: 114  | Type: read | DISCREETS: None = 0, Integer = 1, Real = 2, String = 3, Boolean = 4, Trigger = 5, Enum = 6, Octets = 7</summary>
+	public System.Object Emberparameterstype {get { return GetParameter(114); }set { SetParameter(114, value); }}
+	/// <summary>PID: 115  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberparametersvalue_115 {get { return GetParameter(115); }set { SetParameter(115, value); }}
+	/// <summary>PID: 115  | Type: read</summary>
+	public System.Object Emberparametersvalue {get { return GetParameter(115); }set { SetParameter(115, value); }}
+	/// <summary>PID: 121  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Requestednodesidentifier_121 {get { return GetParameter(121); }set { SetParameter(121, value); }}
+	/// <summary>PID: 121  | Type: read</summary>
+	public System.Object Requestednodesidentifier {get { return GetParameter(121); }set { SetParameter(121, value); }}
+	/// <summary>PID: 122  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Requestednodesnumber_122 {get { return GetParameter(122); }set { SetParameter(122, value); }}
+	/// <summary>PID: 122  | Type: read</summary>
+	public System.Object Requestednodesnumber {get { return GetParameter(122); }set { SetParameter(122, value); }}
 	/// <summary>PID: 500  | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public System.Object Identityproduct_500 {get { return GetParameter(500); }set { SetParameter(500, value); }}
@@ -165,7 +395,109 @@ public class ConcreteSLProtocolExt : ConcreteSLProtocol, SLProtocolExt
 	public WriteParameters Write { get; set; }
 	public ConcreteSLProtocolExt()
 	{
+		embernodestable = new EmbernodestableQActionTable(this, 100, "embernodestable");
+		emberparameterstable = new EmberparameterstableQActionTable(this, 110, "emberparameterstable");
+		requestednodestable = new RequestednodestableQActionTable(this, 120, "requestednodestable");
 		Write = new WriteParameters(this);
 	}
+}
+/// <summary>IDX: 0</summary>
+public class EmbernodestableQActionTable : QActionTable, IEnumerable<EmbernodestableQActionRow>
+{
+	public EmbernodestableQActionTable(SLProtocol protocol, int tableId, string tableName) : base(protocol, tableId, tableName) { }
+	IEnumerator IEnumerable.GetEnumerator() { return (IEnumerator) GetEnumerator(); }
+	public IEnumerator<EmbernodestableQActionRow> GetEnumerator() { return new QActionTableEnumerator<EmbernodestableQActionRow>(this); }
+}
+/// <summary>IDX: 0</summary>
+public class EmberparameterstableQActionTable : QActionTable, IEnumerable<EmberparameterstableQActionRow>
+{
+	public EmberparameterstableQActionTable(SLProtocol protocol, int tableId, string tableName) : base(protocol, tableId, tableName) { }
+	IEnumerator IEnumerable.GetEnumerator() { return (IEnumerator) GetEnumerator(); }
+	public IEnumerator<EmberparameterstableQActionRow> GetEnumerator() { return new QActionTableEnumerator<EmberparameterstableQActionRow>(this); }
+}
+/// <summary>IDX: 0</summary>
+public class RequestednodestableQActionTable : QActionTable, IEnumerable<RequestednodestableQActionRow>
+{
+	public RequestednodestableQActionTable(SLProtocol protocol, int tableId, string tableName) : base(protocol, tableId, tableName) { }
+	IEnumerator IEnumerable.GetEnumerator() { return (IEnumerator) GetEnumerator(); }
+	public IEnumerator<RequestednodestableQActionRow> GetEnumerator() { return new QActionTableEnumerator<RequestednodestableQActionRow>(this); }
+}
+/// <summary>IDX: 0</summary>
+public class EmbernodestableQActionRow : QActionTableRow
+{
+	/// <summary>PID: 101 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embernodesidentifier_101 { get { if (base.Columns.ContainsKey(0)) { return base.Columns[0]; } else { return null; } } set { if (base.Columns.ContainsKey(0)) { base.Columns[0] = value; } else { base.Columns.Add(0, value); } } }
+	/// <summary>PID: 101 | Type: read</summary>
+	public System.Object Embernodesidentifier { get { if (base.Columns.ContainsKey(0)) { return base.Columns[0]; } else { return null; } } set { if (base.Columns.ContainsKey(0)) { base.Columns[0] = value; } else { base.Columns.Add(0, value); } } }
+	/// <summary>PID: 102 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embernodesnumber_102 { get { if (base.Columns.ContainsKey(1)) { return base.Columns[1]; } else { return null; } } set { if (base.Columns.ContainsKey(1)) { base.Columns[1] = value; } else { base.Columns.Add(1, value); } } }
+	/// <summary>PID: 102 | Type: read</summary>
+	public System.Object Embernodesnumber { get { if (base.Columns.ContainsKey(1)) { return base.Columns[1]; } else { return null; } } set { if (base.Columns.ContainsKey(1)) { base.Columns[1] = value; } else { base.Columns.Add(1, value); } } }
+	/// <summary>PID: 103 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embernodesparent_103 { get { if (base.Columns.ContainsKey(2)) { return base.Columns[2]; } else { return null; } } set { if (base.Columns.ContainsKey(2)) { base.Columns[2] = value; } else { base.Columns.Add(2, value); } } }
+	/// <summary>PID: 103 | Type: read</summary>
+	public System.Object Embernodesparent { get { if (base.Columns.ContainsKey(2)) { return base.Columns[2]; } else { return null; } } set { if (base.Columns.ContainsKey(2)) { base.Columns[2] = value; } else { base.Columns.Add(2, value); } } }
+	public EmbernodestableQActionRow() : base(0, 3) { }
+	public EmbernodestableQActionRow(System.Object[] oRow) : base(0, 3, oRow) { }
+	public static implicit operator EmbernodestableQActionRow(System.Object[] source) { return new EmbernodestableQActionRow(source); }
+	public static implicit operator System.Object[](EmbernodestableQActionRow source) { return source.ToObjectArray(); }
+	public System.Object[] GetParentRowEmbernodestableEmbernodesparent(SLProtocol protocol) { return (System.Object[])protocol.GetRow(100, (System.String)Embernodesparent); }
+	public System.String[] GetChildKeysEmbernodestableEmbernodesparent(SLProtocol protocol) { return (System.String[])protocol.NotifyProtocol(196, 103, Key); }
+	public System.String[] GetChildKeysEmberparameterstableEmberparametersparent(SLProtocol protocol) { return (System.String[])protocol.NotifyProtocol(196, 113, Key); }
+}
+/// <summary>IDX: 0</summary>
+public class EmberparameterstableQActionRow : QActionTableRow
+{
+	/// <summary>PID: 111 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberparametersidentifier_111 { get { if (base.Columns.ContainsKey(0)) { return base.Columns[0]; } else { return null; } } set { if (base.Columns.ContainsKey(0)) { base.Columns[0] = value; } else { base.Columns.Add(0, value); } } }
+	/// <summary>PID: 111 | Type: read</summary>
+	public System.Object Emberparametersidentifier { get { if (base.Columns.ContainsKey(0)) { return base.Columns[0]; } else { return null; } } set { if (base.Columns.ContainsKey(0)) { base.Columns[0] = value; } else { base.Columns.Add(0, value); } } }
+	/// <summary>PID: 112 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberparametersnumber_112 { get { if (base.Columns.ContainsKey(1)) { return base.Columns[1]; } else { return null; } } set { if (base.Columns.ContainsKey(1)) { base.Columns[1] = value; } else { base.Columns.Add(1, value); } } }
+	/// <summary>PID: 112 | Type: read</summary>
+	public System.Object Emberparametersnumber { get { if (base.Columns.ContainsKey(1)) { return base.Columns[1]; } else { return null; } } set { if (base.Columns.ContainsKey(1)) { base.Columns[1] = value; } else { base.Columns.Add(1, value); } } }
+	/// <summary>PID: 113 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberparametersparent_113 { get { if (base.Columns.ContainsKey(2)) { return base.Columns[2]; } else { return null; } } set { if (base.Columns.ContainsKey(2)) { base.Columns[2] = value; } else { base.Columns.Add(2, value); } } }
+	/// <summary>PID: 113 | Type: read</summary>
+	public System.Object Emberparametersparent { get { if (base.Columns.ContainsKey(2)) { return base.Columns[2]; } else { return null; } } set { if (base.Columns.ContainsKey(2)) { base.Columns[2] = value; } else { base.Columns.Add(2, value); } } }
+	/// <summary>PID: 114 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberparameterstype_114 { get { if (base.Columns.ContainsKey(3)) { return base.Columns[3]; } else { return null; } } set { if (base.Columns.ContainsKey(3)) { base.Columns[3] = value; } else { base.Columns.Add(3, value); } } }
+	/// <summary>PID: 114 | Type: read</summary>
+	public System.Object Emberparameterstype { get { if (base.Columns.ContainsKey(3)) { return base.Columns[3]; } else { return null; } } set { if (base.Columns.ContainsKey(3)) { base.Columns[3] = value; } else { base.Columns.Add(3, value); } } }
+	/// <summary>PID: 115 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberparametersvalue_115 { get { if (base.Columns.ContainsKey(4)) { return base.Columns[4]; } else { return null; } } set { if (base.Columns.ContainsKey(4)) { base.Columns[4] = value; } else { base.Columns.Add(4, value); } } }
+	/// <summary>PID: 115 | Type: read</summary>
+	public System.Object Emberparametersvalue { get { if (base.Columns.ContainsKey(4)) { return base.Columns[4]; } else { return null; } } set { if (base.Columns.ContainsKey(4)) { base.Columns[4] = value; } else { base.Columns.Add(4, value); } } }
+	public EmberparameterstableQActionRow() : base(0, 5) { }
+	public EmberparameterstableQActionRow(System.Object[] oRow) : base(0, 5, oRow) { }
+	public static implicit operator EmberparameterstableQActionRow(System.Object[] source) { return new EmberparameterstableQActionRow(source); }
+	public static implicit operator System.Object[](EmberparameterstableQActionRow source) { return source.ToObjectArray(); }
+	public System.Object[] GetParentRowEmbernodestableEmberparametersparent(SLProtocol protocol) { return (System.Object[])protocol.GetRow(100, (System.String)Emberparametersparent); }
+}
+/// <summary>IDX: 0</summary>
+public class RequestednodestableQActionRow : QActionTableRow
+{
+	/// <summary>PID: 121 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Requestednodesidentifier_121 { get { if (base.Columns.ContainsKey(0)) { return base.Columns[0]; } else { return null; } } set { if (base.Columns.ContainsKey(0)) { base.Columns[0] = value; } else { base.Columns.Add(0, value); } } }
+	/// <summary>PID: 121 | Type: read</summary>
+	public System.Object Requestednodesidentifier { get { if (base.Columns.ContainsKey(0)) { return base.Columns[0]; } else { return null; } } set { if (base.Columns.ContainsKey(0)) { base.Columns[0] = value; } else { base.Columns.Add(0, value); } } }
+	/// <summary>PID: 122 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Requestednodesnumber_122 { get { if (base.Columns.ContainsKey(1)) { return base.Columns[1]; } else { return null; } } set { if (base.Columns.ContainsKey(1)) { base.Columns[1] = value; } else { base.Columns.Add(1, value); } } }
+	/// <summary>PID: 122 | Type: read</summary>
+	public System.Object Requestednodesnumber { get { if (base.Columns.ContainsKey(1)) { return base.Columns[1]; } else { return null; } } set { if (base.Columns.ContainsKey(1)) { base.Columns[1] = value; } else { base.Columns.Add(1, value); } } }
+	public RequestednodestableQActionRow() : base(0, 2) { }
+	public RequestednodestableQActionRow(System.Object[] oRow) : base(0, 2, oRow) { }
+	public static implicit operator RequestednodestableQActionRow(System.Object[] source) { return new RequestednodestableQActionRow(source); }
+	public static implicit operator System.Object[](RequestednodestableQActionRow source) { return source.ToObjectArray(); }
 }
 }

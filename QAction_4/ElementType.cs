@@ -2,10 +2,10 @@
 {
 	internal enum ElementType
 	{
-		Root,
+		Root = 0,
 
-		Node,
+		Node = 1,
 
-		Parameter,
+		Parameter = 2,
 	}
 }
