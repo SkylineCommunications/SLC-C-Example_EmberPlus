@@ -2,13 +2,14 @@ namespace QAction_4
 {
 	using System.Collections.Generic;
 	using System.Linq;
+	using EmberLib.Glow;
 	using QAction_1.Skyline;
 	using Skyline.DataMiner.Scripting;
 	using SLNetMessages = Skyline.DataMiner.Net.Messages;
 
 	public class EmberHandler
 	{
-		private readonly Queue<Element> elements;
+		internal readonly Queue<Element> elements;
 
 		private readonly List<string> polledNodes;
 
@@ -80,35 +81,32 @@ namespace QAction_4
 
 		private void OnGlowRootReady(SLProtocolExt protocol, GlowRootReadyEventArgs e)
 		{
-			if (!e.Root.Accept(cursor, null))
-			{
-				return;
-			}
+			cursor.Walk(e.Root);
 
-			// NodeWithParameters(protocol, cursor);
-			// NodeWithNodes(protocol, cursor);
-			UpdateDiscoveredNodes(protocol, cursor);
-
-			foreach (var nodeChild in cursor.Children)
+			foreach (var nodeChild in cursor.Children.Where(x => x.Type == ElementType.Node).Select(x => x))
 			{
-				//if (protocol.Exists(Parameter.Requestednodestable.tablePid, nodeChild.Identifier))
-				//{
-				//	continue;
-				//}
+				NodeWithParameters(protocol, nodeChild);
+				NodeWithNodes(protocol, nodeChild);
+				UpdateDiscoveredNodes(protocol, nodeChild);
+				nodeChild.AddEmberElementToTable(protocol);
+
+				if (protocol.Exists(Parameter.Requestednodestable.tablePid, nodeChild.Identifier))
+				{
+					continue;
+				}
 
 				elements.Enqueue(nodeChild);
 
-				foreach (var child in nodeChild.Children)
+				foreach (var child in nodeChild.Children.Where(x => x.Type == ElementType.Node).Select(x => x))
 				{
 					elements.Enqueue(child);
+					// var glow = child.GetDirectory();
+					// GlowEndPoint.Write(protocol, glow);
 				}
-
-				//var glow = cursor.GetDirectory();
-				//GlowEndPoint.Write(protocol, glow);
 			}
 
 			CheckNextElementInQueue(protocol);
-			protocol.Log("QA" + protocol.QActionID + "|OnGlowRootReady|polledNodes: " + string.Join("|", polledNodes), LogType.DebugInfo, LogLevel.NoLogging);
+			//protocol.Log("QA" + protocol.QActionID + "|OnGlowRootReady|polledNodes: " + string.Join("|", polledNodes), LogType.DebugInfo, LogLevel.NoLogging);
 		}
 
 		private void OnNotification(SLProtocolExt protocol, NotificationEventArgs e)

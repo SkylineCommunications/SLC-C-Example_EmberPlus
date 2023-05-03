@@ -2,6 +2,7 @@
 {
 	using System;
 	using System.Collections.Generic;
+	using System.IO;
 	using System.Linq;
 	using System.Text;
 	using EmberLib.Glow;
@@ -12,7 +13,7 @@
 	///     An Element instance can represent either a node, a parameter or
 	///     the root of the local object tree.
 	/// </summary>
-	internal class Element : IGlowVisitor<object, bool>
+	internal class Element : GlowWalker
 	{
 		private readonly List<Element> children = new List<Element>();
 
@@ -75,40 +76,28 @@
 		public void AddEmberElementToTable(SLProtocolExt protocol)
 		{
 			var emberNodeRows = new List<QActionTableRow>();
-			var emberNodeTableRow = new EmbernodestableQActionRow
-			{
-				Embernodesidentifier_101 = Identifier,
-				Embernodesnumber_102 = Number,
-				Embernodesparent_103 = Parent.Identifier,
-			};
-
-			emberNodeRows.Add(emberNodeTableRow);
-
 			var emberParameterRows = new List<QActionTableRow>();
 
-			foreach (var child in children)
+			if (Type == ElementType.Node)
 			{
-				if (child.Type == ElementType.Node)
+				var emberNodeRow = new EmbernodestableQActionRow
 				{
-					var emberNodeRow = new EmbernodestableQActionRow
-					{
-						Embernodesidentifier_101 = child.Identifier,
-						Embernodesnumber_102 = child.Number,
-						Embernodesparent_103 = Identifier,
-					};
+					Embernodesidentifier_101 = Identifier,
+					Embernodesnumber_102 = Number,
+					Embernodesparent_103 = Parent.Identifier,
+				};
 
-					emberNodeRows.Add(emberNodeRow);
-
-					continue;
-				}
-
+				emberNodeRows.Add(emberNodeRow);
+			}
+			else if (Type == ElementType.Parameter)
+			{
 				var emberParameterTableRow = new EmberparameterstableQActionRow
 				{
-					Emberparametersidentifier_111 = child.Identifier,
-					Emberparametersnumber_112 = child.Number,
-					Emberparametersparent_113 = child.Parent.Identifier,
-					Emberparameterstype_114 = child.ParameterType,
-					Emberparametersvalue_115 = child.Value,
+					Emberparametersidentifier_111 = Identifier,
+					Emberparametersnumber_112 = Number,
+					Emberparametersparent_113 = Parent.Identifier,
+					Emberparameterstype_114 = ParameterType,
+					Emberparametersvalue_115 = Value,
 				};
 
 				emberParameterRows.Add(emberParameterTableRow);
@@ -138,26 +127,8 @@
 			// this builds a complete glow tree using the Node and
 			// Parameter types (more verbose).
 			return BuildGlowTree(this, glow);
-		}
 
-		/// <summary>
-		///     Writes out information about an element to a string.
-		///     Used for listing the current cursor's children.
-		/// </summary>
-		/// <returns>A string containing information about the passed element.</returns>
-		public string PrintElement()
-		{
-			var sb = new StringBuilder();
-
-			foreach (var child in children)
-			{
-				sb.AppendLine(
-					$"\t\tChild: Type: {child.Type}, Parent: {child.Parent.Identifier}, Number: {child.Number:000}, Identifier: {child.Identifier}, ParameterType: {child.ParameterType}, Value: {child.Value}");
-			}
-
-			return $"\nType: {Type}, Number: {Number:000}, Identifier: {Identifier}, ParameterType: {ParameterType}" +
-				   "\n\tChildren:" +
-				   $"\n{sb}";
+			// return BuildFromOldCode(this, glow);
 		}
 
 		/// <summary>
@@ -167,12 +138,12 @@
 		/// <returns>A string containing information about the passed element.</returns>
 		public string PrintNode()
 		{
-			return $"Type: {Type}, Number: {Number:000}, Identifier: {Identifier}, ParameterType: {ParameterType}";
+			return $"Type: {Type}, Number: {Number:000}, Identifier: {Identifier}, ParameterType: {ParameterType}, Parent: {Parent.Identifier}";
 		}
 
 		public string PrintParameter()
 		{
-			return $"Type: {Type}, Number: {Number:000}, Identifier: {Identifier}, ParameterType: {ParameterType}, Value: {Value}";
+			return $"Type: {Type}, Number: {Number:000}, Identifier: {Identifier}, ParameterType: {ParameterType}, Parent: {Parent.Identifier}, Value: {Value}";
 		}
 
 		///// <summary>
@@ -244,6 +215,7 @@
 		private static GlowRootElementCollection BuildQualified(Element local, GlowElement glow)
 		{
 			var qualified = null as GlowElement;
+			int[] path = local.BuildPath();
 
 			switch (local.Type)
 			{
@@ -252,7 +224,6 @@
 
 					break;
 				case ElementType.Parameter:
-					int[] path = local.BuildPath();
 					var qparam = new GlowQualifiedParameter(path)
 					{
 						Children = new GlowElementCollection(GlowTags.QualifiedParameter.Children),
@@ -263,7 +234,6 @@
 
 					break;
 				case ElementType.Node:
-					path = local.BuildPath();
 					var qnode = new GlowQualifiedNode(path)
 					{
 						Children = new GlowElementCollection(GlowTags.QualifiedNode.Children),
@@ -282,6 +252,29 @@
 
 			var root = GlowRootElementCollection.CreateRoot();
 			root.Insert(qualified);
+
+			return root;
+		}
+
+		private static GlowRootElementCollection BuildFromOldCode(Element local, GlowElement glow)
+		{
+			var root = GlowRootElementCollection.CreateRoot();
+			int[] path = local.BuildPath();
+
+			if (path == null || (path.Length == 1 && path[0] == null))
+			{
+				root.Insert(glow);
+			}
+			else
+			{
+				var qnode1 = new GlowQualifiedNode(path)
+				{
+					Children = new GlowElementCollection(GlowTags.QualifiedNode.Children),
+				};
+
+				qnode1.Children.Insert(glow);
+				root.Insert(qnode1);
+			}
 
 			return root;
 		}
@@ -378,75 +371,22 @@
 			Type = type;
 		}
 
-		bool IGlowVisitor<object, bool>.Visit(GlowCommand glow, object state)
+		protected override void OnCommand(GlowCommand glow, int[] path)
 		{
-			return false;
 		}
 
-		bool IGlowVisitor<object, bool>.Visit(GlowElementCollection glow, object state)
+		protected override void OnNode(GlowNodeBase glow, int[] path)
 		{
-			var hasCompleteNodeOrParameter = false;
-
-			foreach (var element in glow.Elements)
-			{
-				hasCompleteNodeOrParameter |= element.Accept(this, state);
-			}
-
-			return hasCompleteNodeOrParameter;
-		}
-
-		bool IGlowVisitor<object, bool>.Visit(GlowRootElementCollection glow, object state)
-		{
-			var hasCompleteNodeOrParameter = false;
-
-			foreach (var element in glow.Elements)
-			{
-				hasCompleteNodeOrParameter |= element.Accept(this, state);
-			}
-
-			return hasCompleteNodeOrParameter;
-		}
-
-		bool IGlowVisitor<object, bool>.Visit(GlowNode glow, object state)
-		{
-			var local = children.FirstOrDefault(elem => elem.Number == glow.Number);
-
-			bool isComplete = glow.Identifier != null;
-
-			if (local == null)
-			{
-				local = new Element(this, glow.Number, glow.Identifier, ElementType.Node, Protocol);
-
-				children.Add(local);
-			}
-			else
-			{
-				local.Update(glow.Identifier, ElementType.Node);
-			}
-
-			var glowChildren = glow.Children;
-
-			if (glowChildren != null)
-			{
-				isComplete |= glowChildren.Accept(local, null);
-			}
-
-			return isComplete;
-		}
-
-		bool IGlowVisitor<object, bool>.Visit(GlowQualifiedNode glow, object state)
-		{
-			var local = GetElementAt(glow.Path, out var parent);
-			bool isComplete = glow.Identifier != null;
+			var local = GetElementAt(path, out var parent);
 
 			if (parent == null)
 			{
-				return isComplete;
+				return;
 			}
 
 			if (local == null)
 			{
-				local = new Element(parent, glow.Path.Last(), glow.Identifier, ElementType.Node, Protocol);
+				local = new Element(parent, path.Last(), glow.Identifier, ElementType.Node, Protocol);
 
 				parent.children.Add(local);
 			}
@@ -459,51 +399,23 @@
 
 			if (glowChildren != null)
 			{
-				isComplete |= glowChildren.Accept(local, null);
+				glowChildren.Accept(local, null);
 			}
-
-			return isComplete;
 		}
 
-		bool IGlowVisitor<object, bool>.Visit(GlowParameter glow, object state)
+		protected override void OnParameter(GlowParameterBase glow, int[] path)
 		{
-			var local = children.FirstOrDefault(elem => elem.Number == glow.Number);
-
-			if (local == null)
-			{
-				local = new Element(this, glow.Number, glow.Identifier, ElementType.Parameter, Protocol);
-
-				children.Add(local);
-			}
-			else
-			{
-				local.Update(glow.Identifier, ElementType.Parameter);
-			}
-
-			var value = glow.Value;
-
-			if (value != null)
-			{
-				local.ParameterType = value.Type;
-
-				GetValue(glow, value, local);
-			}
-
-			return true;
-		}
-
-		bool IGlowVisitor<object, bool>.Visit(GlowQualifiedParameter glow, object state)
-		{
-			var local = GetElementAt(glow.Path, out var parent);
+			// return;
+			var local = GetElementAt(path, out var parent);
 
 			if (parent == null)
 			{
-				return true;
+				return;
 			}
 
 			if (local == null)
 			{
-				local = new Element(parent, glow.Path.Last(), glow.Identifier, ElementType.Parameter, Protocol);
+				local = new Element(parent, path.Last(), glow.Identifier, ElementType.Parameter, Protocol);
 
 				parent.children.Add(local);
 			}
@@ -520,53 +432,26 @@
 
 				GetValue(glow, value, local);
 			}
-
-			return true;
 		}
 
-		bool IGlowVisitor<object, bool>.Visit(GlowStreamCollection glow, object state)
+		protected override void OnMatrix(GlowMatrixBase glow, int[] path)
 		{
-			return false;
 		}
 
-		bool IGlowVisitor<object, bool>.Visit(GlowSubContainer glow, object state)
+		protected override void OnFunction(GlowFunctionBase glow, int[] path)
 		{
-			return false;
 		}
 
-		bool IGlowVisitor<object, bool>.Visit(GlowMatrix glow, object state)
+		protected override void OnStreamEntry(GlowStreamEntry glow)
 		{
-			return false;
 		}
 
-		bool IGlowVisitor<object, bool>.Visit(GlowQualifiedMatrix glow, object state)
+		protected override void OnInvocationResult(GlowInvocationResult glow)
 		{
-			return false;
 		}
 
-		bool IGlowVisitor<object, bool>.Visit(GlowFunction glow, object state)
+		protected override void OnTemplate(GlowTemplateBase glow, int[] path)
 		{
-			return false;
-		}
-
-		bool IGlowVisitor<object, bool>.Visit(GlowQualifiedFunction glow, object state)
-		{
-			return false;
-		}
-
-		bool IGlowVisitor<object, bool>.Visit(GlowInvocationResult glow, object state)
-		{
-			return false;
-		}
-
-		bool IGlowVisitor<object, bool>.Visit(GlowTemplate glow, object state)
-		{
-			return false;
-		}
-
-		bool IGlowVisitor<object, bool>.Visit(GlowQualifiedTemplate glow, object state)
-		{
-			return false;
 		}
 	}
 }

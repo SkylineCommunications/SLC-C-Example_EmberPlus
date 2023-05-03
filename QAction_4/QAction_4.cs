@@ -46,6 +46,7 @@ public class QAction
 				break;
 			case 1:
 				protocol.ClearAllKeys(Parameter.Requestednodestable.tablePid);
+				emberHandler.elements.Clear();
 				emberHandler.cursor = emberHandler.rootElement;
 				var glow = emberHandler.rootElement.GetDirectory();
 				GlowEndPoint.Write(protocol, glow);
