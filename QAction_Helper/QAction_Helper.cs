@@ -8,26 +8,6 @@ namespace Skyline.DataMiner.Scripting
 {
 public static class Parameter
 {
-	/// <summary>PID: 52 | Type: read</summary>
-	[EditorBrowsable(EditorBrowsableState.Never)]
-	public const int s101requestdata_52 = 52;
-	/// <summary>PID: 52 | Type: read</summary>
-	public const int s101requestdata = 52;
-	/// <summary>PID: 53 | Type: read</summary>
-	[EditorBrowsable(EditorBrowsableState.Never)]
-	public const int s101responsedata_53 = 53;
-	/// <summary>PID: 53 | Type: read</summary>
-	public const int s101responsedata = 53;
-	/// <summary>PID: 60 | Type: read</summary>
-	[EditorBrowsable(EditorBrowsableState.Never)]
-	public const int discoverednodescount_60 = 60;
-	/// <summary>PID: 60 | Type: read</summary>
-	public const int discoverednodescount = 60;
-	/// <summary>PID: 61 | Type: read</summary>
-	[EditorBrowsable(EditorBrowsableState.Never)]
-	public const int nodediscoveryprogress_61 = 61;
-	/// <summary>PID: 61 | Type: read</summary>
-	public const int nodediscoveryprogress = 61;
 	/// <summary>PID: 500 | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public const int identityproduct_500 = 500;
@@ -235,16 +215,7 @@ public interface SLProtocolExt : SLProtocol
 	/// <summary>PID: 120</summary>
 	RequestednodestableQActionTable requestednodestable { get; set; }
 	object Discoverembertree_dummy { get; set; }
-	object S101bof_header { get; set; }
-	object S101eof_trailer { get; set; }
-	object S101requestdata_52 { get; set; }
-	object S101requestdata { get; set; }
-	object S101responsedata_53 { get; set; }
-	object S101responsedata { get; set; }
-	object Discoverednodescount_60 { get; set; }
-	object Discoverednodescount { get; set; }
-	object Nodediscoveryprogress_61 { get; set; }
-	object Nodediscoveryprogress { get; set; }
+	object Ipandport_ip { get; set; }
 	object Startnodediscovery_62 { get; set; }
 	object Startnodediscovery { get; set; }
 	object Embernodesidentifier_101 { get; set; }
@@ -289,30 +260,8 @@ public class ConcreteSLProtocolExt : ConcreteSLProtocol, SLProtocolExt
 	public RequestednodestableQActionTable requestednodestable { get; set; }
 	/// <summary>PID: 1  | Type: dummy</summary>
 	public System.Object Discoverembertree_dummy {get { return GetParameter(1); }set { SetParameter(1, value); }}
-	/// <summary>PID: 50  | Type: header</summary>
-	public System.Object S101bof_header {get { return GetParameter(50); }set { SetParameter(50, value); }}
-	/// <summary>PID: 51  | Type: trailer</summary>
-	public System.Object S101eof_trailer {get { return GetParameter(51); }set { SetParameter(51, value); }}
-	/// <summary>PID: 52  | Type: read</summary>
-	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object S101requestdata_52 {get { return GetParameter(52); }set { SetParameter(52, value); }}
-	/// <summary>PID: 52  | Type: read</summary>
-	public System.Object S101requestdata {get { return GetParameter(52); }set { SetParameter(52, value); }}
-	/// <summary>PID: 53  | Type: read</summary>
-	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object S101responsedata_53 {get { return GetParameter(53); }set { SetParameter(53, value); }}
-	/// <summary>PID: 53  | Type: read</summary>
-	public System.Object S101responsedata {get { return GetParameter(53); }set { SetParameter(53, value); }}
-	/// <summary>PID: 60  | Type: read</summary>
-	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Discoverednodescount_60 {get { return GetParameter(60); }set { SetParameter(60, value); }}
-	/// <summary>PID: 60  | Type: read</summary>
-	public System.Object Discoverednodescount {get { return GetParameter(60); }set { SetParameter(60, value); }}
-	/// <summary>PID: 61  | Type: read | EXCEPTIONS: N/A = 0, Finished = 1</summary>
-	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Nodediscoveryprogress_61 {get { return GetParameter(61); }set { SetParameter(61, value); }}
-	/// <summary>PID: 61  | Type: read | EXCEPTIONS: N/A = 0, Finished = 1</summary>
-	public System.Object Nodediscoveryprogress {get { return GetParameter(61); }set { SetParameter(61, value); }}
+	/// <summary>PID: 2  | Type: ip</summary>
+	public System.Object Ipandport_ip {get { return GetParameter(2); }set { SetParameter(2, value); }}
 	/// <summary>PID: 62  | Type: write | DISCREETS: Start Node Discovery = 1</summary>
 	public System.Object Startnodediscovery_62 {get { return GetParameter(62); }set { SetParameter(62, value); }}
 	/// <summary>PID: 62  | Type: write | DISCREETS: Start Node Discovery = 1</summary>

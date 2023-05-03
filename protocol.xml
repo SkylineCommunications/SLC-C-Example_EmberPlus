@@ -48,14 +48,14 @@ Any inquiries can be addressed to:
 <Protocol xmlns="http://www.skyline.be/protocol">
 	<Name>SLC SDF EmberPlus</Name>
 	<Description>SLC SDF EmberPlus DataMiner driver</Description>
-	<Version>1.0.0.1</Version>
+	<Version>10.0.0.1</Version>
 	<IntegrationID>DMS-DRV-0000</IntegrationID>
 	<Provider>Skyline Communications</Provider>
 	<Vendor>Lawo</Vendor>
 	<VendorOID>1.3.6.1.4.1.8813.2.00</VendorOID>
 	<DeviceOID>01</DeviceOID>
 	<ElementType>External Device</ElementType>
-	<Type relativeTimers="true" communicationOptions="makeCommandByProtocol">smart-serial</Type>
+	<Type relativeTimers="true">http</Type>
 	<Display defaultPage="General" pageOrder="General" wideColumnPages="" />
 	<SNMP includepages="true">auto</SNMP>
 
@@ -73,132 +73,18 @@ Any inquiries can be addressed to:
 			<Description>Discover Ember Tree</Description>
 			<Type>dummy</Type>
 		</Param>
-		<Param id="50" trending="false">
-			<Name>S101BOF</Name>
-			<Description>S101 BOF</Description>
-			<Type options="headerTrailerLink=1">header</Type>
-			<Interprete>
-				<RawType>unsigned number</RawType>
-				<LengthType>fixed</LengthType>
-				<Type>double</Type>
-				<Value>0xFE</Value>
-				<Length>1</Length>
-			</Interprete>
-		</Param>
-		<Param id="51" trending="false">
-			<Name>S101EOF</Name>
-			<Description>S101 EOF</Description>
-			<Type options="headerTrailerLink=1">trailer</Type>
-			<Interprete>
-				<RawType>unsigned number</RawType>
-				<LengthType>fixed</LengthType>
-				<Type>double</Type>
-				<Value>0xFF</Value>
-				<Length>1</Length>
-			</Interprete>
-		</Param>
-		<Param id="52" trending="false">
-			<Name>S101RequestData</Name>
-			<Description>S101 Request Data</Description>
-			<Type>read</Type>
-			<Interprete>
-				<RawType>other</RawType>
-				<LengthType>next param</LengthType>
-				<Type>string</Type>
-			</Interprete>
-		</Param>
-		<Param id="53" trending="false">
-			<Name>S101ResponseData</Name>
-			<Description>S101 Response Data</Description>
-			<Type>read</Type>
-			<Interprete>
-				<RawType>other</RawType>
-				<LengthType>next param</LengthType>
-				<Type>string</Type>
-			</Interprete>
-		</Param>
-		<Param id="60" trending="true">
-			<Name>DiscoveredNodesCount</Name>
-			<Description>Discovered Nodes</Description>
-			<Information>
-				<Subtext>
-					<![CDATA[Amount of discovered nodes in the Ember+ tree.]]>
-				</Subtext>
-			</Information>
-			<Type>read</Type>
-			<Interprete>
-				<RawType>numeric text</RawType>
-				<Type>double</Type>
-				<LengthType>next param</LengthType>
-			</Interprete>
-			<!-- SuppressValidator 2.5.1 No clear threshold -->
-			<Alarm>
-				<Monitored>true</Monitored>
-			</Alarm>
-			<!-- /SuppressValidator 2.5.1 -->
-			<!-- SuppressValidator 2.9.7 No units defined -->
-			<Display>
-				<RTDisplay>true</RTDisplay>
-				<Range>
-					<Low>0</Low>
-					<High>1000000</High>
-				</Range>
-				<Positions>
-					<Position>
-						<Page>General</Page>
-						<Column>0</Column>
-						<Row>0</Row>
-					</Position>
-				</Positions>
-			</Display>
-			<!-- /SuppressValidator 2.9.7 -->
-			<Measurement>
-				<Type>number</Type>
-			</Measurement>
-		</Param>
-		<Param id="61" trending="false">
-			<Name>NodeDiscoveryProgress</Name>
-			<Description>Node Discovery</Description>
-			<Information>
-				<Subtext>
-					<![CDATA[Progress of checking the discovered nodes in the Ember+ tree. Will display the path currently being checked during Ember+ Tree Discovery.]]>
-				</Subtext>
-			</Information>
-			<Type>read</Type>
+
+		<Param id="2">
+			<Name>IpAndPort</Name>
+			<Description>Ip and Port</Description>
+			<Type>ip</Type>
 			<Interprete>
 				<RawType>other</RawType>
 				<Type>string</Type>
 				<LengthType>next param</LengthType>
-				<DefaultValue>na</DefaultValue>
-				<Exceptions>
-					<Exception id="1" value="na">
-						<Display state="disabled">N/A</Display>
-						<Value>0</Value>
-					</Exception>
-					<Exception id="2" value="done">
-						<Display state="disabled">Finished</Display>
-						<Value>1</Value>
-					</Exception>
-				</Exceptions>
 			</Interprete>
-			<Alarm>
-				<Monitored>false</Monitored>
-				<Normal>$done;$na</Normal>
-			</Alarm>
-			<Display>
-				<RTDisplay>true</RTDisplay>
-				<Positions>
-					<Position>
-						<Page>General</Page>
-						<Column>0</Column>
-						<Row>1</Row>
-					</Position>
-				</Positions>
-			</Display>
-			<Measurement>
-				<Type>string</Type>
-			</Measurement>
 		</Param>
+		
 		<Param id="62" trending="false">
 			<Name>StartNodeDiscovery</Name>
 			<Description></Description>
@@ -659,38 +545,8 @@ Any inquiries can be addressed to:
 
 	<QActions>
 		<QAction id="1" name="Precompiled Code" encoding="csharp" options="precompile" />
-		<QAction id="4" name="Test Ember" encoding="csharp" triggers="1;53" />
+		<QAction id="4" name="Test Ember" encoding="csharp" triggers="1" />
 	</QActions>
-
-	<Pairs>
-		<Pair id="50">
-			<Name>SendChassisEmberPacket</Name>
-			<Content>
-				<Command>50</Command>
-				<Response>50</Response>
-			</Content>
-		</Pair>
-	</Pairs>
-	<Commands>
-		<Command id="50">
-			<Name>SendS101Frame</Name>
-			<Content>
-				<Param>50</Param>
-				<Param>52</Param>
-				<Param>51</Param>
-			</Content>
-		</Command>
-	</Commands>
-	<Responses>
-		<Response id="50">
-			<Name>ReceiveS101Frame</Name>
-			<Content>
-				<Param>50</Param>
-				<Param>53</Param>
-				<Param>51</Param>
-			</Content>
-		</Response>
-	</Responses>
 
 	<Groups>
 		<Group id="1">
@@ -701,42 +557,9 @@ Any inquiries can be addressed to:
 				<Action>1</Action>
 			</Content>
 		</Group>
-		<Group id="50">
-			<Name>SendEmberPackage</Name>
-			<Description>Send Ember Package</Description>
-			<Type>poll</Type>
-			<Content>
-				<Pair>50</Pair>
-			</Content>
-		</Group>
 	</Groups>
 
 	<Triggers>
-		<Trigger id="50">
-			<Name>QA Trigger - Send Ember Request</Name>
-			<Type>action</Type>
-			<Content>
-				<Id>50</Id>
-			</Content>
-		</Trigger>
-		<Trigger id="51">
-			<Name>BeforeEachCommand</Name>
-			<On id="each">command</On>
-			<Time>before</Time>
-			<Type>action</Type>
-			<Content>
-				<Id>51</Id>
-			</Content>
-		</Trigger>
-		<Trigger id="52">
-			<Name>BeforeEachResponse</Name>
-			<On id="each">response</On>
-			<Time>before</Time>
-			<Type>action</Type>
-			<Content>
-				<Id>52</Id>
-			</Content>
-		</Trigger>
 		<Trigger id="62">
 			<Name>OnStartNodeDiscoveryButtonPressed</Name>
 			<On id="62">parameter</On>
@@ -754,22 +577,24 @@ Any inquiries can be addressed to:
 			<On id="1">parameter</On>
 			<Type>run actions</Type>
 		</Action>
-		<Action id="50">
-			<Name>SendEmberPackage</Name>
-			<On id="50">group</On>
-			<Type>execute</Type>
-		</Action>
-		<Action id="51">
-			<Name>MakeCommand</Name>
-			<On>command</On>
-			<Type>make</Type>
-		</Action>
-		<Action id="52">
-			<Name>ReadResponse</Name>
-			<On>response</On>
-			<Type>read</Type>
-		</Action>
 	</Actions>
+
+	<PortSettings name="HTTP Connection">
+		<BusAddress>
+			<DefaultValue>ByPassProxy</DefaultValue>
+			<Disabled>false</Disabled>
+		</BusAddress>
+		<IPport>
+			<DefaultValue>9000</DefaultValue>
+			<Disabled>false</Disabled>
+		</IPport>
+		<PortTypeSerial>
+			<Disabled>true</Disabled>
+		</PortTypeSerial>
+		<PortTypeUDP>
+			<Disabled>true</Disabled>
+		</PortTypeUDP>
+	</PortSettings>
 
 	<Timers>
 		<Timer id="3">
@@ -781,24 +606,6 @@ Any inquiries can be addressed to:
 			</Content>
 		</Timer>
 	</Timers>
-
-	<PortSettings name="IP Connection">
-		<BusAddress>
-			<Disabled>true</Disabled>
-		</BusAddress>
-		<Type>
-			<DefaultValue>ip</DefaultValue>
-		</Type>
-		<IPport>
-			<DefaultValue>9000</DefaultValue>
-		</IPport>
-		<PortTypeSerial>
-			<Disabled>true</Disabled>
-		</PortTypeSerial>
-		<PortTypeUDP>
-			<Disabled>true</Disabled>
-		</PortTypeUDP>
-	</PortSettings>
 
 	<VersionHistory>
 		<Branches>
