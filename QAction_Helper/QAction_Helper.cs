@@ -8,6 +8,11 @@ namespace Skyline.DataMiner.Scripting
 {
 public static class Parameter
 {
+	/// <summary>PID: 60 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public const int discoverednodescount_60 = 60;
+	/// <summary>PID: 60 | Type: read</summary>
+	public const int discoverednodescount = 60;
 	/// <summary>PID: 500 | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public const int identityproduct_500 = 500;
@@ -66,6 +71,11 @@ public static class Parameter
 			public const int embernodesparent_103 = 103;
 			/// <summary>PID: 103 | Type: read</summary>
 			public const int embernodesparent = 103;
+			/// <summary>PID: 104 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embernodespath_104 = 104;
+			/// <summary>PID: 104 | Type: read</summary>
+			public const int embernodespath = 104;
 			public class Write
 			{
 			}
@@ -87,6 +97,11 @@ public static class Parameter
 			public const int embernodesparent_103 = 2;
 			/// <summary>IDX: 2 | Type: read</summary>
 			public const int embernodesparent = 2;
+			/// <summary>IDX: 3 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embernodespath_104 = 3;
+			/// <summary>IDX: 3 | Type: read</summary>
+			public const int embernodespath = 3;
 		}
 	}
 	public class Emberparameterstable
@@ -124,6 +139,11 @@ public static class Parameter
 			public const int emberparametersvalue_115 = 115;
 			/// <summary>PID: 115 | Type: read</summary>
 			public const int emberparametersvalue = 115;
+			/// <summary>PID: 116 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparameterspath_116 = 116;
+			/// <summary>PID: 116 | Type: read</summary>
+			public const int emberparameterspath = 116;
 			public class Write
 			{
 			}
@@ -155,6 +175,11 @@ public static class Parameter
 			public const int emberparametersvalue_115 = 4;
 			/// <summary>IDX: 4 | Type: read</summary>
 			public const int emberparametersvalue = 4;
+			/// <summary>IDX: 5 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparameterspath_116 = 5;
+			/// <summary>IDX: 5 | Type: read</summary>
+			public const int emberparameterspath = 5;
 		}
 	}
 	public class Requestednodestable
@@ -216,6 +241,8 @@ public interface SLProtocolExt : SLProtocol
 	RequestednodestableQActionTable requestednodestable { get; set; }
 	object Discoverembertree_dummy { get; set; }
 	object Ipandport_ip { get; set; }
+	object Discoverednodescount_60 { get; set; }
+	object Discoverednodescount { get; set; }
 	object Startnodediscovery_62 { get; set; }
 	object Startnodediscovery { get; set; }
 	object Embernodesidentifier_101 { get; set; }
@@ -224,6 +251,8 @@ public interface SLProtocolExt : SLProtocol
 	object Embernodesnumber { get; set; }
 	object Embernodesparent_103 { get; set; }
 	object Embernodesparent { get; set; }
+	object Embernodespath_104 { get; set; }
+	object Embernodespath { get; set; }
 	object Emberparametersidentifier_111 { get; set; }
 	object Emberparametersidentifier { get; set; }
 	object Emberparametersnumber_112 { get; set; }
@@ -234,6 +263,8 @@ public interface SLProtocolExt : SLProtocol
 	object Emberparameterstype { get; set; }
 	object Emberparametersvalue_115 { get; set; }
 	object Emberparametersvalue { get; set; }
+	object Emberparameterspath_116 { get; set; }
+	object Emberparameterspath { get; set; }
 	object Requestednodesidentifier_121 { get; set; }
 	object Requestednodesidentifier { get; set; }
 	object Requestednodesnumber_122 { get; set; }
@@ -262,6 +293,11 @@ public class ConcreteSLProtocolExt : ConcreteSLProtocol, SLProtocolExt
 	public System.Object Discoverembertree_dummy {get { return GetParameter(1); }set { SetParameter(1, value); }}
 	/// <summary>PID: 2  | Type: ip</summary>
 	public System.Object Ipandport_ip {get { return GetParameter(2); }set { SetParameter(2, value); }}
+	/// <summary>PID: 60  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Discoverednodescount_60 {get { return GetParameter(60); }set { SetParameter(60, value); }}
+	/// <summary>PID: 60  | Type: read</summary>
+	public System.Object Discoverednodescount {get { return GetParameter(60); }set { SetParameter(60, value); }}
 	/// <summary>PID: 62  | Type: write | DISCREETS: Start Node Discovery = 1</summary>
 	public System.Object Startnodediscovery_62 {get { return GetParameter(62); }set { SetParameter(62, value); }}
 	/// <summary>PID: 62  | Type: write | DISCREETS: Start Node Discovery = 1</summary>
@@ -281,6 +317,11 @@ public class ConcreteSLProtocolExt : ConcreteSLProtocol, SLProtocolExt
 	public System.Object Embernodesparent_103 {get { return GetParameter(103); }set { SetParameter(103, value); }}
 	/// <summary>PID: 103  | Type: read</summary>
 	public System.Object Embernodesparent {get { return GetParameter(103); }set { SetParameter(103, value); }}
+	/// <summary>PID: 104  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embernodespath_104 {get { return GetParameter(104); }set { SetParameter(104, value); }}
+	/// <summary>PID: 104  | Type: read</summary>
+	public System.Object Embernodespath {get { return GetParameter(104); }set { SetParameter(104, value); }}
 	/// <summary>PID: 111  | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public System.Object Emberparametersidentifier_111 {get { return GetParameter(111); }set { SetParameter(111, value); }}
@@ -306,6 +347,11 @@ public class ConcreteSLProtocolExt : ConcreteSLProtocol, SLProtocolExt
 	public System.Object Emberparametersvalue_115 {get { return GetParameter(115); }set { SetParameter(115, value); }}
 	/// <summary>PID: 115  | Type: read</summary>
 	public System.Object Emberparametersvalue {get { return GetParameter(115); }set { SetParameter(115, value); }}
+	/// <summary>PID: 116  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberparameterspath_116 {get { return GetParameter(116); }set { SetParameter(116, value); }}
+	/// <summary>PID: 116  | Type: read</summary>
+	public System.Object Emberparameterspath {get { return GetParameter(116); }set { SetParameter(116, value); }}
 	/// <summary>PID: 121  | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public System.Object Requestednodesidentifier_121 {get { return GetParameter(121); }set { SetParameter(121, value); }}
@@ -389,8 +435,13 @@ public class EmbernodestableQActionRow : QActionTableRow
 	public System.Object Embernodesparent_103 { get { if (base.Columns.ContainsKey(2)) { return base.Columns[2]; } else { return null; } } set { if (base.Columns.ContainsKey(2)) { base.Columns[2] = value; } else { base.Columns.Add(2, value); } } }
 	/// <summary>PID: 103 | Type: read</summary>
 	public System.Object Embernodesparent { get { if (base.Columns.ContainsKey(2)) { return base.Columns[2]; } else { return null; } } set { if (base.Columns.ContainsKey(2)) { base.Columns[2] = value; } else { base.Columns.Add(2, value); } } }
-	public EmbernodestableQActionRow() : base(0, 3) { }
-	public EmbernodestableQActionRow(System.Object[] oRow) : base(0, 3, oRow) { }
+	/// <summary>PID: 104 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embernodespath_104 { get { if (base.Columns.ContainsKey(3)) { return base.Columns[3]; } else { return null; } } set { if (base.Columns.ContainsKey(3)) { base.Columns[3] = value; } else { base.Columns.Add(3, value); } } }
+	/// <summary>PID: 104 | Type: read</summary>
+	public System.Object Embernodespath { get { if (base.Columns.ContainsKey(3)) { return base.Columns[3]; } else { return null; } } set { if (base.Columns.ContainsKey(3)) { base.Columns[3] = value; } else { base.Columns.Add(3, value); } } }
+	public EmbernodestableQActionRow() : base(0, 4) { }
+	public EmbernodestableQActionRow(System.Object[] oRow) : base(0, 4, oRow) { }
 	public static implicit operator EmbernodestableQActionRow(System.Object[] source) { return new EmbernodestableQActionRow(source); }
 	public static implicit operator System.Object[](EmbernodestableQActionRow source) { return source.ToObjectArray(); }
 	public System.Object[] GetParentRowEmbernodestableEmbernodesparent(SLProtocol protocol) { return (System.Object[])protocol.GetRow(100, (System.String)Embernodesparent); }
@@ -425,8 +476,13 @@ public class EmberparameterstableQActionRow : QActionTableRow
 	public System.Object Emberparametersvalue_115 { get { if (base.Columns.ContainsKey(4)) { return base.Columns[4]; } else { return null; } } set { if (base.Columns.ContainsKey(4)) { base.Columns[4] = value; } else { base.Columns.Add(4, value); } } }
 	/// <summary>PID: 115 | Type: read</summary>
 	public System.Object Emberparametersvalue { get { if (base.Columns.ContainsKey(4)) { return base.Columns[4]; } else { return null; } } set { if (base.Columns.ContainsKey(4)) { base.Columns[4] = value; } else { base.Columns.Add(4, value); } } }
-	public EmberparameterstableQActionRow() : base(0, 5) { }
-	public EmberparameterstableQActionRow(System.Object[] oRow) : base(0, 5, oRow) { }
+	/// <summary>PID: 116 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberparameterspath_116 { get { if (base.Columns.ContainsKey(5)) { return base.Columns[5]; } else { return null; } } set { if (base.Columns.ContainsKey(5)) { base.Columns[5] = value; } else { base.Columns.Add(5, value); } } }
+	/// <summary>PID: 116 | Type: read</summary>
+	public System.Object Emberparameterspath { get { if (base.Columns.ContainsKey(5)) { return base.Columns[5]; } else { return null; } } set { if (base.Columns.ContainsKey(5)) { base.Columns[5] = value; } else { base.Columns.Add(5, value); } } }
+	public EmberparameterstableQActionRow() : base(0, 6) { }
+	public EmberparameterstableQActionRow(System.Object[] oRow) : base(0, 6, oRow) { }
 	public static implicit operator EmberparameterstableQActionRow(System.Object[] source) { return new EmberparameterstableQActionRow(source); }
 	public static implicit operator System.Object[](EmberparameterstableQActionRow source) { return source.ToObjectArray(); }
 	public System.Object[] GetParentRowEmbernodestableEmberparametersparent(SLProtocol protocol) { return (System.Object[])protocol.GetRow(100, (System.String)Emberparametersparent); }

@@ -73,7 +73,7 @@ Any inquiries can be addressed to:
 			<Description>Discover Ember Tree</Description>
 			<Type>dummy</Type>
 		</Param>
-
+		
 		<Param id="2">
 			<Name>IpAndPort</Name>
 			<Description>Ip and Port</Description>
@@ -84,7 +84,45 @@ Any inquiries can be addressed to:
 				<LengthType>next param</LengthType>
 			</Interprete>
 		</Param>
-		
+		<Param id="60" trending="true">
+			<Name>DiscoveredNodesCount</Name>
+			<Description>Discovered Nodes</Description>
+			<Information>
+				<Subtext>
+					<![CDATA[Amount of discovered nodes in the Ember+ tree.]]>
+				</Subtext>
+			</Information>
+			<Type>read</Type>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<!-- SuppressValidator 2.5.1 No clear threshold -->
+			<Alarm>
+				<Monitored>true</Monitored>
+			</Alarm>
+			<!-- /SuppressValidator 2.5.1 -->
+			<!-- SuppressValidator 2.9.7 No units defined -->
+			<Display>
+				<RTDisplay>true</RTDisplay>
+				<Range>
+					<Low>0</Low>
+					<High>1000000</High>
+				</Range>
+				<Positions>
+					<Position>
+						<Page>General</Page>
+						<Column>0</Column>
+						<Row>0</Row>
+					</Position>
+				</Positions>
+			</Display>
+			<!-- /SuppressValidator 2.9.7 -->
+			<Measurement>
+				<Type>number</Type>
+			</Measurement>
+		</Param>
 		<Param id="62" trending="false">
 			<Name>StartNodeDiscovery</Name>
 			<Description></Description>
@@ -105,7 +143,7 @@ Any inquiries can be addressed to:
 					<Position>
 						<Page>General</Page>
 						<Column>0</Column>
-						<Row>2</Row>
+						<Row>1</Row>
 					</Position>
 				</Positions>
 			</Display>
@@ -129,6 +167,7 @@ Any inquiries can be addressed to:
 				<ColumnOption idx="0" pid="101" type="retrieved" options="" />
 				<ColumnOption idx="1" pid="102" type="retrieved" options="" />
 				<ColumnOption idx="2" pid="103" type="retrieved" options=";foreignKey=100" />
+				<ColumnOption idx="3" pid="104" type="retrieved" options="" />
 			</ArrayOptions>
 			<Information>
 				<Subtext>All discovered Ember+ nodes</Subtext>
@@ -139,12 +178,12 @@ Any inquiries can be addressed to:
 					<Position>
 						<Page>General</Page>
 						<Column>0</Column>
-						<Row>4</Row>
+						<Row>3</Row>
 					</Position>
 				</Positions>
 			</Display>
 			<Measurement>
-				<Type options="tab=columns:101|0-102|1-103|2,width:100-100-100,sort:STRING-INT|ASC|0-STRING,lines:25,filter:true">table</Type>
+				<Type options="tab=columns:101|0-102|1-103|2-104|3,width:100-100-100-100,sort:STRING-INT|ASC|0-STRING-STRING,lines:25,filter:true">table</Type>
 			</Measurement>
 		</Param>
 		<Param id="101" trending="false">
@@ -204,6 +243,25 @@ Any inquiries can be addressed to:
 				<Type>string</Type>
 			</Measurement>
 		</Param>
+		<Param id="104" trending="false">
+			<Name>EmberNodesPath</Name>
+			<Description>Path (Ember Nodes)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>Path</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>other</RawType>
+				<Type>string</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<Measurement>
+				<Type>string</Type>
+			</Measurement>
+		</Param>
 		<Param id="110">
 			<Name>EmberParametersTable</Name>
 			<Description>Ember Parameters</Description>
@@ -214,6 +272,7 @@ Any inquiries can be addressed to:
 				<ColumnOption idx="2" pid="113" type="retrieved" options=";foreignKey=100" />
 				<ColumnOption idx="3" pid="114" type="retrieved" options="" />
 				<ColumnOption idx="4" pid="115" type="retrieved" options="" />
+				<ColumnOption idx="5" pid="116" type="retrieved" options="" />
 			</ArrayOptions>
 			<Information>
 				<Subtext>Ember Parameters</Subtext>
@@ -224,12 +283,12 @@ Any inquiries can be addressed to:
 					<Position>
 						<Page>General</Page>
 						<Column>0</Column>
-						<Row>5</Row>
+						<Row>4</Row>
 					</Position>
 				</Positions>
 			</Display>
 			<Measurement>
-				<Type options="tab=columns:111|0-112|1-113|2-114|3-115|4,width:100-100-100-100-100,sort:STRING-INT|ASC|0-STRING-STRING-STRING,lines:25,filter:true">table</Type>
+				<Type options="tab=columns:111|0-112|1-113|2-114|3-115|4-116|5,width:100-100-100-100-100-100,sort:STRING-INT|ASC|0-STRING-STRING-STRING-STRING,lines:25,filter:true">table</Type>
 			</Measurement>
 		</Param>
 		<Param id="111" trending="false">
@@ -359,6 +418,25 @@ Any inquiries can be addressed to:
 				<Type>string</Type>
 			</Measurement>
 		</Param>
+		<Param id="116" trending="false">
+			<Name>EmberParametersPath</Name>
+			<Description>Path (Ember Parameters)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>Path</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>other</RawType>
+				<Type>string</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<Measurement>
+				<Type>string</Type>
+			</Measurement>
+		</Param>
 		<Param id="120">
 			<Name>RequestedNodesTable</Name>
 			<Description>Requested Nodes</Description>
@@ -376,7 +454,7 @@ Any inquiries can be addressed to:
 					<Position>
 						<Page>General</Page>
 						<Column>0</Column>
-						<Row>6</Row>
+						<Row>5</Row>
 					</Position>
 				</Positions>
 			</Display>
@@ -544,8 +622,7 @@ Any inquiries can be addressed to:
 	</Params>
 
 	<QActions>
-		<QAction id="1" name="Precompiled Code" encoding="csharp" options="precompile" />
-		<QAction id="4" name="Test Ember" encoding="csharp" triggers="1" />
+		<QAction id="3" name="Ember QAction" encoding="csharp" triggers="1"/>
 	</QActions>
 
 	<Groups>
