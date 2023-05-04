@@ -1,27 +1,45 @@
-﻿namespace QAction_1.Skyline.DataMiner.Scripting.Solutions.Ember
+﻿namespace QAction_1.Ember
 {
 	using System;
 	using EmberLib.Glow;
 	using EmberLib.Glow.Framing;
-	using global::Skyline.DataMiner.Scripting;
-	using QAction_1.Skyline.Ember.Protocol;
+	using QAction_1.Ember.Protocol;
+	using Skyline.DataMiner.Scripting;
 
 	public abstract class EmberAction : GlowWalker
 	{
-		protected readonly EmberData EmberData;
-
 		protected readonly SLProtocol protocol;
 
-		protected EmberAction(SLProtocol protocol, Configuration configuration, EmberData emberData)
+		protected EmberAction(SLProtocol protocol, Configuration configuration)
 		{
 			Configurations = configuration;
 			this.protocol = protocol;
-			EmberData = emberData;
 		}
 
 		public bool Done { get; internal set; }
 
+		public bool RetriesExceeded => Retries > Configurations.MaxRetries;
+
+		public bool Timeout
+		{
+			get
+			{
+				if (LastExecutionTime == null)
+				{
+					return false;
+				}
+
+				return DateTime.Now.Subtract(DateTime.FromOADate((double)LastExecutionTime)).TotalSeconds > Configurations.TimeOutSeconds;
+			}
+		}
+
 		protected Configuration Configurations { get; }
+
+		internal double? LastExecutionTime { get; set; }
+
+		internal int Retries { get; set; }
+
+		public abstract void Continue();
 
 		public abstract void Execute();
 
@@ -91,18 +109,12 @@
 			return converted;
 		}
 
-		internal void GlowPackageReady(byte[] framedPackage)
-		{
-			protocol.SetParameterBinary(Configurations.S101Pids.S101RequestDataPid, framedPackage);
-			protocol.CheckTrigger(Configurations.SendEmberRequestTrigger);
-		}
-
 		internal void SendGetDirectoryRequest(int[][] path, bool nested = false)
 		{
 			var root = GlowRootElementCollection.CreateRoot();
 			var command = new GlowCommand(GlowCommandType.GetDirectory);
 
-			if (path == null || (path.Length == 1 && path[0] == null))
+			if (path == null || (path.Length == 1 && path[0] == Array.Empty<int>()))
 			{
 				root.Insert(command);
 				SendGlow(root);
@@ -143,7 +155,13 @@
 			SendGlow(root);
 		}
 
-		internal void SendGlow(GlowContainer glow)
+		private void GlowPackageReady(byte[] framedPackage)
+		{
+			protocol.SetParameterBinary(Configurations.S101Pids.S101RequestDataPid, framedPackage);
+			protocol.CheckTrigger(Configurations.SendEmberRequestTrigger);
+		}
+
+		private void SendGlow(GlowContainer glow)
 		{
 			var glowOutPut = new GlowOutput(true, 1024, 0x00, (_, e) => GlowPackageReady(e.FramedPackage));
 

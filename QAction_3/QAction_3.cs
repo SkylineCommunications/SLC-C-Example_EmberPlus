@@ -1,6 +1,6 @@
 using System;
-using QAction_1.Skyline.Ember;
-using QAction_1.Skyline.Ember.Protocol;
+using QAction_1.Ember;
+using QAction_1.Ember.Protocol;
 using Skyline.DataMiner.Scripting;
 
 /// <summary>
@@ -20,8 +20,6 @@ public class QAction
 	{
 		try
 		{
-			protocol.Log(Convert.ToString(protocol.GetParameter(Parameter.s101responsedata_53)));
-
 			int trigger = protocol.GetTriggerParameter();
 
 			if (emberHandler == null)
@@ -32,7 +30,7 @@ public class QAction
 				emberHandler = new EmberHandler(protocol, configurations);
 			}
 
-			if (trigger == 100 /*pollParameters*/)
+			if (trigger == 11 /*pollParameters*/)
 			{
 				foreach (string[] path in ParameterMapping.Paths)
 				{
@@ -50,12 +48,7 @@ public class QAction
 			}
 			else
 			{
-				emberHandler.Error.AppendLine("|Run|Trigger not implemented: " + trigger);
-			}
-
-			if (!String.IsNullOrEmpty(Convert.ToString(emberHandler.Error)))
-			{
-				protocol.Log("QA" + protocol.QActionID + Convert.ToString(emberHandler.Error), LogType.Error, LogLevel.NoLogging);
+				protocol.Log("QA" + protocol.QActionID + "|Run|Trigger not implemented: " + trigger, LogType.Error, LogLevel.NoLogging);
 			}
 		}
 		catch (Exception ex)

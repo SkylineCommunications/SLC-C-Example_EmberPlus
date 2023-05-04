@@ -13,11 +13,6 @@ public static class Parameter
 	public const int discoverembertree_1 = 1;
 	/// <summary>PID: 1 | Type: read</summary>
 	public const int discoverembertree = 1;
-	/// <summary>PID: 10 | Type: read</summary>
-	[EditorBrowsable(EditorBrowsableState.Never)]
-	public const int polltables_10 = 10;
-	/// <summary>PID: 10 | Type: read</summary>
-	public const int polltables = 10;
 	/// <summary>PID: 11 | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public const int pollparameters_11 = 11;
@@ -76,64 +71,6 @@ public static class Parameter
 		/// <summary>PID: 62 | Type: write</summary>
 		public const int startnodediscovery = 62;
 	}
-	public class Channelreceiverstable
-	{
-		/// <summary>PID: 1000</summary>
-		public const int tablePid = 1000;
-		/// <summary>IDX: 0</summary>
-		public const int indexColumn = 0;
-		/// <summary>PID: 1001</summary>
-		public const int indexColumnPid = 1001;
-		public class Pid
-		{
-			/// <summary>PID: 1001 | Type: read</summary>
-			[EditorBrowsable(EditorBrowsableState.Never)]
-			public const int channelreceiversinstance_1001 = 1001;
-			/// <summary>PID: 1001 | Type: read</summary>
-			public const int channelreceiversinstance = 1001;
-			/// <summary>PID: 1002 | Type: read</summary>
-			[EditorBrowsable(EditorBrowsableState.Never)]
-			public const int channelreceiverssdp_1002 = 1002;
-			/// <summary>PID: 1002 | Type: read</summary>
-			public const int channelreceiverssdp = 1002;
-			/// <summary>PID: 1003 | Type: read</summary>
-			[EditorBrowsable(EditorBrowsableState.Never)]
-			public const int channelreceiversport_1003 = 1003;
-			/// <summary>PID: 1003 | Type: read</summary>
-			public const int channelreceiversport = 1003;
-			/// <summary>PID: 1004 | Type: read</summary>
-			[EditorBrowsable(EditorBrowsableState.Never)]
-			public const int channelreceiverslastupdatetimestamphidden_1004 = 1004;
-			/// <summary>PID: 1004 | Type: read</summary>
-			public const int channelreceiverslastupdatetimestamphidden = 1004;
-			public class Write
-			{
-			}
-		}
-		public class Idx
-		{
-			/// <summary>IDX: 0 | Type: read</summary>
-			[EditorBrowsable(EditorBrowsableState.Never)]
-			public const int channelreceiversinstance_1001 = 0;
-			/// <summary>IDX: 0 | Type: read</summary>
-			public const int channelreceiversinstance = 0;
-			/// <summary>IDX: 1 | Type: read</summary>
-			[EditorBrowsable(EditorBrowsableState.Never)]
-			public const int channelreceiverssdp_1002 = 1;
-			/// <summary>IDX: 1 | Type: read</summary>
-			public const int channelreceiverssdp = 1;
-			/// <summary>IDX: 2 | Type: read</summary>
-			[EditorBrowsable(EditorBrowsableState.Never)]
-			public const int channelreceiversport_1003 = 2;
-			/// <summary>IDX: 2 | Type: read</summary>
-			public const int channelreceiversport = 2;
-			/// <summary>IDX: 3 | Type: read</summary>
-			[EditorBrowsable(EditorBrowsableState.Never)]
-			public const int channelreceiverslastupdatetimestamphidden_1004 = 3;
-			/// <summary>IDX: 3 | Type: read</summary>
-			public const int channelreceiverslastupdatetimestamphidden = 3;
-		}
-	}
 }
 public class WriteParameters
 {
@@ -147,12 +84,8 @@ public class WriteParameters
 }
 public interface SLProtocolExt : SLProtocol
 {
-	/// <summary>PID: 1000</summary>
-	ChannelreceiverstableQActionTable channelreceiverstable { get; set; }
 	object Discoverembertree_1 { get; set; }
 	object Discoverembertree { get; set; }
-	object Polltables_10 { get; set; }
-	object Polltables { get; set; }
 	object Pollparameters_11 { get; set; }
 	object Pollparameters { get; set; }
 	object S101bof_header { get; set; }
@@ -177,30 +110,15 @@ public interface SLProtocolExt : SLProtocol
 	object Identityrole { get; set; }
 	object Identityserial_504 { get; set; }
 	object Identityserial { get; set; }
-	object Channelreceiversinstance_1001 { get; set; }
-	object Channelreceiversinstance { get; set; }
-	object Channelreceiverssdp_1002 { get; set; }
-	object Channelreceiverssdp { get; set; }
-	object Channelreceiversport_1003 { get; set; }
-	object Channelreceiversport { get; set; }
-	object Channelreceiverslastupdatetimestamphidden_1004 { get; set; }
-	object Channelreceiverslastupdatetimestamphidden { get; set; }
 	WriteParameters Write { get; set; }
 }
 public class ConcreteSLProtocolExt : ConcreteSLProtocol, SLProtocolExt
 {
-	/// <summary>PID: 1000</summary>
-	public ChannelreceiverstableQActionTable channelreceiverstable { get; set; }
 	/// <summary>PID: 1  | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public System.Object Discoverembertree_1 {get { return GetParameter(1); }set { SetParameter(1, value); }}
 	/// <summary>PID: 1  | Type: read</summary>
 	public System.Object Discoverembertree {get { return GetParameter(1); }set { SetParameter(1, value); }}
-	/// <summary>PID: 10  | Type: read</summary>
-	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Polltables_10 {get { return GetParameter(10); }set { SetParameter(10, value); }}
-	/// <summary>PID: 10  | Type: read</summary>
-	public System.Object Polltables {get { return GetParameter(10); }set { SetParameter(10, value); }}
 	/// <summary>PID: 11  | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public System.Object Pollparameters_11 {get { return GetParameter(11); }set { SetParameter(11, value); }}
@@ -259,66 +177,10 @@ public class ConcreteSLProtocolExt : ConcreteSLProtocol, SLProtocolExt
 	public System.Object Identityserial_504 {get { return GetParameter(504); }set { SetParameter(504, value); }}
 	/// <summary>PID: 504  | Type: read</summary>
 	public System.Object Identityserial {get { return GetParameter(504); }set { SetParameter(504, value); }}
-	/// <summary>PID: 1001  | Type: read</summary>
-	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Channelreceiversinstance_1001 {get { return GetParameter(1001); }set { SetParameter(1001, value); }}
-	/// <summary>PID: 1001  | Type: read</summary>
-	public System.Object Channelreceiversinstance {get { return GetParameter(1001); }set { SetParameter(1001, value); }}
-	/// <summary>PID: 1002  | Type: read</summary>
-	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Channelreceiverssdp_1002 {get { return GetParameter(1002); }set { SetParameter(1002, value); }}
-	/// <summary>PID: 1002  | Type: read</summary>
-	public System.Object Channelreceiverssdp {get { return GetParameter(1002); }set { SetParameter(1002, value); }}
-	/// <summary>PID: 1003  | Type: read</summary>
-	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Channelreceiversport_1003 {get { return GetParameter(1003); }set { SetParameter(1003, value); }}
-	/// <summary>PID: 1003  | Type: read</summary>
-	public System.Object Channelreceiversport {get { return GetParameter(1003); }set { SetParameter(1003, value); }}
-	/// <summary>PID: 1004  | Type: read</summary>
-	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Channelreceiverslastupdatetimestamphidden_1004 {get { return GetParameter(1004); }set { SetParameter(1004, value); }}
-	/// <summary>PID: 1004  | Type: read</summary>
-	public System.Object Channelreceiverslastupdatetimestamphidden {get { return GetParameter(1004); }set { SetParameter(1004, value); }}
 	public WriteParameters Write { get; set; }
 	public ConcreteSLProtocolExt()
 	{
-		channelreceiverstable = new ChannelreceiverstableQActionTable(this, 1000, "channelreceiverstable");
 		Write = new WriteParameters(this);
 	}
-}
-/// <summary>IDX: 0</summary>
-public class ChannelreceiverstableQActionTable : QActionTable, IEnumerable<ChannelreceiverstableQActionRow>
-{
-	public ChannelreceiverstableQActionTable(SLProtocol protocol, int tableId, string tableName) : base(protocol, tableId, tableName) { }
-	IEnumerator IEnumerable.GetEnumerator() { return (IEnumerator) GetEnumerator(); }
-	public IEnumerator<ChannelreceiverstableQActionRow> GetEnumerator() { return new QActionTableEnumerator<ChannelreceiverstableQActionRow>(this); }
-}
-/// <summary>IDX: 0</summary>
-public class ChannelreceiverstableQActionRow : QActionTableRow
-{
-	/// <summary>PID: 1001 | Type: read</summary>
-	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Channelreceiversinstance_1001 { get { if (base.Columns.ContainsKey(0)) { return base.Columns[0]; } else { return null; } } set { if (base.Columns.ContainsKey(0)) { base.Columns[0] = value; } else { base.Columns.Add(0, value); } } }
-	/// <summary>PID: 1001 | Type: read</summary>
-	public System.Object Channelreceiversinstance { get { if (base.Columns.ContainsKey(0)) { return base.Columns[0]; } else { return null; } } set { if (base.Columns.ContainsKey(0)) { base.Columns[0] = value; } else { base.Columns.Add(0, value); } } }
-	/// <summary>PID: 1002 | Type: read</summary>
-	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Channelreceiverssdp_1002 { get { if (base.Columns.ContainsKey(1)) { return base.Columns[1]; } else { return null; } } set { if (base.Columns.ContainsKey(1)) { base.Columns[1] = value; } else { base.Columns.Add(1, value); } } }
-	/// <summary>PID: 1002 | Type: read</summary>
-	public System.Object Channelreceiverssdp { get { if (base.Columns.ContainsKey(1)) { return base.Columns[1]; } else { return null; } } set { if (base.Columns.ContainsKey(1)) { base.Columns[1] = value; } else { base.Columns.Add(1, value); } } }
-	/// <summary>PID: 1003 | Type: read</summary>
-	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Channelreceiversport_1003 { get { if (base.Columns.ContainsKey(2)) { return base.Columns[2]; } else { return null; } } set { if (base.Columns.ContainsKey(2)) { base.Columns[2] = value; } else { base.Columns.Add(2, value); } } }
-	/// <summary>PID: 1003 | Type: read</summary>
-	public System.Object Channelreceiversport { get { if (base.Columns.ContainsKey(2)) { return base.Columns[2]; } else { return null; } } set { if (base.Columns.ContainsKey(2)) { base.Columns[2] = value; } else { base.Columns.Add(2, value); } } }
-	/// <summary>PID: 1004 | Type: read</summary>
-	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Channelreceiverslastupdatetimestamphidden_1004 { get { if (base.Columns.ContainsKey(3)) { return base.Columns[3]; } else { return null; } } set { if (base.Columns.ContainsKey(3)) { base.Columns[3] = value; } else { base.Columns.Add(3, value); } } }
-	/// <summary>PID: 1004 | Type: read</summary>
-	public System.Object Channelreceiverslastupdatetimestamphidden { get { if (base.Columns.ContainsKey(3)) { return base.Columns[3]; } else { return null; } } set { if (base.Columns.ContainsKey(3)) { base.Columns[3] = value; } else { base.Columns.Add(3, value); } } }
-	public ChannelreceiverstableQActionRow() : base(0, 4) { }
-	public ChannelreceiverstableQActionRow(System.Object[] oRow) : base(0, 4, oRow) { }
-	public static implicit operator ChannelreceiverstableQActionRow(System.Object[] source) { return new ChannelreceiverstableQActionRow(source); }
-	public static implicit operator System.Object[](ChannelreceiverstableQActionRow source) { return source.ToObjectArray(); }
 }
 }

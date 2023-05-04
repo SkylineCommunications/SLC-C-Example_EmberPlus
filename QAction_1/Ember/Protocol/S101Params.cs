@@ -1,4 +1,4 @@
-﻿namespace QAction_1.Skyline.Ember.Protocol
+﻿namespace QAction_1.Ember.Protocol
 {
 	public class S101Params
 	{

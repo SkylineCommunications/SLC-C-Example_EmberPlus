@@ -1,11 +1,11 @@
-﻿namespace QAction_1.Skyline.DataMiner.Scripting.Solutions.Ember
+﻿namespace QAction_1.Ember
 {
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
 	using EmberLib.Glow;
-	using global::Skyline.DataMiner.Scripting;
-	using QAction_1.Skyline.Ember.Protocol;
+	using QAction_1.Ember.Protocol;
+	using Skyline.DataMiner.Scripting;
 
 	public class EmberDiscoveryAction : EmberAction
 	{
@@ -18,18 +18,29 @@
 
 		private readonly Queue<int[]> pathsToPoll = new Queue<int[]>();
 
+		private int[] currentPollPath = Array.Empty<int>();
+
 		private int[] lastRequestPath = Array.Empty<int>();
 
 		private bool updateReceivedForWrongRequestedNode;
 
-		public EmberDiscoveryAction(SLProtocol protocol, Configuration configuration, EmberData emberData)
-			: base(protocol, configuration, emberData)
+		public EmberDiscoveryAction(SLProtocol protocol, Configuration configuration)
+			: base(protocol, configuration)
 		{
+			pathsToPoll.Enqueue(Array.Empty<int>());
+			LastExecutionTime = null;
+			Retries = 0;
+		}
+
+		public override void Continue()
+		{
+			Retries++;
+			SendGetDirectoryRequest(new[] { currentPollPath });
 		}
 
 		public override void Execute()
 		{
-			// SendGetDirectoryRequest(new[] { currentPollPath });
+			LastExecutionTime = DateTime.Now.ToOADate();
 			PollNextPath();
 		}
 
@@ -46,6 +57,8 @@
 				return validateLastRequestPath;
 			}
 
+			LastExecutionTime = DateTime.Now.ToOADate();
+
 			if (pathsToPoll.Count != 0)
 			{
 				Done = false;
@@ -59,7 +72,7 @@
 				UpdateEmberTrees(emberData);
 
 				// Clear the poll queue as it may contain invalid Ember paths
-				EmberData.PollActions.Clear();
+				emberData.PollActions.Clear();
 
 				protocol.SetParameter(Configurations.DiscoveryNodeProgressPid, "done");
 			}
@@ -69,11 +82,12 @@
 
 		protected override void OnNode(GlowNodeBase glow, int[] path)
 		{
-			var parentPath = new int[path.Length - 1];
 			string joinedPath = String.Join(".", path);
+			var parentPath = new int[path.Length - 1];
+			string joinedParentPath = String.Join(".", parentPath);
 			Array.Copy(path, parentPath, parentPath.Length);
 
-			if (!parentPath.SequenceEqual(lastRequestPath) && !joinedPath.Equals("1") /*root*/ && !lastRequestPath.SequenceEqual(path))
+			if (joinedParentPath != String.Join(".", lastRequestPath) && !joinedPath.Equals(RootNumber) /*root*/ && !String.Join(".", lastRequestPath).Equals(joinedPath))
 			{
 				protocol.Log(
 					"QA" + protocol.QActionID + "|Discovery.OnNode|joinedParentPath != LastRequestPath: " + String.Join(".", lastRequestPath) + " for incoming Node: " + joinedPath + " --> Skipping",
@@ -99,11 +113,21 @@
 			var parentPath = new int[path.Length - 1];
 			Array.Copy(path, parentPath, parentPath.Length);
 
-			if (!parentPath.SequenceEqual(lastRequestPath) && !String.Join(".", path).Equals(RootNumber) && !lastRequestPath.SequenceEqual(path))
+			if (String.Join(".", parentPath) != String.Join(".", lastRequestPath) && !String.Join(".", path).Equals(RootNumber) && !String.Join(".", lastRequestPath).Equals(String.Join(".", path)))
 			{
 				// if parentRequest doesn't match path,   abort mission!  don't execute the pollNextPath() !!!
 				updateReceivedForWrongRequestedNode = true;
 			}
+		}
+
+		private bool IsBranchToDiscover(string[] nodePath)
+		{
+			if (nodePath == null || nodePath.Length == 0)
+			{
+				return true;
+			}
+
+			return ParameterMapping.BranchesToSkip.All(branch => !nodePath.SequenceEqual(branch));
 		}
 
 		private void NewEmberTreePath(GlowNodeBase glow, int[] path, int[] parentPath)
@@ -124,7 +148,7 @@
 
 			emberTree.Add(path, friendlyPath);
 
-			if (path.Length < Configurations.MaxDepth && !friendlyPath.Any())
+			if (path.Length < Configurations.MaxDepth && IsBranchToDiscover(friendlyPath))
 			{
 				pathsToPoll.Enqueue(path);
 			}
@@ -132,12 +156,12 @@
 
 		private void PollNextPath()
 		{
-			int[] currentPollPath = pathsToPoll.Dequeue();
-			lastRequestPath = currentPollPath ?? new int[] { };
+			currentPollPath = pathsToPoll.Dequeue();
+			lastRequestPath = currentPollPath ?? Array.Empty<int>();
 
 			int[] parametersToSet = new[] { Configurations.DiscoveredNodesCountPid, Configurations.DiscoveryNodeProgressPid };
 
-			protocol.SetParameters(parametersToSet, new object[] { emberTree.Count, currentPollPath == null ? RootString : String.Join(".", currentPollPath) });
+			protocol.SetParameters(parametersToSet, new object[] { emberTree.Count, currentPollPath == Array.Empty<int>() ? RootString : String.Join(".", currentPollPath) });
 			SendGetDirectoryRequest(new[] { currentPollPath });
 		}
 

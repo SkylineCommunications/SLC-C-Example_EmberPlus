@@ -48,7 +48,7 @@ Any inquiries can be addressed to:
 <Protocol xmlns="http://www.skyline.be/protocol">
 	<Name>SLC SDF EmberPlus</Name>
 	<Description>SLC SDF EmberPlus DataMiner driver</Description>
-	<Version>1.0.0.1</Version>
+	<Version>1.0.1.1</Version>
 	<IntegrationID>DMS-DRV-0000</IntegrationID>
 	<Provider>Skyline Communications</Provider>
 	<Vendor>Lawo</Vendor>
@@ -56,7 +56,7 @@ Any inquiries can be addressed to:
 	<DeviceOID>01</DeviceOID>
 	<ElementType>External Device</ElementType>
 	<Type relativeTimers="true">smart-serial</Type>
-	<Display defaultPage="General" pageOrder="General;Channels" wideColumnPages="" />
+	<Display defaultPage="General" pageOrder="General" wideColumnPages="" />
 	<SNMP includepages="true">auto</SNMP>
 
 	<Compliancies>
@@ -67,16 +67,6 @@ Any inquiries can be addressed to:
 		<Param id="1">
 			<Name>DiscoverEmberTree</Name>
 			<Description>Discover Ember Tree</Description>
-			<Type>read</Type>
-			<Interprete>
-				<RawType>other</RawType>
-				<LengthType>next param</LengthType>
-				<Type>string</Type>
-			</Interprete>
-		</Param>
-		<Param id="10">
-			<Name>PollTables</Name>
-			<Description>Poll Tables</Description>
 			<Type>read</Type>
 			<Interprete>
 				<RawType>other</RawType>
@@ -411,132 +401,12 @@ Any inquiries can be addressed to:
 				<Type>string</Type>
 			</Measurement>
 		</Param>
-		<Param id="1000">
-			<Name>ChannelReceiversTable</Name>
-			<Description>Channel Receivers</Description>
-			<Type>array</Type>
-			<ArrayOptions index="0">
-				<ColumnOption idx="0" pid="1001" type="retrieved" options="" />
-				<ColumnOption idx="1" pid="1002" type="retrieved" options="" />
-				<ColumnOption idx="2" pid="1003" type="retrieved" options="" />
-				<ColumnOption idx="3" pid="1004" type="retrieved" options="" />
-			</ArrayOptions>
-			<Information>
-				<Subtext>Channels</Subtext>
-			</Information>
-			<Display>
-				<RTDisplay>true</RTDisplay>
-				<Positions>
-					<Position>
-						<Page>Channels</Page>
-						<Column>0</Column>
-						<Row>0</Row>
-					</Position>
-				</Positions>
-			</Display>
-			<Measurement>
-				<!-- SuppressValidator 2.31.9 No sorting needed on date(time) -->
-				<Type options=";tab=columns:1001|0-1002|1-1003|2,width:80-41-43,sort:STRING-STRING-STRING,lines:0,filter:true">table</Type>
-				<!-- /SuppressValidator 2.31.9 -->
-			</Measurement>
-		</Param>
-		<Param id="1001" trending="false">
-			<Name>ChannelReceiversInstance</Name>
-			<Description>Instance (Channel Receivers)</Description>
-			<Type>read</Type>
-			<Information>
-				<Subtext>This is the key used internally by DataMiner to identify the table entries.</Subtext>
-			</Information>
-			<Interprete>
-				<RawType>other</RawType>
-				<Type>string</Type>
-				<LengthType>next param</LengthType>
-			</Interprete>
-			<Display>
-				<RTDisplay>true</RTDisplay>
-			</Display>
-			<Measurement>
-				<Type>string</Type>
-			</Measurement>
-		</Param>
-		<Param id="1002" trending="false">
-			<Name>ChannelReceiversSdp</Name>
-			<Description>SDP (Channel Receivers)</Description>
-			<Information>
-				<Subtext>SDP</Subtext>
-			</Information>
-			<Type>read</Type>
-			<Interprete>
-				<RawType>other</RawType>
-				<Type>string</Type>
-				<LengthType>next param</LengthType>
-			</Interprete>
-			<!-- SuppressValidator 2.5.1 Unable to define default thresholds -->
-			<Alarm>
-				<Monitored>true</Monitored>
-			</Alarm>
-			<!-- /SuppressValidator 2.5.1 -->
-			<Display>
-				<RTDisplay>true</RTDisplay>
-			</Display>
-			<Measurement>
-				<Type>string</Type>
-			</Measurement>
-		</Param>
-		<Param id="1003" trending="false">
-			<Name>ChannelReceiversPort</Name>
-			<Description>Port (Channel Receivers)</Description>
-			<Information>
-				<Subtext>Port</Subtext>
-			</Information>
-			<Type>read</Type>
-			<Interprete>
-				<RawType>other</RawType>
-				<Type>string</Type>
-				<LengthType>next param</LengthType>
-			</Interprete>
-			<!-- SuppressValidator 2.5.1 Unable to define default thresholds -->
-			<Alarm>
-				<Monitored>true</Monitored>
-			</Alarm>
-			<!-- /SuppressValidator 2.5.1 -->
-			<Display>
-				<RTDisplay>true</RTDisplay>
-			</Display>
-			<Measurement>
-				<Type>string</Type>
-			</Measurement>
-		</Param>
-		<Param id="1004" trending="false">
-			<Name>ChannelReceiversLastUpdateTimestampHidden</Name>
-			<Description>Last Update (Channel Receivers)</Description>
-			<Information>
-				<Subtext>Last Update Timestamp used internally to clean the table.</Subtext>
-			</Information>
-			<Type>read</Type>
-			<Interprete>
-				<RawType>numeric text</RawType>
-				<Type>double</Type>
-				<LengthType>next param</LengthType>
-				<Decimals>8</Decimals>
-			</Interprete>
-			<!-- SuppressValidator 2.5.1 Unable to define default thresholds -->
-			<Alarm>
-				<Monitored>false</Monitored>
-			</Alarm>
-			<!-- /SuppressValidator 2.5.1 -->
-			<Display>
-				<RTDisplay>true</RTDisplay>
-			</Display>
-			<Measurement>
-				<Type options="datetime">number</Type>
-			</Measurement>
-		</Param>
+		
 	</Params>
 
 	<QActions>
 		<QAction id="1" name="Precompiled Code" encoding="csharp" options="precompile" />
-		<QAction id="3" name="Handle Ember Requests and Responses" encoding="csharp" triggers="1;10;11;53" />
+		<QAction id="3" name="Handle Ember Requests and Responses" encoding="csharp" triggers="1;11;53" />
 	</QActions>
 
 	<Pairs>
@@ -576,14 +446,6 @@ Any inquiries can be addressed to:
 			<Type>poll action</Type>
 			<Content>
 				<Action>1</Action>
-			</Content>
-		</Group>
-		<Group id="10">
-			<Name>PollTables</Name>
-			<Description>Poll Tables</Description>
-			<Type>poll action</Type>
-			<Content>
-				<Action>10</Action>
 			</Content>
 		</Group>
 		<Group id="11">
@@ -647,11 +509,6 @@ Any inquiries can be addressed to:
 			<On id="1">parameter</On>
 			<Type>run actions</Type>
 		</Action>
-		<Action id="10">
-			<Name>PollTables</Name>
-			<On id="10">parameter</On>
-			<Type>run actions</Type>
-		</Action>
 		<Action id="11">
 			<Name>PollParameters</Name>
 			<On id="11">parameter</On>
@@ -680,18 +537,10 @@ Any inquiries can be addressed to:
 			<Time initial="true">10000</Time>
 			<Interval>75</Interval>
 			<Content>
-				<Group>10</Group>
-			</Content>
-		</Timer>
-		<Timer id="2">
-			<Name>Medium Timer (1m)</Name>
-			<Time initial="true" dataDisplay="30000">60000</Time>
-			<Interval>75</Interval>
-			<Content>
 				<Group>11</Group>
 			</Content>
 		</Timer>
-		<Timer id="3">
+		<Timer id="2">
 			<Name>Slow Timer (1h)</Name>
 			<Time initial="true">3600000</Time>
 			<Interval>75</Interval>
@@ -729,7 +578,7 @@ Any inquiries can be addressed to:
 							<MajorVersion id="0">
 								<MinorVersions>
 									<MinorVersion id="1">
-										<Date>2023-mm-dd</Date>
+										<Date>2023-05-04</Date>
 										<Provider>
 											<Author></Author>
 											<Company>Skyline Communications</Company>
@@ -737,6 +586,23 @@ Any inquiries can be addressed to:
 										<Changes>
 											<NewFeature>Initial version</NewFeature>
 										</Changes>
+									</MinorVersion>
+								</MinorVersions>
+							</MajorVersion>
+							<MajorVersion id="1">
+								<MinorVersions>
+									<MinorVersion id="1" basedOn="1.0.0.1">
+										<Date>2023-05-04</Date>
+										<Provider>
+											<Author>ADK</Author>
+											<Company>Skyline Communications</Company>
+										</Provider>
+										<Changes>
+											<NewFeature />
+										</Changes>
+										<References>
+											<TaskId>207996</TaskId>
+										</References>
 									</MinorVersion>
 								</MinorVersions>
 							</MajorVersion>

@@ -1,4 +1,4 @@
-namespace QAction_1.Skyline.Ember
+namespace QAction_1.Ember
 {
 	using System;
 	using System.Linq;
@@ -7,9 +7,8 @@ namespace QAction_1.Skyline.Ember
 	using EmberLib.Framing;
 	using EmberLib.Glow;
 	using EmberLib.Glow.Framing;
-	using global::Skyline.DataMiner.Scripting;
-	using QAction_1.Skyline.DataMiner.Scripting.Solutions.Ember;
-	using QAction_1.Skyline.Ember.Protocol;
+	using QAction_1.Ember.Protocol;
+	using Skyline.DataMiner.Scripting;
 
 	public class EmberHandler
 	{
@@ -19,7 +18,7 @@ namespace QAction_1.Skyline.Ember
 
 		private GlowReader glowReader;
 
-		private int[] lastRequestedPath;
+		private int[] lastRequestedPath = Array.Empty<int>();
 
 		public EmberHandler(
 			SLProtocol protocol,
@@ -30,37 +29,14 @@ namespace QAction_1.Skyline.Ember
 			EmberData = new EmberData();
 		}
 
-		public StringBuilder Error { get; set; }
-
 		private Configuration Configurations { get; }
 
 		private EmberData EmberData { get; }
 
 		public void DiscoverEmberTree()
 		{
-			EmberData.PollActions.Enqueue(new EmberDiscoveryAction(protocol, Configurations, EmberData));
+			EmberData.PollActions.Enqueue(new EmberDiscoveryAction(protocol, Configurations));
 			ExecuteNextAction();
-		}
-
-		public void ExecuteNextAction()
-		{
-			if ((currentPollAction == null || currentPollAction.Done) && EmberData.PollActions.Count > 0)
-			{
-				currentPollAction = EmberData.PollActions.Dequeue();
-				currentPollAction.Execute();
-			}
-			else if (currentPollAction != null && !currentPollAction.Done)
-			{
-				if (currentPollAction is EmberDiscoveryAction)
-				{
-					// Ember Tree discovery was not successful
-					Error.AppendLine("|ExecuteNextAction|Ember Tree Polling Failed -> restarting action");
-					EmberData.PollActions.Enqueue(new EmberDiscoveryAction(protocol, Configurations, EmberData));
-				}
-
-				currentPollAction = null;
-				ExecuteNextAction();
-			}
 		}
 
 		public void PollParameters(string[] parameterPath)
@@ -88,14 +64,52 @@ namespace QAction_1.Skyline.Ember
 			HandleResponse(receivedData);
 		}
 
+		private void ExecuteNextAction()
+		{
+			if ((currentPollAction == null || currentPollAction.Done) && EmberData.PollActions.Count > 0)
+			{
+				currentPollAction = EmberData.PollActions.Dequeue();
+				currentPollAction.Execute();
+			}
+			else if (currentPollAction != null && !currentPollAction.Done && currentPollAction.Timeout)
+			{
+				if (!currentPollAction.RetriesExceeded)
+				{
+					protocol.Log(
+						"QA" + protocol.QActionID + "|ExecuteNextAction|Previous action was not executed in time -> retrying action: " + currentPollAction,
+						LogType.Information,
+						LogLevel.NoLogging);
+
+					currentPollAction.Continue();
+				}
+				else
+				{
+					protocol.Log(
+						"QA" + protocol.QActionID + "|ExecuteNextAction|Previous action was not executed in time and exceeded retries -> execute next action: " + currentPollAction,
+						LogType.Error,
+						LogLevel.NoLogging);
+
+					if (currentPollAction is EmberDiscoveryAction)
+					{
+						// Ember Tree discovery was not successful
+						protocol.Log("QA" + protocol.QActionID + "|ExecuteNextAction|Ember Tree Polling Failed -> restarting action", LogType.Error, LogLevel.NoLogging);
+						EmberData.PollActions.Enqueue(new EmberDiscoveryAction(protocol, Configurations));
+					}
+
+					currentPollAction = null;
+					ExecuteNextAction();
+				}
+			}
+		}
+
 		private void GlowError(string message)
 		{
-			Error.AppendLine("|GlowError|Message: " + message);
+			protocol.Log("QA" + protocol.QActionID + "|GlowError|Message: " + message, LogType.Error, LogLevel.NoLogging);
 		}
 
 		private void GlowFramingError(string message)
 		{
-			Error.AppendLine("|GlowFramingError|Message: " + message);
+			protocol.Log("QA" + protocol.QActionID + "|GlowFramingError|Message: " + message, LogType.Error, LogLevel.NoLogging);
 		}
 
 		private void GlowReceived(EmberNode root)
@@ -106,7 +120,7 @@ namespace QAction_1.Skyline.Ember
 			}
 
 			bool isDiscoveryMode = currentPollAction is EmberDiscoveryAction;
-			int[] validateLastRequestPath = isDiscoveryMode ? lastRequestedPath : null;
+			int[] validateLastRequestPath = isDiscoveryMode ? lastRequestedPath : Array.Empty<int>();
 			int[] newLastRequestedPath = currentPollAction.ProcessReceivedGlow(EmberData, glowContainer, validateLastRequestPath);
 			lastRequestedPath = newLastRequestedPath == Array.Empty<int>() ? lastRequestedPath : newLastRequestedPath;
 
@@ -132,7 +146,7 @@ namespace QAction_1.Skyline.Ember
 		{
 			if (receivedData == null)
 			{
-				Error.AppendLine("|HandleResponse|ERR: Received data is invalid!");
+				protocol.Log("QA" + protocol.QActionID + "|HandleResponse|ERR: Received data is invalid!", LogType.Error, LogLevel.NoLogging);
 
 				return;
 			}
@@ -141,7 +155,7 @@ namespace QAction_1.Skyline.Ember
 
 			if (objectArray.Length == 0)
 			{
-				Error.AppendLine("|HandleResponse|ERR: Received data is invalid! Content:\n" + String.Join(".", objectArray.Select(Convert.ToString)));
+				protocol.Log("QA" + protocol.QActionID + "|HandleResponse|ERR: Received data is invalid! Content:\n" + String.Join(".", objectArray.Select(Convert.ToString)), LogType.Error, LogLevel.NoLogging);
 
 				return;
 			}
@@ -159,7 +173,7 @@ namespace QAction_1.Skyline.Ember
 			}
 			catch (Exception e)
 			{
-				Error.AppendLine("|HandleResponse|Error" + Environment.NewLine + e);
+				protocol.Log("QA" + protocol.QActionID + "|HandleResponse|Error" + Environment.NewLine + e, LogType.Error, LogLevel.NoLogging);
 			}
 		}
 
@@ -171,7 +185,7 @@ namespace QAction_1.Skyline.Ember
 
 		private void PackageReceived(FramingReader.PackageReceivedArgs e)
 		{
-			protocol.Log("QA" + protocol.QActionID + "|Package Received|MessageId " + e.MessageId, LogType.Information, LogLevel.NoLogging);
+			// protocol.Log("QA" + protocol.QActionID + "|Package Received|MessageId " + e.MessageId, LogType.Information, LogLevel.NoLogging);
 		}
 	}
 }
