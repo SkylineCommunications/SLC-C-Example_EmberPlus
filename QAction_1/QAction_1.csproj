@@ -52,6 +52,12 @@
     <Reference Include="EmberLib.Glow">
       <HintPath>..\Dlls\EmberLib.Glow.dll</HintPath>
     </Reference>
+    <Reference Include="Lawo">
+      <HintPath>..\Dlls\Lawo.dll</HintPath>
+    </Reference>
+    <Reference Include="Lawo.EmberPlusSharp">
+      <HintPath>..\Dlls\Lawo.EmberPlusSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <ProjectReference Include="..\QAction_Helper\QAction_Helper.csproj">
       <Project>{AD426E2D-764C-4308-9922-FA4DA45BA4F5}</Project>
@@ -61,14 +67,16 @@
     <Content Include=".editorconfig" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ember\EmberHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ProtocolExtensions.cs" />
-    <Compile Include="Skyline\Ember\Protocol\Constants.cs" />
-    <Compile Include="Skyline\Ember\Protocol\Configuration.cs" />
-    <Compile Include="Skyline\Ember\Protocol\S101Params.cs" />
-    <Compile Include="Skyline\GlowRootReadyEventArgs.cs" />
-    <Compile Include="Skyline\NotificationEventArgs.cs" />
-    <Compile Include="Something.cs" />
+    <Compile Include="Ember\EmberAction.cs" />
+    <Compile Include="Ember\Protocol\Constants.cs" />
+    <Compile Include="Ember\EmberDiscoveryAction.cs" />
+    <Compile Include="Ember\EmberPollAction.cs" />
+    <Compile Include="Ember\Protocol\ParameterMapping.cs" />
+    <Compile Include="Ember\Protocol\Configuration.cs" />
+    <Compile Include="Ember\Protocol\EmberData.cs" />
+    <Compile Include="Ember\Protocol\S101Params.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json">
@@ -87,7 +95,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties DisLinkId="1" DisProjectType="qactionProject" DisLinkedXmlFile="..\protocol.xml" />
+      <UserProperties DisLinkedXmlFile="..\protocol.xml" DisProjectType="qactionProject" DisLinkId="1" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
