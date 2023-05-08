@@ -42,6 +42,8 @@ Any inquiries can be addressed to:
 	E-mail	: info@skyline.be
 	Web		: www.skyline.be
 	Contact	: Ben Vandenberghe
+	
+	Ember+ connection made in QAction
 
 -->
 
@@ -56,7 +58,7 @@ Any inquiries can be addressed to:
 	<DeviceOID>01</DeviceOID>
 	<ElementType>External Device</ElementType>
 	<Type relativeTimers="true">http</Type>
-	<Display defaultPage="General" pageOrder="General" wideColumnPages="" />
+	<Display defaultPage="General" pageOrder="General;Nodes;Parameters;Matrix;Functions" wideColumnPages="Nodes;Parameters;Matrix;Functions" />
 	<SNMP includepages="true">auto</SNMP>
 
 	<Compliancies>
@@ -65,6 +67,8 @@ Any inquiries can be addressed to:
 
 	<Relations>
 		<Relation path="100;110" />
+		<Relation path="100;200" />
+		<Relation path="100;300" />
 	</Relations>
 
 	<Params>
@@ -168,6 +172,10 @@ Any inquiries can be addressed to:
 				<ColumnOption idx="1" pid="102" type="retrieved" options="" />
 				<ColumnOption idx="2" pid="103" type="retrieved" options=";foreignKey=100" />
 				<ColumnOption idx="3" pid="104" type="retrieved" options="" />
+				<ColumnOption idx="4" pid="105" type="retrieved" options="" />
+				<ColumnOption idx="5" pid="106" type="retrieved" options="" />
+				<ColumnOption idx="6" pid="107" type="retrieved" options="" />
+				<ColumnOption idx="7" pid="108" type="retrieved" options="" />
 			</ArrayOptions>
 			<Information>
 				<Subtext>All discovered Ember+ nodes</Subtext>
@@ -176,14 +184,14 @@ Any inquiries can be addressed to:
 				<RTDisplay>true</RTDisplay>
 				<Positions>
 					<Position>
-						<Page>General</Page>
+						<Page>Nodes</Page>
 						<Column>0</Column>
-						<Row>3</Row>
+						<Row>0</Row>
 					</Position>
 				</Positions>
 			</Display>
 			<Measurement>
-				<Type options="tab=columns:101|0-102|1-103|2-104|3,width:100-100-100-100,sort:STRING-INT|ASC|0-STRING-STRING,lines:25,filter:true">table</Type>
+				<Type options=";tab=columns:101|0-102|1-103|2-104|3-105|4-106|5-107|6-108|7,width:100-100-100-100-100-100-100-140,sort:STRING-INT-STRING-STRING-STRING|ASC|0-STRING-STRING-STRING,lines:0,filter:true">table</Type>
 			</Measurement>
 		</Param>
 		<Param id="101" trending="false">
@@ -217,9 +225,13 @@ Any inquiries can be addressed to:
 				<Type>double</Type>
 				<LengthType>next param</LengthType>
 			</Interprete>
+			<!-- SuppressValidator 2.9.7 Unable to define units -->
+			<!-- SuppressValidator 2.11.1 Unable to define ranges -->
 			<Display>
 				<RTDisplay>true</RTDisplay>
 			</Display>
+			<!-- /SuppressValidator 2.11.1 -->
+			<!-- /SuppressValidator 2.9.7 -->
 			<Measurement>
 				<Type>number</Type>
 			</Measurement>
@@ -244,11 +256,97 @@ Any inquiries can be addressed to:
 			</Measurement>
 		</Param>
 		<Param id="104" trending="false">
-			<Name>EmberNodesPath</Name>
-			<Description>Path (Ember Nodes)</Description>
+			<Name>EmberNodesIdentifierPath</Name>
+			<Description>Identifier Path (Ember Nodes)</Description>
 			<Type>read</Type>
 			<Information>
-				<Subtext>Path</Subtext>
+				<Subtext>Identifier Path of the node.</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>other</RawType>
+				<Type>string</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<Measurement>
+				<Type>string</Type>
+			</Measurement>
+		</Param>
+		<Param id="105" trending="false">
+			<Name>EmberNodesJoinedPath</Name>
+			<Description>Joined Path (Ember Nodes)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>Joined Path of the node.</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>other</RawType>
+				<Type>string</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<Measurement>
+				<Type>string</Type>
+			</Measurement>
+		</Param>
+		<Param id="106" trending="false">
+			<Name>EmberNodesDescription</Name>
+			<Description>Description (Ember Nodes)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>Description of the node.</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>other</RawType>
+				<Type>string</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<Measurement>
+				<Type>string</Type>
+			</Measurement>
+		</Param>
+		<Param id="107" trending="false">
+			<Name>EmberNodesState</Name>
+			<Description>State (Ember Nodes)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>State of the node.</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<Measurement>
+				<Type>discreet</Type>
+				<Discreets>
+					<Discreet>
+						<Display>Is Offline</Display>
+						<Value>0</Value>
+					</Discreet>
+					<Discreet>
+						<Display>Is Online</Display>
+						<Value>1</Value>
+					</Discreet>
+				</Discreets>
+			</Measurement>
+		</Param>
+		<Param id="108" trending="false">
+			<Name>EmberNodesJoinedIdentifierPath</Name>
+			<Description>Joined Identifier Path (Ember Nodes)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>Joined Identifier of the node.</Subtext>
 			</Information>
 			<Interprete>
 				<RawType>other</RawType>
@@ -273,6 +371,19 @@ Any inquiries can be addressed to:
 				<ColumnOption idx="3" pid="114" type="retrieved" options="" />
 				<ColumnOption idx="4" pid="115" type="retrieved" options="" />
 				<ColumnOption idx="5" pid="116" type="retrieved" options="" />
+				<ColumnOption idx="6" pid="117" type="retrieved" options="" />
+				<ColumnOption idx="7" pid="118" type="retrieved" options="" />
+				<ColumnOption idx="8" pid="119" type="retrieved" options="" />
+				<ColumnOption idx="9" pid="120" type="retrieved" options="" />
+				<ColumnOption idx="10" pid="121" type="retrieved" options="" />
+				<ColumnOption idx="11" pid="122" type="retrieved" options="" />
+				<ColumnOption idx="12" pid="123" type="retrieved" options="" />
+				<ColumnOption idx="13" pid="124" type="retrieved" options="" />
+				<ColumnOption idx="14" pid="125" type="retrieved" options="" />
+				<ColumnOption idx="15" pid="126" type="retrieved" options="" />
+				<ColumnOption idx="16" pid="127" type="retrieved" options="" />
+				<ColumnOption idx="17" pid="128" type="retrieved" options="" />
+				<ColumnOption idx="18" pid="129" type="retrieved" options="" />
 			</ArrayOptions>
 			<Information>
 				<Subtext>Ember Parameters</Subtext>
@@ -281,14 +392,14 @@ Any inquiries can be addressed to:
 				<RTDisplay>true</RTDisplay>
 				<Positions>
 					<Position>
-						<Page>General</Page>
+						<Page>Parameters</Page>
 						<Column>0</Column>
-						<Row>4</Row>
+						<Row>0</Row>
 					</Position>
 				</Positions>
 			</Display>
 			<Measurement>
-				<Type options="tab=columns:111|0-112|1-113|2-114|3-115|4-116|5,width:100-100-100-100-100-100,sort:STRING-INT|ASC|0-STRING-STRING-STRING-STRING,lines:25,filter:true">table</Type>
+				<Type options=";tab=columns:111|0-112|1-113|2-114|3-115|4-116|5-117|6-118|7-119|8-120|9-121|10-122|11-123|12-124|13-125|14-126|15-127|16-128|17-129|18,width:100-100-100-100-100-100-100-140-100-100-100-100-100-100-100-100-100-100-100,sort:STRING-INT-STRING-STRING-STRING|ASC|0-STRING-STRING-STRING-STRING-STRING-INT-INT-STRING-STRING-STRING-INT-STRING-STRING-STRING,lines:0,filter:true">table</Type>
 			</Measurement>
 		</Param>
 		<Param id="111" trending="false">
@@ -315,15 +426,20 @@ Any inquiries can be addressed to:
 			<Description>Number (Ember Parameters)</Description>
 			<Type>read</Type>
 			<Information>
+				<Subtext>Number of the parameter.</Subtext>
 			</Information>
 			<Interprete>
 				<RawType>numeric text</RawType>
 				<Type>double</Type>
 				<LengthType>next param</LengthType>
 			</Interprete>
+			<!-- SuppressValidator 2.9.7 Unable to define units -->
+			<!-- SuppressValidator 2.11.1 Unable to define ranges -->
 			<Display>
 				<RTDisplay>true</RTDisplay>
 			</Display>
+			<!-- /SuppressValidator 2.11.1 -->
+			<!-- /SuppressValidator 2.9.7 -->
 			<Measurement>
 				<Type>number</Type>
 			</Measurement>
@@ -333,7 +449,7 @@ Any inquiries can be addressed to:
 			<Description>Parent (Ember Parameters)</Description>
 			<Type>read</Type>
 			<Information>
-				<Subtext>Parent node</Subtext>
+				<Subtext>Parent node of the parameter.</Subtext>
 			</Information>
 			<Interprete>
 				<RawType>other</RawType>
@@ -348,10 +464,116 @@ Any inquiries can be addressed to:
 			</Measurement>
 		</Param>
 		<Param id="114" trending="false">
+			<Name>EmberParametersIdentifierPath</Name>
+			<Description>Identifier Path (Ember Parameters)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>Identifier path of the parameter.</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>other</RawType>
+				<Type>string</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<Measurement>
+				<Type>string</Type>
+			</Measurement>
+		</Param>
+		<Param id="115" trending="false">
+			<Name>EmberParametersJoinedPath</Name>
+			<Description>Joined Path (Ember Parameters)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>Joined path of the parameter.</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>other</RawType>
+				<Type>string</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<Measurement>
+				<Type>string</Type>
+			</Measurement>
+		</Param>
+		<Param id="116" trending="false">
+			<Name>EmberParametersDescription</Name>
+			<Description>Description (Ember Parameters)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>Description of the parameter.</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>other</RawType>
+				<Type>string</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<Measurement>
+				<Type>string</Type>
+			</Measurement>
+		</Param>
+		<Param id="117" trending="false">
+			<Name>EmberParametersState</Name>
+			<Description>State (Ember Parameters)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>State of the parameter.</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<Measurement>
+				<Type>discreet</Type>
+				<Discreets>
+					<Discreet>
+						<Display>Is Offline</Display>
+						<Value>0</Value>
+					</Discreet>
+					<Discreet>
+						<Display>Is Online</Display>
+						<Value>1</Value>
+					</Discreet>
+				</Discreets>
+			</Measurement>
+		</Param>
+		<Param id="118" trending="false">
+			<Name>EmberParametersJoinedIdentifierPath</Name>
+			<Description>Joined Identifier Path (Ember Parameters)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>Joined identifier path of the parameter.</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>other</RawType>
+				<Type>string</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<Measurement>
+				<Type>string</Type>
+			</Measurement>
+		</Param>
+		<Param id="119" trending="false">
 			<Name>EmberParametersType</Name>
 			<Description>Type (Ember Parameters)</Description>
 			<Type>read</Type>
 			<Information>
+				<Subtext>Type of the parameter.</Subtext>
 			</Information>
 			<Interprete>
 				<RawType>numeric text</RawType>
@@ -399,12 +621,12 @@ Any inquiries can be addressed to:
 				</Discreets>
 			</Measurement>
 		</Param>
-		<Param id="115" trending="false">
+		<Param id="120" trending="false">
 			<Name>EmberParametersValue</Name>
 			<Description>Value (Ember Parameters)</Description>
 			<Type>read</Type>
 			<Information>
-				<Subtext>The value of the parameter</Subtext>
+				<Subtext>Value of the parameter.</Subtext>
 			</Information>
 			<Interprete>
 				<RawType>other</RawType>
@@ -418,12 +640,124 @@ Any inquiries can be addressed to:
 				<Type>string</Type>
 			</Measurement>
 		</Param>
-		<Param id="116" trending="false">
-			<Name>EmberParametersPath</Name>
-			<Description>Path (Ember Parameters)</Description>
+		<Param id="121" trending="false">
+			<Name>EmberParametersMinimum</Name>
+			<Description>Minimum (Ember Parameters)</Description>
 			<Type>read</Type>
 			<Information>
-				<Subtext>Path</Subtext>
+				<Subtext>Minimum of the parameter.</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<!-- SuppressValidator 2.9.7 Unable to define units -->
+			<!-- SuppressValidator 2.11.1 Unable to define ranges -->
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<!-- /SuppressValidator 2.11.1 -->
+			<!-- /SuppressValidator 2.9.7 -->
+			<Measurement>
+				<Type>number</Type>
+			</Measurement>
+		</Param>
+		<Param id="122" trending="false">
+			<Name>EmberParametersMaximum</Name>
+			<Description>Maximum (Ember Parameters)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>Maximum of the parameter.</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<!-- SuppressValidator 2.9.7 Unable to define units -->
+			<!-- SuppressValidator 2.11.1 Unable to define ranges -->
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<!-- /SuppressValidator 2.11.1 -->
+			<!-- /SuppressValidator 2.9.7 -->
+			<Measurement>
+				<Type>number</Type>
+			</Measurement>
+		</Param>
+		<Param id="123" trending="false">
+			<Name>EmberParametersAccess</Name>
+			<Description>Access (Ember Parameters)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>Access state of the parameter.</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>other</RawType>
+				<Type>string</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<Measurement>
+				<Type>discreet</Type>
+				<Discreets>
+					<Discreet>
+						<Display>None: 0x0</Display>
+						<Value>None</Value>
+					</Discreet>
+					<Discreet>
+						<Display>Read: 0x1</Display>
+						<Value>Read</Value>
+					</Discreet>
+					<Discreet>
+						<Display>Write: 0x2</Display>
+						<Value>Write</Value>
+					</Discreet>
+					<Discreet>
+						<Display>Readwrite: 0x3</Display>
+						<Value>ReadWrite</Value>
+					</Discreet>
+				</Discreets>
+			</Measurement>
+		</Param>
+		<Param id="124" trending="false">
+			<Name>EmberParametersIsWritable</Name>
+			<Description>Is Writable (Ember Parameters)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>Is writable state of the parameter.</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<Measurement>
+				<Type>discreet</Type>
+				<Discreets>
+					<Discreet>
+						<Display>False</Display>
+						<Value>0</Value>
+					</Discreet>
+					<Discreet>
+						<Display>True</Display>
+						<Value>1</Value>
+					</Discreet>
+				</Discreets>
+			</Measurement>
+		</Param>
+		<Param id="125" trending="false">
+			<Name>EmberParametersFormat</Name>
+			<Description>Format (Ember Parameters)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>Format of the parameter.</Subtext>
 			</Information>
 			<Interprete>
 				<RawType>other</RawType>
@@ -437,34 +771,128 @@ Any inquiries can be addressed to:
 				<Type>string</Type>
 			</Measurement>
 		</Param>
-		<Param id="120">
-			<Name>RequestedNodesTable</Name>
-			<Description>Requested Nodes</Description>
+		<Param id="126" trending="false">
+			<Name>EmberParametersFactor</Name>
+			<Description>Factor (Ember Parameters)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>Factor of the parameter.</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<!-- SuppressValidator 2.9.7 Unable to define units -->
+			<!-- SuppressValidator 2.11.1 Unable to define ranges -->
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<!-- /SuppressValidator 2.11.1 -->
+			<!-- /SuppressValidator 2.9.7 -->
+			<Measurement>
+				<Type>number</Type>
+			</Measurement>
+		</Param>
+		<Param id="127" trending="false">
+			<Name>EmberParametersFormula</Name>
+			<Description>Formula (Ember Parameters)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>Formula of the parameter.</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>other</RawType>
+				<Type>string</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<Measurement>
+				<Type>string</Type>
+			</Measurement>
+		</Param>
+		<Param id="128" trending="false">
+			<Name>EmberParametersDefaultValue</Name>
+			<Description>Default Value (Ember Parameters)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>Default value of the parameter.</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>other</RawType>
+				<Type>string</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<Measurement>
+				<Type>string</Type>
+			</Measurement>
+		</Param>
+		<Param id="129" trending="false">
+			<Name>EmberParametersEnumMap</Name>
+			<Description>Enum Map (Ember Parameters)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>Serialized enum map of the parameter.</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>other</RawType>
+				<Type>string</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<Measurement>
+				<Type>string</Type>
+			</Measurement>
+		</Param>
+		<Param id="200">
+			<Name>EmberMatrixTable</Name>
+			<Description>Ember Matrix</Description>
 			<Type>array</Type>
 			<ArrayOptions index="0">
-				<ColumnOption idx="0" pid="121" type="retrieved" options="" />
-				<ColumnOption idx="1" pid="122" type="retrieved" options="" />
+				<ColumnOption idx="0" pid="201" type="retrieved" options="" />
+				<ColumnOption idx="1" pid="202" type="retrieved" options="" />
+				<ColumnOption idx="2" pid="203" type="retrieved" options=";foreignKey=100" />
+				<ColumnOption idx="3" pid="204" type="retrieved" options="" />
+				<ColumnOption idx="4" pid="205" type="retrieved" options="" />
+				<ColumnOption idx="5" pid="206" type="retrieved" options="" />
+				<ColumnOption idx="6" pid="207" type="retrieved" options="" />
+				<ColumnOption idx="7" pid="208" type="retrieved" options="" />
+				<ColumnOption idx="8" pid="209" type="retrieved" options="" />
+				<ColumnOption idx="9" pid="210" type="retrieved" options="" />
+				<ColumnOption idx="10" pid="211" type="retrieved" options="" />
+				<ColumnOption idx="11" pid="212" type="retrieved" options="" />
+				<ColumnOption idx="12" pid="213" type="retrieved" options="" />
+				<ColumnOption idx="13" pid="214" type="retrieved" options="" />
+				<ColumnOption idx="14" pid="215" type="retrieved" options="" />
+				<ColumnOption idx="15" pid="216" type="retrieved" options="" />
 			</ArrayOptions>
 			<Information>
-				<Subtext>Requested Nodes</Subtext>
+				<Subtext>Ember matrix table</Subtext>
 			</Information>
 			<Display>
 				<RTDisplay>true</RTDisplay>
 				<Positions>
 					<Position>
-						<Page>General</Page>
+						<Page>Matrix</Page>
 						<Column>0</Column>
-						<Row>5</Row>
+						<Row>0</Row>
 					</Position>
 				</Positions>
 			</Display>
 			<Measurement>
-				<Type options="tab=columns:121|0-122|1,width:100-100,sort:STRING-INT|ASC|0,lines:25,filter:true">table</Type>
+				<Type options=";tab=columns:201|0-202|1-203|2-204|3-205|4-206|5-207|6-208|7-209|8-210|9-211|10-212|11-213|12-214|13-215|14-216|15,width:100-100-100-100-100-100-100-140-162-192-134-155-100-100-100-100,sort:STRING-INT-STRING-STRING-STRING|ASC|0-STRING-STRING-STRING-INT-INT-STRING-INT-STRING-STRING-STRING-STRING,lines:0,filter:true">table</Type>
 			</Measurement>
 		</Param>
-		<Param id="121" trending="false">
-			<Name>RequestedNodesIdentifier</Name>
-			<Description>Identifier (Requested Nodes)</Description>
+		<Param id="201" trending="false">
+			<Name>EmberMatrixIdentifier</Name>
+			<Description>Identifier (Ember Matrix)</Description>
 			<Type>read</Type>
 			<Information>
 				<Subtext>This is the key used internally by DataMiner to identify the table entries.</Subtext>
@@ -481,11 +909,111 @@ Any inquiries can be addressed to:
 				<Type>string</Type>
 			</Measurement>
 		</Param>
-		<Param id="122" trending="false">
-			<Name>RequestedNodesNumber</Name>
-			<Description>Number (Requested Nodes)</Description>
+		<Param id="202" trending="false">
+			<Name>EmberMatrixNumber</Name>
+			<Description>Number (Ember Matrix)</Description>
 			<Type>read</Type>
 			<Information>
+				<Subtext>Number of the Ember+ element</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<!-- SuppressValidator 2.9.7 Unable to define units -->
+			<!-- SuppressValidator 2.11.1 Unable to define ranges -->
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<!-- /SuppressValidator 2.11.1 -->
+			<!-- /SuppressValidator 2.9.7 -->
+			<Measurement>
+				<Type>number</Type>
+			</Measurement>
+		</Param>
+		<Param id="203" trending="false">
+			<Name>EmberMatrixParent</Name>
+			<Description>Parent (Ember Matrix)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>Parent node</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>other</RawType>
+				<Type>string</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<Measurement>
+				<Type>string</Type>
+			</Measurement>
+		</Param>
+		<Param id="204" trending="false">
+			<Name>EmberMatrixIdentifierPath</Name>
+			<Description>Identifier Path (Ember Matrix)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>Identifier Path of the node.</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>other</RawType>
+				<Type>string</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<Measurement>
+				<Type>string</Type>
+			</Measurement>
+		</Param>
+		<Param id="205" trending="false">
+			<Name>EmberMatrixJoinedPath</Name>
+			<Description>Joined Path (Ember Matrix)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>Joined Path of the node.</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>other</RawType>
+				<Type>string</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<Measurement>
+				<Type>string</Type>
+			</Measurement>
+		</Param>
+		<Param id="206" trending="false">
+			<Name>EmberMatrixDescription</Name>
+			<Description>Description (Ember Matrix)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>Description of the node.</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>other</RawType>
+				<Type>string</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<Measurement>
+				<Type>string</Type>
+			</Measurement>
+		</Param>
+		<Param id="207" trending="false">
+			<Name>EmberMatrixState</Name>
+			<Description>State (Ember Matrix)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>State of the node.</Subtext>
 			</Information>
 			<Interprete>
 				<RawType>numeric text</RawType>
@@ -496,26 +1024,96 @@ Any inquiries can be addressed to:
 				<RTDisplay>true</RTDisplay>
 			</Display>
 			<Measurement>
+				<Type>discreet</Type>
+				<Discreets>
+					<Discreet>
+						<Display>Is Offline</Display>
+						<Value>0</Value>
+					</Discreet>
+					<Discreet>
+						<Display>Is Online</Display>
+						<Value>1</Value>
+					</Discreet>
+				</Discreets>
+			</Measurement>
+		</Param>
+		<Param id="208" trending="false">
+			<Name>EmberMatrixJoinedIdentifierPath</Name>
+			<Description>Joined Identifier Path (Ember Matrix)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>Joined Identifier of the node.</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>other</RawType>
+				<Type>string</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<Measurement>
+				<Type>string</Type>
+			</Measurement>
+		</Param>
+		<Param id="209" trending="false">
+			<Name>EmberMatrixMaximumTotalConnects</Name>
+			<Description>Maximum Total Connects (Ember Matrix)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>Maximum total connects of the matrix.</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<!-- SuppressValidator 2.9.7 Unable to define units -->
+			<!-- SuppressValidator 2.11.1 Unable to define ranges -->
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<!-- /SuppressValidator 2.11.1 -->
+			<!-- /SuppressValidator 2.9.7 -->
+			<Measurement>
 				<Type>number</Type>
 			</Measurement>
 		</Param>
-		<Param id="500" trending="false">
-			<Name>IdentityProduct</Name>
-			<Description>Product</Description>
-			<Information>
-				<Subtext>Product</Subtext>
-			</Information>
+		<Param id="210" trending="false">
+			<Name>EmberMatrixMaximumConnectsPerTarget</Name>
+			<Description>Maximum Connects per Target (Ember Matrix)</Description>
 			<Type>read</Type>
+			<Information>
+				<Subtext>Maximum connects per target of the matrix.</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<!-- SuppressValidator 2.9.7 Unable to define units -->
+			<!-- SuppressValidator 2.11.1 Unable to define ranges -->
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<!-- /SuppressValidator 2.11.1 -->
+			<!-- /SuppressValidator 2.9.7 -->
+			<Measurement>
+				<Type>number</Type>
+			</Measurement>
+		</Param>
+		<Param id="211" trending="false">
+			<Name>EmberMatrixParametersLocations</Name>
+			<Description>Parameter Locations (Ember Matrix)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>Parameter locations of the matrix.</Subtext>
+			</Information>
 			<Interprete>
 				<RawType>other</RawType>
 				<Type>string</Type>
 				<LengthType>next param</LengthType>
 			</Interprete>
-			<!-- SuppressValidator 2.5.1 Unable to define default thresholds -->
-			<Alarm>
-				<Monitored>true</Monitored>
-			</Alarm>
-			<!-- /SuppressValidator 2.5.1 -->
 			<Display>
 				<RTDisplay>true</RTDisplay>
 			</Display>
@@ -523,23 +1121,41 @@ Any inquiries can be addressed to:
 				<Type>string</Type>
 			</Measurement>
 		</Param>
-		<Param id="501" trending="false">
-			<Name>IdentityCompany</Name>
-			<Description>Company</Description>
-			<Information>
-				<Subtext>Company</Subtext>
-			</Information>
+		<Param id="212" trending="false">
+			<Name>EmberMatrixGainParameterNumber</Name>
+			<Description>Gain Parameter Number (Ember Matrix)</Description>
 			<Type>read</Type>
+			<Information>
+				<Subtext>Gain parameter number of the matrix.</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<!-- SuppressValidator 2.9.7 Unable to define units -->
+			<!-- SuppressValidator 2.11.1 Unable to define ranges -->
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<!-- /SuppressValidator 2.11.1 -->
+			<!-- /SuppressValidator 2.9.7 -->
+			<Measurement>
+				<Type>number</Type>
+			</Measurement>
+		</Param>
+		<Param id="213" trending="false">
+			<Name>EmberMatrixLabels</Name>
+			<Description>Labels (Ember Matrix)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>Labels of the matrix.</Subtext>
+			</Information>
 			<Interprete>
 				<RawType>other</RawType>
 				<Type>string</Type>
 				<LengthType>next param</LengthType>
 			</Interprete>
-			<!-- SuppressValidator 2.5.1 Unable to define default thresholds -->
-			<Alarm>
-				<Monitored>true</Monitored>
-			</Alarm>
-			<!-- /SuppressValidator 2.5.1 -->
 			<Display>
 				<RTDisplay>true</RTDisplay>
 			</Display>
@@ -547,23 +1163,18 @@ Any inquiries can be addressed to:
 				<Type>string</Type>
 			</Measurement>
 		</Param>
-		<Param id="502" trending="false">
-			<Name>IdentityVersion</Name>
-			<Description>Version</Description>
-			<Information>
-				<Subtext>Version</Subtext>
-			</Information>
+		<Param id="214" trending="false">
+			<Name>EmberMatrixTargets</Name>
+			<Description>Targets (Ember Matrix)</Description>
 			<Type>read</Type>
+			<Information>
+				<Subtext>Targets of the matrix.</Subtext>
+			</Information>
 			<Interprete>
 				<RawType>other</RawType>
 				<Type>string</Type>
 				<LengthType>next param</LengthType>
 			</Interprete>
-			<!-- SuppressValidator 2.5.1 Unable to define default thresholds -->
-			<Alarm>
-				<Monitored>true</Monitored>
-			</Alarm>
-			<!-- /SuppressValidator 2.5.1 -->
 			<Display>
 				<RTDisplay>true</RTDisplay>
 			</Display>
@@ -571,23 +1182,18 @@ Any inquiries can be addressed to:
 				<Type>string</Type>
 			</Measurement>
 		</Param>
-		<Param id="503" trending="false">
-			<Name>IdentityRole</Name>
-			<Description>Role</Description>
-			<Information>
-				<Subtext>Role</Subtext>
-			</Information>
+		<Param id="215" trending="false">
+			<Name>EmberMatrixSources</Name>
+			<Description>Sources (Ember Matrix)</Description>
 			<Type>read</Type>
+			<Information>
+				<Subtext>Sources of the matrix.</Subtext>
+			</Information>
 			<Interprete>
 				<RawType>other</RawType>
 				<Type>string</Type>
 				<LengthType>next param</LengthType>
 			</Interprete>
-			<!-- SuppressValidator 2.5.1 Unable to define default thresholds -->
-			<Alarm>
-				<Monitored>true</Monitored>
-			</Alarm>
-			<!-- /SuppressValidator 2.5.1 -->
 			<Display>
 				<RTDisplay>true</RTDisplay>
 			</Display>
@@ -595,23 +1201,255 @@ Any inquiries can be addressed to:
 				<Type>string</Type>
 			</Measurement>
 		</Param>
-		<Param id="504" trending="false">
-			<Name>IdentitySerial</Name>
-			<Description>Serial</Description>
-			<Information>
-				<Subtext>Serial</Subtext>
-			</Information>
+		<Param id="216" trending="false">
+			<Name>EmberMatrixConnections</Name>
+			<Description>Connections (Ember Matrix)</Description>
 			<Type>read</Type>
+			<Information>
+				<Subtext>Connections of the matrix.</Subtext>
+			</Information>
 			<Interprete>
 				<RawType>other</RawType>
 				<Type>string</Type>
 				<LengthType>next param</LengthType>
 			</Interprete>
-			<!-- SuppressValidator 2.5.1 Unable to define default thresholds -->
-			<Alarm>
-				<Monitored>true</Monitored>
-			</Alarm>
-			<!-- /SuppressValidator 2.5.1 -->
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<Measurement>
+				<Type>string</Type>
+			</Measurement>
+		</Param>
+		<Param id="300">
+			<Name>EmberFunctionsTable</Name>
+			<Description>Ember Functions</Description>
+			<Type>array</Type>
+			<ArrayOptions index="0">
+				<ColumnOption idx="0" pid="301" type="retrieved" options="" />
+				<ColumnOption idx="1" pid="302" type="retrieved" options="" />
+				<ColumnOption idx="2" pid="303" type="retrieved" options=";foreignKey=100" />
+				<ColumnOption idx="3" pid="304" type="retrieved" options="" />
+				<ColumnOption idx="4" pid="305" type="retrieved" options="" />
+				<ColumnOption idx="5" pid="306" type="retrieved" options="" />
+				<ColumnOption idx="6" pid="307" type="retrieved" options="" />
+				<ColumnOption idx="7" pid="308" type="retrieved" options="" />
+				<ColumnOption idx="8" pid="309" type="retrieved" options="" />
+				<ColumnOption idx="9" pid="310" type="retrieved" options="" />
+			</ArrayOptions>
+			<Information>
+				<Subtext>All discovered Ember+ nodes</Subtext>
+			</Information>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+				<Positions>
+					<Position>
+						<Page>Functions</Page>
+						<Column>0</Column>
+						<Row>0</Row>
+					</Position>
+				</Positions>
+			</Display>
+			<Measurement>
+				<Type options=";tab=columns:301|0-302|1-303|2-304|3-305|4-306|5-307|6-308|7-309|8-310|9,width:100-100-100-100-100-100-100-140-100-100,sort:STRING-INT-STRING-STRING-STRING|ASC|0-STRING-STRING-STRING-STRING-STRING,lines:0,filter:true">table</Type>
+			</Measurement>
+		</Param>
+		<Param id="301" trending="false">
+			<Name>EmberFunctionsIdentifier</Name>
+			<Description>Identifier (Ember Functions)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>This is the key used internally by DataMiner to identify the table entries.</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>other</RawType>
+				<Type>string</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<Measurement>
+				<Type>string</Type>
+			</Measurement>
+		</Param>
+		<Param id="302" trending="false">
+			<Name>EmberFunctionsNumber</Name>
+			<Description>Number (Ember Functions)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>Number of the Ember+ element</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<!-- SuppressValidator 2.9.7 Unable to define units -->
+			<!-- SuppressValidator 2.11.1 Unable to define ranges -->
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<!-- /SuppressValidator 2.11.1 -->
+			<!-- /SuppressValidator 2.9.7 -->
+			<Measurement>
+				<Type>number</Type>
+			</Measurement>
+		</Param>
+		<Param id="303" trending="false">
+			<Name>EmberFunctionsParent</Name>
+			<Description>Parent (Ember Functions)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>Parent node</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>other</RawType>
+				<Type>string</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<Measurement>
+				<Type>string</Type>
+			</Measurement>
+		</Param>
+		<Param id="304" trending="false">
+			<Name>EmberFunctionsIdentifierPath</Name>
+			<Description>Identifier Path (Ember Functions)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>Identifier Path of the node.</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>other</RawType>
+				<Type>string</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<Measurement>
+				<Type>string</Type>
+			</Measurement>
+		</Param>
+		<Param id="305" trending="false">
+			<Name>EmberFunctionsJoinedPath</Name>
+			<Description>Joined Path (Ember Functions)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>Joined Path of the node.</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>other</RawType>
+				<Type>string</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<Measurement>
+				<Type>string</Type>
+			</Measurement>
+		</Param>
+		<Param id="306" trending="false">
+			<Name>EmberFunctionsDescription</Name>
+			<Description>Description (Ember Functions)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>Description of the node.</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>other</RawType>
+				<Type>string</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<Measurement>
+				<Type>string</Type>
+			</Measurement>
+		</Param>
+		<Param id="307" trending="false">
+			<Name>EmberFunctionsState</Name>
+			<Description>State (Ember Functions)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>State of the node.</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>numeric text</RawType>
+				<Type>double</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<Measurement>
+				<Type>discreet</Type>
+				<Discreets>
+					<Discreet>
+						<Display>Is Offline</Display>
+						<Value>0</Value>
+					</Discreet>
+					<Discreet>
+						<Display>Is Online</Display>
+						<Value>1</Value>
+					</Discreet>
+				</Discreets>
+			</Measurement>
+		</Param>
+		<Param id="308" trending="false">
+			<Name>EmberFunctionsJoinedIdentifierPath</Name>
+			<Description>Joined Identifier Path (Ember Functions)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>Joined Identifier of the node.</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>other</RawType>
+				<Type>string</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<Measurement>
+				<Type>string</Type>
+			</Measurement>
+		</Param>
+		<Param id="309" trending="false">
+			<Name>EmberFunctionsArguments</Name>
+			<Description>Arguments (Ember Functions)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>Arguments of the function.</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>other</RawType>
+				<Type>string</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
+			<Display>
+				<RTDisplay>true</RTDisplay>
+			</Display>
+			<Measurement>
+				<Type>string</Type>
+			</Measurement>
+		</Param>
+		<Param id="310" trending="false">
+			<Name>EmberFunctionsResult</Name>
+			<Description>Result (Ember Functions)</Description>
+			<Type>read</Type>
+			<Information>
+				<Subtext>Result of the function.</Subtext>
+			</Information>
+			<Interprete>
+				<RawType>other</RawType>
+				<Type>string</Type>
+				<LengthType>next param</LengthType>
+			</Interprete>
 			<Display>
 				<RTDisplay>true</RTDisplay>
 			</Display>
@@ -622,7 +1460,7 @@ Any inquiries can be addressed to:
 	</Params>
 
 	<QActions>
-		<QAction id="3" name="Ember QAction" encoding="csharp" triggers="1"/>
+		<QAction id="3" name="Ember QAction" encoding="csharp" triggers="1" />
 	</QActions>
 
 	<Groups>

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Lawo.EmberPlusSharp.Model;
 using Lawo.EmberPlusSharp.S101;
 using Lawo.Threading.Tasks;
+using Newtonsoft.Json;
 using Skyline.DataMiner.Scripting;
 
 /// <summary>
@@ -31,20 +32,16 @@ public static class QAction
 			async Task AsyncMethod()
 			{
 				// Establish S101 protocol
-				using (var client = await ConnectAsync(ip, port))
+				using (var client = await ConnectAsync(ip, port).ConfigureAwait(false))
 
-					// Retrieve *all* elements in the provider database and store them in a local copy
-				using (var consumer = await Consumer<MyRoot>.CreateAsync(client))
+				// Retrieve *all* elements in the provider database and store them in a local copy
+				using (var consumer = await Consumer<MyRoot>.CreateAsync(client).ConfigureAwait(false))
 				{
 					WriteChildren(protocol, consumer.Root);
 
-					//// Get the root of the local database.
-					// INode root = consumer.Root;
-
 					consumer.Dispose();
 					client.Dispose();
-					//// For now just output the number of direct children under the root node.
-					// Console.WriteLine(root.Children.Count);
+					protocol.DisposeResources();
 				}
 			}
 
@@ -60,7 +57,7 @@ public static class QAction
 	{
 		// Create TCP connection
 		var tcpClient = new TcpClient();
-		await tcpClient.ConnectAsync(host, port);
+		await tcpClient.ConnectAsync(host, port).ConfigureAwait(false);
 
 		// Establish S101 protocol
 		// S101 provides message packaging, CRC integrity checks and a keep-alive mechanism.
@@ -90,44 +87,130 @@ public static class QAction
 			case ParameterType.Octets:
 				return Encoding.ASCII.GetString((byte[])childParameter.Value);
 			default:
-				return new ArgumentOutOfRangeException();
+				return new ArgumentOutOfRangeException($"Type: {type}, Value: {Convert.ToString(childParameter.Value)}");
 		}
+	}
+
+	private static void ProcessChildFunction(SLProtocolExt protocol, IFunction childFunction)
+	{
+		var functionRow = new EmberfunctionstableQActionRow
+		{
+			Emberfunctionsidentifier_301 = childFunction.Identifier,
+			Emberfunctionsnumber_302 = childFunction.Number,
+			Emberfunctionsparent_303 = childFunction.Parent.Identifier,
+			Emberfunctionsidentifierpath_304 = childFunction.IdentifierPath,
+			Emberfunctionsjoinedpath_305 = String.Join(".", childFunction.Path),
+			Emberfunctionsdescription_306 = childFunction.Description,
+			Emberfunctionsstate_307 = Convert.ToInt32(childFunction.IsOnline),
+			Emberfunctionsjoinedidentifierpath_308 = childFunction.GetPath(),
+			Emberfunctionsarguments_309 = JsonConvert.SerializeObject(childFunction.Arguments),
+			Emberfunctionsresult_310 = JsonConvert.SerializeObject(childFunction.Result),
+		};
+
+		protocol.emberfunctionstable.SetRow(functionRow, true);
+	}
+
+	private static void ProcessChildMatrix(SLProtocolExt protocol, IMatrix childMatrix)
+	{
+		var matrixRow = new EmbermatrixtableQActionRow
+		{
+			Embermatrixidentifier_201 = childMatrix.Identifier,
+			Embermatrixnumber_202 = childMatrix.Number,
+			Embermatrixparent_203 = childMatrix.Parent.Identifier,
+			Embermatrixidentifierpath_204 = childMatrix.IdentifierPath,
+			Embermatrixjoinedpath_205 = String.Join(".", childMatrix.Path),
+			Embermatrixdescription_206 = childMatrix.Description,
+			Embermatrixstate_207 = Convert.ToInt32(childMatrix.IsOnline),
+			Embermatrixjoinedidentifierpath_208 = childMatrix.GetPath(),
+			Embermatrixmaximumtotalconnects_209 = childMatrix.MaximumTotalConnects,
+			Embermatrixmaximumconnectspertarget_210 = childMatrix.MaximumConnectsPerTarget,
+			Embermatrixparameterslocations_211 = JsonConvert.SerializeObject(childMatrix.ParametersLocation),
+			Embermatrixgainparameternumber_212 = childMatrix.GainParameterNumber,
+			Embermatrixlabels_213 = JsonConvert.SerializeObject(childMatrix.Labels),
+			Embermatrixtargets_214 = JsonConvert.SerializeObject(childMatrix.Targets),
+			Embermatrixsources_215 = JsonConvert.SerializeObject(childMatrix.Sources),
+			Embermatrixconnections_216 = JsonConvert.SerializeObject(childMatrix.Connections),
+		};
+
+		protocol.embermatrixtable.SetRow(matrixRow, true);
+	}
+
+	private static void ProcessChildNode(SLProtocolExt protocol, INode childNode)
+	{
+		var nodeRow = new EmbernodestableQActionRow
+		{
+			Embernodesidentifier_101 = childNode.Identifier,
+			Embernodesnumber_102 = childNode.Number,
+			Embernodesparent_103 = childNode.Parent.Identifier,
+			Embernodesidentifierpath_104 = childNode.IdentifierPath,
+			Embernodesjoinedpath_105 = String.Join(".", childNode.Path),
+			Embernodesdescription_106 = childNode.Description,
+			Embernodesstate_107 = Convert.ToInt32(childNode.IsOnline),
+			Embernodesjoinedidentifierpath_108 = childNode.GetPath(),
+		};
+
+		protocol.embernodestable.SetRow(nodeRow, true);
+
+		WriteChildren(protocol, childNode);
+	}
+
+	private static void ProcessChildParameter(SLProtocolExt protocol, IParameter childParameter)
+	{
+		object value = GetValue(childParameter);
+
+		var parameterRow = new EmberparameterstableQActionRow
+		{
+			Emberparametersidentifier_111 = childParameter.Identifier,
+			Emberparametersnumber_112 = childParameter.Number,
+			Emberparametersparent_113 = childParameter.Parent.Identifier,
+			Emberparametersidentifierpath_114 = childParameter.IdentifierPath,
+			Emberparametersjoinedpath_115 = String.Join(".", childParameter.Path),
+			Emberparametersdescription_116 = childParameter.Description,
+			Emberparametersstate_117 = Convert.ToInt32(childParameter.IsOnline),
+			Emberparametersjoinedidentifierpath_118 = childParameter.GetPath(),
+			Emberparameterstype_119 = childParameter.Type,
+			Emberparametersvalue_120 = Convert.ToString(value),
+			Emberparametersminimum_121 = Convert.ToInt32(childParameter.Minimum),
+			Emberparametersmaximum_122 = Convert.ToInt32(childParameter.Maximum),
+			Emberparametersaccess_123 = childParameter.Access.ToString(),
+			Emberparametersiswritable_124 = Convert.ToInt32(childParameter.IsWriteable),
+			Emberparametersformat_125 = childParameter.Format,
+			Emberparametersfactor_126 = childParameter.Factor,
+			Emberparametersformula_127 = childParameter.Formula,
+			Emberparametersdefaultvalue_128 = childParameter.DefaultValue,
+			Emberparametersenummap_129 = JsonConvert.SerializeObject(childParameter.EnumMap),
+		};
+
+		protocol.emberparameterstable.SetRow(parameterRow, true);
 	}
 
 	private static void WriteChildren(SLProtocolExt protocol, INode node)
 	{
 		foreach (var child in node.Children)
 		{
-			if (child is INode childNode)
+			switch (child)
 			{
-				var nodeRow = new EmbernodestableQActionRow
-				{
-					Embernodesidentifier_101 = childNode.Identifier,
-					Embernodesnumber_102 = childNode.Number,
-					Embernodesparent_103 = childNode.Parent.Identifier,
-					Embernodespath_104 = childNode.GetPath(),
-				};
+				case IMatrix childMatrix:
+					ProcessChildMatrix(protocol, childMatrix);
 
-				protocol.embernodestable.SetRow(nodeRow, true);
+					break;
 
-				WriteChildren(protocol, childNode);
-			}
+				case INode childNode:
+					ProcessChildNode(protocol, childNode);
 
-			if (child is IParameter childParameter)
-			{
-				object value = GetValue(childParameter);
+					break;
 
-				var parameterRow = new EmberparameterstableQActionRow
-				{
-					Emberparametersidentifier_111 = childParameter.Identifier,
-					Emberparametersnumber_112 = childParameter.Number,
-					Emberparametersparent_113 = childParameter.Parent.Identifier,
-					Emberparameterstype_114 = childParameter.Type,
-					Emberparametersvalue_115 = Convert.ToString(value),
-					Emberparameterspath_116 = childParameter.GetPath(),
-				};
+				case IFunction childFunction:
+					ProcessChildFunction(protocol, childFunction);
 
-				protocol.emberparameterstable.SetRow(parameterRow, true);
+					break;
+
+				case IParameter childParameter:
+					ProcessChildParameter(protocol, childParameter);
+
+					break;
+				default:
+					throw new ArgumentOutOfRangeException($"Type: {child.GetType()}");
 			}
 		}
 	}

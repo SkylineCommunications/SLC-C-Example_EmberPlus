@@ -13,31 +13,6 @@ public static class Parameter
 	public const int discoverednodescount_60 = 60;
 	/// <summary>PID: 60 | Type: read</summary>
 	public const int discoverednodescount = 60;
-	/// <summary>PID: 500 | Type: read</summary>
-	[EditorBrowsable(EditorBrowsableState.Never)]
-	public const int identityproduct_500 = 500;
-	/// <summary>PID: 500 | Type: read</summary>
-	public const int identityproduct = 500;
-	/// <summary>PID: 501 | Type: read</summary>
-	[EditorBrowsable(EditorBrowsableState.Never)]
-	public const int identitycompany_501 = 501;
-	/// <summary>PID: 501 | Type: read</summary>
-	public const int identitycompany = 501;
-	/// <summary>PID: 502 | Type: read</summary>
-	[EditorBrowsable(EditorBrowsableState.Never)]
-	public const int identityversion_502 = 502;
-	/// <summary>PID: 502 | Type: read</summary>
-	public const int identityversion = 502;
-	/// <summary>PID: 503 | Type: read</summary>
-	[EditorBrowsable(EditorBrowsableState.Never)]
-	public const int identityrole_503 = 503;
-	/// <summary>PID: 503 | Type: read</summary>
-	public const int identityrole = 503;
-	/// <summary>PID: 504 | Type: read</summary>
-	[EditorBrowsable(EditorBrowsableState.Never)]
-	public const int identityserial_504 = 504;
-	/// <summary>PID: 504 | Type: read</summary>
-	public const int identityserial = 504;
 	public class Write
 	{
 		/// <summary>PID: 62 | Type: write</summary>
@@ -73,9 +48,29 @@ public static class Parameter
 			public const int embernodesparent = 103;
 			/// <summary>PID: 104 | Type: read</summary>
 			[EditorBrowsable(EditorBrowsableState.Never)]
-			public const int embernodespath_104 = 104;
+			public const int embernodesidentifierpath_104 = 104;
 			/// <summary>PID: 104 | Type: read</summary>
-			public const int embernodespath = 104;
+			public const int embernodesidentifierpath = 104;
+			/// <summary>PID: 105 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embernodesjoinedpath_105 = 105;
+			/// <summary>PID: 105 | Type: read</summary>
+			public const int embernodesjoinedpath = 105;
+			/// <summary>PID: 106 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embernodesdescription_106 = 106;
+			/// <summary>PID: 106 | Type: read</summary>
+			public const int embernodesdescription = 106;
+			/// <summary>PID: 107 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embernodesstate_107 = 107;
+			/// <summary>PID: 107 | Type: read</summary>
+			public const int embernodesstate = 107;
+			/// <summary>PID: 108 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embernodesjoinedidentifierpath_108 = 108;
+			/// <summary>PID: 108 | Type: read</summary>
+			public const int embernodesjoinedidentifierpath = 108;
 			public class Write
 			{
 			}
@@ -99,9 +94,29 @@ public static class Parameter
 			public const int embernodesparent = 2;
 			/// <summary>IDX: 3 | Type: read</summary>
 			[EditorBrowsable(EditorBrowsableState.Never)]
-			public const int embernodespath_104 = 3;
+			public const int embernodesidentifierpath_104 = 3;
 			/// <summary>IDX: 3 | Type: read</summary>
-			public const int embernodespath = 3;
+			public const int embernodesidentifierpath = 3;
+			/// <summary>IDX: 4 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embernodesjoinedpath_105 = 4;
+			/// <summary>IDX: 4 | Type: read</summary>
+			public const int embernodesjoinedpath = 4;
+			/// <summary>IDX: 5 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embernodesdescription_106 = 5;
+			/// <summary>IDX: 5 | Type: read</summary>
+			public const int embernodesdescription = 5;
+			/// <summary>IDX: 6 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embernodesstate_107 = 6;
+			/// <summary>IDX: 6 | Type: read</summary>
+			public const int embernodesstate = 6;
+			/// <summary>IDX: 7 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embernodesjoinedidentifierpath_108 = 7;
+			/// <summary>IDX: 7 | Type: read</summary>
+			public const int embernodesjoinedidentifierpath = 7;
 		}
 	}
 	public class Emberparameterstable
@@ -131,19 +146,84 @@ public static class Parameter
 			public const int emberparametersparent = 113;
 			/// <summary>PID: 114 | Type: read</summary>
 			[EditorBrowsable(EditorBrowsableState.Never)]
-			public const int emberparameterstype_114 = 114;
+			public const int emberparametersidentifierpath_114 = 114;
 			/// <summary>PID: 114 | Type: read</summary>
-			public const int emberparameterstype = 114;
+			public const int emberparametersidentifierpath = 114;
 			/// <summary>PID: 115 | Type: read</summary>
 			[EditorBrowsable(EditorBrowsableState.Never)]
-			public const int emberparametersvalue_115 = 115;
+			public const int emberparametersjoinedpath_115 = 115;
 			/// <summary>PID: 115 | Type: read</summary>
-			public const int emberparametersvalue = 115;
+			public const int emberparametersjoinedpath = 115;
 			/// <summary>PID: 116 | Type: read</summary>
 			[EditorBrowsable(EditorBrowsableState.Never)]
-			public const int emberparameterspath_116 = 116;
+			public const int emberparametersdescription_116 = 116;
 			/// <summary>PID: 116 | Type: read</summary>
-			public const int emberparameterspath = 116;
+			public const int emberparametersdescription = 116;
+			/// <summary>PID: 117 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparametersstate_117 = 117;
+			/// <summary>PID: 117 | Type: read</summary>
+			public const int emberparametersstate = 117;
+			/// <summary>PID: 118 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparametersjoinedidentifierpath_118 = 118;
+			/// <summary>PID: 118 | Type: read</summary>
+			public const int emberparametersjoinedidentifierpath = 118;
+			/// <summary>PID: 119 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparameterstype_119 = 119;
+			/// <summary>PID: 119 | Type: read</summary>
+			public const int emberparameterstype = 119;
+			/// <summary>PID: 120 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparametersvalue_120 = 120;
+			/// <summary>PID: 120 | Type: read</summary>
+			public const int emberparametersvalue = 120;
+			/// <summary>PID: 121 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparametersminimum_121 = 121;
+			/// <summary>PID: 121 | Type: read</summary>
+			public const int emberparametersminimum = 121;
+			/// <summary>PID: 122 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparametersmaximum_122 = 122;
+			/// <summary>PID: 122 | Type: read</summary>
+			public const int emberparametersmaximum = 122;
+			/// <summary>PID: 123 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparametersaccess_123 = 123;
+			/// <summary>PID: 123 | Type: read</summary>
+			public const int emberparametersaccess = 123;
+			/// <summary>PID: 124 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparametersiswritable_124 = 124;
+			/// <summary>PID: 124 | Type: read</summary>
+			public const int emberparametersiswritable = 124;
+			/// <summary>PID: 125 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparametersformat_125 = 125;
+			/// <summary>PID: 125 | Type: read</summary>
+			public const int emberparametersformat = 125;
+			/// <summary>PID: 126 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparametersfactor_126 = 126;
+			/// <summary>PID: 126 | Type: read</summary>
+			public const int emberparametersfactor = 126;
+			/// <summary>PID: 127 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparametersformula_127 = 127;
+			/// <summary>PID: 127 | Type: read</summary>
+			public const int emberparametersformula = 127;
+			/// <summary>PID: 128 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparametersdefaultvalue_128 = 128;
+			/// <summary>PID: 128 | Type: read</summary>
+			public const int emberparametersdefaultvalue = 128;
+			/// <summary>PID: 129 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparametersenummap_129 = 129;
+			/// <summary>PID: 129 | Type: read</summary>
+			public const int emberparametersenummap = 129;
 			public class Write
 			{
 			}
@@ -167,41 +247,176 @@ public static class Parameter
 			public const int emberparametersparent = 2;
 			/// <summary>IDX: 3 | Type: read</summary>
 			[EditorBrowsable(EditorBrowsableState.Never)]
-			public const int emberparameterstype_114 = 3;
+			public const int emberparametersidentifierpath_114 = 3;
 			/// <summary>IDX: 3 | Type: read</summary>
-			public const int emberparameterstype = 3;
+			public const int emberparametersidentifierpath = 3;
 			/// <summary>IDX: 4 | Type: read</summary>
 			[EditorBrowsable(EditorBrowsableState.Never)]
-			public const int emberparametersvalue_115 = 4;
+			public const int emberparametersjoinedpath_115 = 4;
 			/// <summary>IDX: 4 | Type: read</summary>
-			public const int emberparametersvalue = 4;
+			public const int emberparametersjoinedpath = 4;
 			/// <summary>IDX: 5 | Type: read</summary>
 			[EditorBrowsable(EditorBrowsableState.Never)]
-			public const int emberparameterspath_116 = 5;
+			public const int emberparametersdescription_116 = 5;
 			/// <summary>IDX: 5 | Type: read</summary>
-			public const int emberparameterspath = 5;
+			public const int emberparametersdescription = 5;
+			/// <summary>IDX: 6 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparametersstate_117 = 6;
+			/// <summary>IDX: 6 | Type: read</summary>
+			public const int emberparametersstate = 6;
+			/// <summary>IDX: 7 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparametersjoinedidentifierpath_118 = 7;
+			/// <summary>IDX: 7 | Type: read</summary>
+			public const int emberparametersjoinedidentifierpath = 7;
+			/// <summary>IDX: 8 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparameterstype_119 = 8;
+			/// <summary>IDX: 8 | Type: read</summary>
+			public const int emberparameterstype = 8;
+			/// <summary>IDX: 9 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparametersvalue_120 = 9;
+			/// <summary>IDX: 9 | Type: read</summary>
+			public const int emberparametersvalue = 9;
+			/// <summary>IDX: 10 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparametersminimum_121 = 10;
+			/// <summary>IDX: 10 | Type: read</summary>
+			public const int emberparametersminimum = 10;
+			/// <summary>IDX: 11 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparametersmaximum_122 = 11;
+			/// <summary>IDX: 11 | Type: read</summary>
+			public const int emberparametersmaximum = 11;
+			/// <summary>IDX: 12 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparametersaccess_123 = 12;
+			/// <summary>IDX: 12 | Type: read</summary>
+			public const int emberparametersaccess = 12;
+			/// <summary>IDX: 13 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparametersiswritable_124 = 13;
+			/// <summary>IDX: 13 | Type: read</summary>
+			public const int emberparametersiswritable = 13;
+			/// <summary>IDX: 14 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparametersformat_125 = 14;
+			/// <summary>IDX: 14 | Type: read</summary>
+			public const int emberparametersformat = 14;
+			/// <summary>IDX: 15 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparametersfactor_126 = 15;
+			/// <summary>IDX: 15 | Type: read</summary>
+			public const int emberparametersfactor = 15;
+			/// <summary>IDX: 16 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparametersformula_127 = 16;
+			/// <summary>IDX: 16 | Type: read</summary>
+			public const int emberparametersformula = 16;
+			/// <summary>IDX: 17 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparametersdefaultvalue_128 = 17;
+			/// <summary>IDX: 17 | Type: read</summary>
+			public const int emberparametersdefaultvalue = 17;
+			/// <summary>IDX: 18 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberparametersenummap_129 = 18;
+			/// <summary>IDX: 18 | Type: read</summary>
+			public const int emberparametersenummap = 18;
 		}
 	}
-	public class Requestednodestable
+	public class Embermatrixtable
 	{
-		/// <summary>PID: 120</summary>
-		public const int tablePid = 120;
+		/// <summary>PID: 200</summary>
+		public const int tablePid = 200;
 		/// <summary>IDX: 0</summary>
 		public const int indexColumn = 0;
-		/// <summary>PID: 121</summary>
-		public const int indexColumnPid = 121;
+		/// <summary>PID: 201</summary>
+		public const int indexColumnPid = 201;
 		public class Pid
 		{
-			/// <summary>PID: 121 | Type: read</summary>
+			/// <summary>PID: 201 | Type: read</summary>
 			[EditorBrowsable(EditorBrowsableState.Never)]
-			public const int requestednodesidentifier_121 = 121;
-			/// <summary>PID: 121 | Type: read</summary>
-			public const int requestednodesidentifier = 121;
-			/// <summary>PID: 122 | Type: read</summary>
+			public const int embermatrixidentifier_201 = 201;
+			/// <summary>PID: 201 | Type: read</summary>
+			public const int embermatrixidentifier = 201;
+			/// <summary>PID: 202 | Type: read</summary>
 			[EditorBrowsable(EditorBrowsableState.Never)]
-			public const int requestednodesnumber_122 = 122;
-			/// <summary>PID: 122 | Type: read</summary>
-			public const int requestednodesnumber = 122;
+			public const int embermatrixnumber_202 = 202;
+			/// <summary>PID: 202 | Type: read</summary>
+			public const int embermatrixnumber = 202;
+			/// <summary>PID: 203 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embermatrixparent_203 = 203;
+			/// <summary>PID: 203 | Type: read</summary>
+			public const int embermatrixparent = 203;
+			/// <summary>PID: 204 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embermatrixidentifierpath_204 = 204;
+			/// <summary>PID: 204 | Type: read</summary>
+			public const int embermatrixidentifierpath = 204;
+			/// <summary>PID: 205 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embermatrixjoinedpath_205 = 205;
+			/// <summary>PID: 205 | Type: read</summary>
+			public const int embermatrixjoinedpath = 205;
+			/// <summary>PID: 206 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embermatrixdescription_206 = 206;
+			/// <summary>PID: 206 | Type: read</summary>
+			public const int embermatrixdescription = 206;
+			/// <summary>PID: 207 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embermatrixstate_207 = 207;
+			/// <summary>PID: 207 | Type: read</summary>
+			public const int embermatrixstate = 207;
+			/// <summary>PID: 208 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embermatrixjoinedidentifierpath_208 = 208;
+			/// <summary>PID: 208 | Type: read</summary>
+			public const int embermatrixjoinedidentifierpath = 208;
+			/// <summary>PID: 209 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embermatrixmaximumtotalconnects_209 = 209;
+			/// <summary>PID: 209 | Type: read</summary>
+			public const int embermatrixmaximumtotalconnects = 209;
+			/// <summary>PID: 210 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embermatrixmaximumconnectspertarget_210 = 210;
+			/// <summary>PID: 210 | Type: read</summary>
+			public const int embermatrixmaximumconnectspertarget = 210;
+			/// <summary>PID: 211 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embermatrixparameterslocations_211 = 211;
+			/// <summary>PID: 211 | Type: read</summary>
+			public const int embermatrixparameterslocations = 211;
+			/// <summary>PID: 212 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embermatrixgainparameternumber_212 = 212;
+			/// <summary>PID: 212 | Type: read</summary>
+			public const int embermatrixgainparameternumber = 212;
+			/// <summary>PID: 213 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embermatrixlabels_213 = 213;
+			/// <summary>PID: 213 | Type: read</summary>
+			public const int embermatrixlabels = 213;
+			/// <summary>PID: 214 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embermatrixtargets_214 = 214;
+			/// <summary>PID: 214 | Type: read</summary>
+			public const int embermatrixtargets = 214;
+			/// <summary>PID: 215 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embermatrixsources_215 = 215;
+			/// <summary>PID: 215 | Type: read</summary>
+			public const int embermatrixsources = 215;
+			/// <summary>PID: 216 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embermatrixconnections_216 = 216;
+			/// <summary>PID: 216 | Type: read</summary>
+			public const int embermatrixconnections = 216;
 			public class Write
 			{
 			}
@@ -210,14 +425,202 @@ public static class Parameter
 		{
 			/// <summary>IDX: 0 | Type: read</summary>
 			[EditorBrowsable(EditorBrowsableState.Never)]
-			public const int requestednodesidentifier_121 = 0;
+			public const int embermatrixidentifier_201 = 0;
 			/// <summary>IDX: 0 | Type: read</summary>
-			public const int requestednodesidentifier = 0;
+			public const int embermatrixidentifier = 0;
 			/// <summary>IDX: 1 | Type: read</summary>
 			[EditorBrowsable(EditorBrowsableState.Never)]
-			public const int requestednodesnumber_122 = 1;
+			public const int embermatrixnumber_202 = 1;
 			/// <summary>IDX: 1 | Type: read</summary>
-			public const int requestednodesnumber = 1;
+			public const int embermatrixnumber = 1;
+			/// <summary>IDX: 2 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embermatrixparent_203 = 2;
+			/// <summary>IDX: 2 | Type: read</summary>
+			public const int embermatrixparent = 2;
+			/// <summary>IDX: 3 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embermatrixidentifierpath_204 = 3;
+			/// <summary>IDX: 3 | Type: read</summary>
+			public const int embermatrixidentifierpath = 3;
+			/// <summary>IDX: 4 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embermatrixjoinedpath_205 = 4;
+			/// <summary>IDX: 4 | Type: read</summary>
+			public const int embermatrixjoinedpath = 4;
+			/// <summary>IDX: 5 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embermatrixdescription_206 = 5;
+			/// <summary>IDX: 5 | Type: read</summary>
+			public const int embermatrixdescription = 5;
+			/// <summary>IDX: 6 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embermatrixstate_207 = 6;
+			/// <summary>IDX: 6 | Type: read</summary>
+			public const int embermatrixstate = 6;
+			/// <summary>IDX: 7 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embermatrixjoinedidentifierpath_208 = 7;
+			/// <summary>IDX: 7 | Type: read</summary>
+			public const int embermatrixjoinedidentifierpath = 7;
+			/// <summary>IDX: 8 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embermatrixmaximumtotalconnects_209 = 8;
+			/// <summary>IDX: 8 | Type: read</summary>
+			public const int embermatrixmaximumtotalconnects = 8;
+			/// <summary>IDX: 9 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embermatrixmaximumconnectspertarget_210 = 9;
+			/// <summary>IDX: 9 | Type: read</summary>
+			public const int embermatrixmaximumconnectspertarget = 9;
+			/// <summary>IDX: 10 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embermatrixparameterslocations_211 = 10;
+			/// <summary>IDX: 10 | Type: read</summary>
+			public const int embermatrixparameterslocations = 10;
+			/// <summary>IDX: 11 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embermatrixgainparameternumber_212 = 11;
+			/// <summary>IDX: 11 | Type: read</summary>
+			public const int embermatrixgainparameternumber = 11;
+			/// <summary>IDX: 12 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embermatrixlabels_213 = 12;
+			/// <summary>IDX: 12 | Type: read</summary>
+			public const int embermatrixlabels = 12;
+			/// <summary>IDX: 13 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embermatrixtargets_214 = 13;
+			/// <summary>IDX: 13 | Type: read</summary>
+			public const int embermatrixtargets = 13;
+			/// <summary>IDX: 14 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embermatrixsources_215 = 14;
+			/// <summary>IDX: 14 | Type: read</summary>
+			public const int embermatrixsources = 14;
+			/// <summary>IDX: 15 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int embermatrixconnections_216 = 15;
+			/// <summary>IDX: 15 | Type: read</summary>
+			public const int embermatrixconnections = 15;
+		}
+	}
+	public class Emberfunctionstable
+	{
+		/// <summary>PID: 300</summary>
+		public const int tablePid = 300;
+		/// <summary>IDX: 0</summary>
+		public const int indexColumn = 0;
+		/// <summary>PID: 301</summary>
+		public const int indexColumnPid = 301;
+		public class Pid
+		{
+			/// <summary>PID: 301 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberfunctionsidentifier_301 = 301;
+			/// <summary>PID: 301 | Type: read</summary>
+			public const int emberfunctionsidentifier = 301;
+			/// <summary>PID: 302 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberfunctionsnumber_302 = 302;
+			/// <summary>PID: 302 | Type: read</summary>
+			public const int emberfunctionsnumber = 302;
+			/// <summary>PID: 303 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberfunctionsparent_303 = 303;
+			/// <summary>PID: 303 | Type: read</summary>
+			public const int emberfunctionsparent = 303;
+			/// <summary>PID: 304 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberfunctionsidentifierpath_304 = 304;
+			/// <summary>PID: 304 | Type: read</summary>
+			public const int emberfunctionsidentifierpath = 304;
+			/// <summary>PID: 305 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberfunctionsjoinedpath_305 = 305;
+			/// <summary>PID: 305 | Type: read</summary>
+			public const int emberfunctionsjoinedpath = 305;
+			/// <summary>PID: 306 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberfunctionsdescription_306 = 306;
+			/// <summary>PID: 306 | Type: read</summary>
+			public const int emberfunctionsdescription = 306;
+			/// <summary>PID: 307 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberfunctionsstate_307 = 307;
+			/// <summary>PID: 307 | Type: read</summary>
+			public const int emberfunctionsstate = 307;
+			/// <summary>PID: 308 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberfunctionsjoinedidentifierpath_308 = 308;
+			/// <summary>PID: 308 | Type: read</summary>
+			public const int emberfunctionsjoinedidentifierpath = 308;
+			/// <summary>PID: 309 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberfunctionsarguments_309 = 309;
+			/// <summary>PID: 309 | Type: read</summary>
+			public const int emberfunctionsarguments = 309;
+			/// <summary>PID: 310 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberfunctionsresult_310 = 310;
+			/// <summary>PID: 310 | Type: read</summary>
+			public const int emberfunctionsresult = 310;
+			public class Write
+			{
+			}
+		}
+		public class Idx
+		{
+			/// <summary>IDX: 0 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberfunctionsidentifier_301 = 0;
+			/// <summary>IDX: 0 | Type: read</summary>
+			public const int emberfunctionsidentifier = 0;
+			/// <summary>IDX: 1 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberfunctionsnumber_302 = 1;
+			/// <summary>IDX: 1 | Type: read</summary>
+			public const int emberfunctionsnumber = 1;
+			/// <summary>IDX: 2 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberfunctionsparent_303 = 2;
+			/// <summary>IDX: 2 | Type: read</summary>
+			public const int emberfunctionsparent = 2;
+			/// <summary>IDX: 3 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberfunctionsidentifierpath_304 = 3;
+			/// <summary>IDX: 3 | Type: read</summary>
+			public const int emberfunctionsidentifierpath = 3;
+			/// <summary>IDX: 4 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberfunctionsjoinedpath_305 = 4;
+			/// <summary>IDX: 4 | Type: read</summary>
+			public const int emberfunctionsjoinedpath = 4;
+			/// <summary>IDX: 5 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberfunctionsdescription_306 = 5;
+			/// <summary>IDX: 5 | Type: read</summary>
+			public const int emberfunctionsdescription = 5;
+			/// <summary>IDX: 6 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberfunctionsstate_307 = 6;
+			/// <summary>IDX: 6 | Type: read</summary>
+			public const int emberfunctionsstate = 6;
+			/// <summary>IDX: 7 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberfunctionsjoinedidentifierpath_308 = 7;
+			/// <summary>IDX: 7 | Type: read</summary>
+			public const int emberfunctionsjoinedidentifierpath = 7;
+			/// <summary>IDX: 8 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberfunctionsarguments_309 = 8;
+			/// <summary>IDX: 8 | Type: read</summary>
+			public const int emberfunctionsarguments = 8;
+			/// <summary>IDX: 9 | Type: read</summary>
+			[EditorBrowsable(EditorBrowsableState.Never)]
+			public const int emberfunctionsresult_310 = 9;
+			/// <summary>IDX: 9 | Type: read</summary>
+			public const int emberfunctionsresult = 9;
 		}
 	}
 }
@@ -237,8 +640,10 @@ public interface SLProtocolExt : SLProtocol
 	EmbernodestableQActionTable embernodestable { get; set; }
 	/// <summary>PID: 110</summary>
 	EmberparameterstableQActionTable emberparameterstable { get; set; }
-	/// <summary>PID: 120</summary>
-	RequestednodestableQActionTable requestednodestable { get; set; }
+	/// <summary>PID: 200</summary>
+	EmbermatrixtableQActionTable embermatrixtable { get; set; }
+	/// <summary>PID: 300</summary>
+	EmberfunctionstableQActionTable emberfunctionstable { get; set; }
 	object Discoverembertree_dummy { get; set; }
 	object Ipandport_ip { get; set; }
 	object Discoverednodescount_60 { get; set; }
@@ -251,34 +656,106 @@ public interface SLProtocolExt : SLProtocol
 	object Embernodesnumber { get; set; }
 	object Embernodesparent_103 { get; set; }
 	object Embernodesparent { get; set; }
-	object Embernodespath_104 { get; set; }
-	object Embernodespath { get; set; }
+	object Embernodesidentifierpath_104 { get; set; }
+	object Embernodesidentifierpath { get; set; }
+	object Embernodesjoinedpath_105 { get; set; }
+	object Embernodesjoinedpath { get; set; }
+	object Embernodesdescription_106 { get; set; }
+	object Embernodesdescription { get; set; }
+	object Embernodesstate_107 { get; set; }
+	object Embernodesstate { get; set; }
+	object Embernodesjoinedidentifierpath_108 { get; set; }
+	object Embernodesjoinedidentifierpath { get; set; }
 	object Emberparametersidentifier_111 { get; set; }
 	object Emberparametersidentifier { get; set; }
 	object Emberparametersnumber_112 { get; set; }
 	object Emberparametersnumber { get; set; }
 	object Emberparametersparent_113 { get; set; }
 	object Emberparametersparent { get; set; }
-	object Emberparameterstype_114 { get; set; }
+	object Emberparametersidentifierpath_114 { get; set; }
+	object Emberparametersidentifierpath { get; set; }
+	object Emberparametersjoinedpath_115 { get; set; }
+	object Emberparametersjoinedpath { get; set; }
+	object Emberparametersdescription_116 { get; set; }
+	object Emberparametersdescription { get; set; }
+	object Emberparametersstate_117 { get; set; }
+	object Emberparametersstate { get; set; }
+	object Emberparametersjoinedidentifierpath_118 { get; set; }
+	object Emberparametersjoinedidentifierpath { get; set; }
+	object Emberparameterstype_119 { get; set; }
 	object Emberparameterstype { get; set; }
-	object Emberparametersvalue_115 { get; set; }
+	object Emberparametersvalue_120 { get; set; }
 	object Emberparametersvalue { get; set; }
-	object Emberparameterspath_116 { get; set; }
-	object Emberparameterspath { get; set; }
-	object Requestednodesidentifier_121 { get; set; }
-	object Requestednodesidentifier { get; set; }
-	object Requestednodesnumber_122 { get; set; }
-	object Requestednodesnumber { get; set; }
-	object Identityproduct_500 { get; set; }
-	object Identityproduct { get; set; }
-	object Identitycompany_501 { get; set; }
-	object Identitycompany { get; set; }
-	object Identityversion_502 { get; set; }
-	object Identityversion { get; set; }
-	object Identityrole_503 { get; set; }
-	object Identityrole { get; set; }
-	object Identityserial_504 { get; set; }
-	object Identityserial { get; set; }
+	object Emberparametersminimum_121 { get; set; }
+	object Emberparametersminimum { get; set; }
+	object Emberparametersmaximum_122 { get; set; }
+	object Emberparametersmaximum { get; set; }
+	object Emberparametersaccess_123 { get; set; }
+	object Emberparametersaccess { get; set; }
+	object Emberparametersiswritable_124 { get; set; }
+	object Emberparametersiswritable { get; set; }
+	object Emberparametersformat_125 { get; set; }
+	object Emberparametersformat { get; set; }
+	object Emberparametersfactor_126 { get; set; }
+	object Emberparametersfactor { get; set; }
+	object Emberparametersformula_127 { get; set; }
+	object Emberparametersformula { get; set; }
+	object Emberparametersdefaultvalue_128 { get; set; }
+	object Emberparametersdefaultvalue { get; set; }
+	object Emberparametersenummap_129 { get; set; }
+	object Emberparametersenummap { get; set; }
+	object Embermatrixidentifier_201 { get; set; }
+	object Embermatrixidentifier { get; set; }
+	object Embermatrixnumber_202 { get; set; }
+	object Embermatrixnumber { get; set; }
+	object Embermatrixparent_203 { get; set; }
+	object Embermatrixparent { get; set; }
+	object Embermatrixidentifierpath_204 { get; set; }
+	object Embermatrixidentifierpath { get; set; }
+	object Embermatrixjoinedpath_205 { get; set; }
+	object Embermatrixjoinedpath { get; set; }
+	object Embermatrixdescription_206 { get; set; }
+	object Embermatrixdescription { get; set; }
+	object Embermatrixstate_207 { get; set; }
+	object Embermatrixstate { get; set; }
+	object Embermatrixjoinedidentifierpath_208 { get; set; }
+	object Embermatrixjoinedidentifierpath { get; set; }
+	object Embermatrixmaximumtotalconnects_209 { get; set; }
+	object Embermatrixmaximumtotalconnects { get; set; }
+	object Embermatrixmaximumconnectspertarget_210 { get; set; }
+	object Embermatrixmaximumconnectspertarget { get; set; }
+	object Embermatrixparameterslocations_211 { get; set; }
+	object Embermatrixparameterslocations { get; set; }
+	object Embermatrixgainparameternumber_212 { get; set; }
+	object Embermatrixgainparameternumber { get; set; }
+	object Embermatrixlabels_213 { get; set; }
+	object Embermatrixlabels { get; set; }
+	object Embermatrixtargets_214 { get; set; }
+	object Embermatrixtargets { get; set; }
+	object Embermatrixsources_215 { get; set; }
+	object Embermatrixsources { get; set; }
+	object Embermatrixconnections_216 { get; set; }
+	object Embermatrixconnections { get; set; }
+	object Emberfunctionsidentifier_301 { get; set; }
+	object Emberfunctionsidentifier { get; set; }
+	object Emberfunctionsnumber_302 { get; set; }
+	object Emberfunctionsnumber { get; set; }
+	object Emberfunctionsparent_303 { get; set; }
+	object Emberfunctionsparent { get; set; }
+	object Emberfunctionsidentifierpath_304 { get; set; }
+	object Emberfunctionsidentifierpath { get; set; }
+	object Emberfunctionsjoinedpath_305 { get; set; }
+	object Emberfunctionsjoinedpath { get; set; }
+	object Emberfunctionsdescription_306 { get; set; }
+	object Emberfunctionsdescription { get; set; }
+	object Emberfunctionsstate_307 { get; set; }
+	object Emberfunctionsstate { get; set; }
+	object Emberfunctionsjoinedidentifierpath_308 { get; set; }
+	object Emberfunctionsjoinedidentifierpath { get; set; }
+	object Emberfunctionsarguments_309 { get; set; }
+	object Emberfunctionsarguments { get; set; }
+	object Emberfunctionsresult_310 { get; set; }
+	object Emberfunctionsresult { get; set; }
 	WriteParameters Write { get; set; }
 }
 public class ConcreteSLProtocolExt : ConcreteSLProtocol, SLProtocolExt
@@ -287,8 +764,10 @@ public class ConcreteSLProtocolExt : ConcreteSLProtocol, SLProtocolExt
 	public EmbernodestableQActionTable embernodestable { get; set; }
 	/// <summary>PID: 110</summary>
 	public EmberparameterstableQActionTable emberparameterstable { get; set; }
-	/// <summary>PID: 120</summary>
-	public RequestednodestableQActionTable requestednodestable { get; set; }
+	/// <summary>PID: 200</summary>
+	public EmbermatrixtableQActionTable embermatrixtable { get; set; }
+	/// <summary>PID: 300</summary>
+	public EmberfunctionstableQActionTable emberfunctionstable { get; set; }
 	/// <summary>PID: 1  | Type: dummy</summary>
 	public System.Object Discoverembertree_dummy {get { return GetParameter(1); }set { SetParameter(1, value); }}
 	/// <summary>PID: 2  | Type: ip</summary>
@@ -319,9 +798,29 @@ public class ConcreteSLProtocolExt : ConcreteSLProtocol, SLProtocolExt
 	public System.Object Embernodesparent {get { return GetParameter(103); }set { SetParameter(103, value); }}
 	/// <summary>PID: 104  | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Embernodespath_104 {get { return GetParameter(104); }set { SetParameter(104, value); }}
+	public System.Object Embernodesidentifierpath_104 {get { return GetParameter(104); }set { SetParameter(104, value); }}
 	/// <summary>PID: 104  | Type: read</summary>
-	public System.Object Embernodespath {get { return GetParameter(104); }set { SetParameter(104, value); }}
+	public System.Object Embernodesidentifierpath {get { return GetParameter(104); }set { SetParameter(104, value); }}
+	/// <summary>PID: 105  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embernodesjoinedpath_105 {get { return GetParameter(105); }set { SetParameter(105, value); }}
+	/// <summary>PID: 105  | Type: read</summary>
+	public System.Object Embernodesjoinedpath {get { return GetParameter(105); }set { SetParameter(105, value); }}
+	/// <summary>PID: 106  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embernodesdescription_106 {get { return GetParameter(106); }set { SetParameter(106, value); }}
+	/// <summary>PID: 106  | Type: read</summary>
+	public System.Object Embernodesdescription {get { return GetParameter(106); }set { SetParameter(106, value); }}
+	/// <summary>PID: 107  | Type: read | DISCREETS: Is Offline = 0, Is Online = 1</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embernodesstate_107 {get { return GetParameter(107); }set { SetParameter(107, value); }}
+	/// <summary>PID: 107  | Type: read | DISCREETS: Is Offline = 0, Is Online = 1</summary>
+	public System.Object Embernodesstate {get { return GetParameter(107); }set { SetParameter(107, value); }}
+	/// <summary>PID: 108  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embernodesjoinedidentifierpath_108 {get { return GetParameter(108); }set { SetParameter(108, value); }}
+	/// <summary>PID: 108  | Type: read</summary>
+	public System.Object Embernodesjoinedidentifierpath {get { return GetParameter(108); }set { SetParameter(108, value); }}
 	/// <summary>PID: 111  | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public System.Object Emberparametersidentifier_111 {get { return GetParameter(111); }set { SetParameter(111, value); }}
@@ -337,62 +836,223 @@ public class ConcreteSLProtocolExt : ConcreteSLProtocol, SLProtocolExt
 	public System.Object Emberparametersparent_113 {get { return GetParameter(113); }set { SetParameter(113, value); }}
 	/// <summary>PID: 113  | Type: read</summary>
 	public System.Object Emberparametersparent {get { return GetParameter(113); }set { SetParameter(113, value); }}
-	/// <summary>PID: 114  | Type: read | DISCREETS: None = 0, Integer = 1, Real = 2, String = 3, Boolean = 4, Trigger = 5, Enum = 6, Octets = 7</summary>
+	/// <summary>PID: 114  | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Emberparameterstype_114 {get { return GetParameter(114); }set { SetParameter(114, value); }}
-	/// <summary>PID: 114  | Type: read | DISCREETS: None = 0, Integer = 1, Real = 2, String = 3, Boolean = 4, Trigger = 5, Enum = 6, Octets = 7</summary>
-	public System.Object Emberparameterstype {get { return GetParameter(114); }set { SetParameter(114, value); }}
+	public System.Object Emberparametersidentifierpath_114 {get { return GetParameter(114); }set { SetParameter(114, value); }}
+	/// <summary>PID: 114  | Type: read</summary>
+	public System.Object Emberparametersidentifierpath {get { return GetParameter(114); }set { SetParameter(114, value); }}
 	/// <summary>PID: 115  | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Emberparametersvalue_115 {get { return GetParameter(115); }set { SetParameter(115, value); }}
+	public System.Object Emberparametersjoinedpath_115 {get { return GetParameter(115); }set { SetParameter(115, value); }}
 	/// <summary>PID: 115  | Type: read</summary>
-	public System.Object Emberparametersvalue {get { return GetParameter(115); }set { SetParameter(115, value); }}
+	public System.Object Emberparametersjoinedpath {get { return GetParameter(115); }set { SetParameter(115, value); }}
 	/// <summary>PID: 116  | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Emberparameterspath_116 {get { return GetParameter(116); }set { SetParameter(116, value); }}
+	public System.Object Emberparametersdescription_116 {get { return GetParameter(116); }set { SetParameter(116, value); }}
 	/// <summary>PID: 116  | Type: read</summary>
-	public System.Object Emberparameterspath {get { return GetParameter(116); }set { SetParameter(116, value); }}
+	public System.Object Emberparametersdescription {get { return GetParameter(116); }set { SetParameter(116, value); }}
+	/// <summary>PID: 117  | Type: read | DISCREETS: Is Offline = 0, Is Online = 1</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberparametersstate_117 {get { return GetParameter(117); }set { SetParameter(117, value); }}
+	/// <summary>PID: 117  | Type: read | DISCREETS: Is Offline = 0, Is Online = 1</summary>
+	public System.Object Emberparametersstate {get { return GetParameter(117); }set { SetParameter(117, value); }}
+	/// <summary>PID: 118  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberparametersjoinedidentifierpath_118 {get { return GetParameter(118); }set { SetParameter(118, value); }}
+	/// <summary>PID: 118  | Type: read</summary>
+	public System.Object Emberparametersjoinedidentifierpath {get { return GetParameter(118); }set { SetParameter(118, value); }}
+	/// <summary>PID: 119  | Type: read | DISCREETS: None = 0, Integer = 1, Real = 2, String = 3, Boolean = 4, Trigger = 5, Enum = 6, Octets = 7</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberparameterstype_119 {get { return GetParameter(119); }set { SetParameter(119, value); }}
+	/// <summary>PID: 119  | Type: read | DISCREETS: None = 0, Integer = 1, Real = 2, String = 3, Boolean = 4, Trigger = 5, Enum = 6, Octets = 7</summary>
+	public System.Object Emberparameterstype {get { return GetParameter(119); }set { SetParameter(119, value); }}
+	/// <summary>PID: 120  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberparametersvalue_120 {get { return GetParameter(120); }set { SetParameter(120, value); }}
+	/// <summary>PID: 120  | Type: read</summary>
+	public System.Object Emberparametersvalue {get { return GetParameter(120); }set { SetParameter(120, value); }}
 	/// <summary>PID: 121  | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Requestednodesidentifier_121 {get { return GetParameter(121); }set { SetParameter(121, value); }}
+	public System.Object Emberparametersminimum_121 {get { return GetParameter(121); }set { SetParameter(121, value); }}
 	/// <summary>PID: 121  | Type: read</summary>
-	public System.Object Requestednodesidentifier {get { return GetParameter(121); }set { SetParameter(121, value); }}
+	public System.Object Emberparametersminimum {get { return GetParameter(121); }set { SetParameter(121, value); }}
 	/// <summary>PID: 122  | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Requestednodesnumber_122 {get { return GetParameter(122); }set { SetParameter(122, value); }}
+	public System.Object Emberparametersmaximum_122 {get { return GetParameter(122); }set { SetParameter(122, value); }}
 	/// <summary>PID: 122  | Type: read</summary>
-	public System.Object Requestednodesnumber {get { return GetParameter(122); }set { SetParameter(122, value); }}
-	/// <summary>PID: 500  | Type: read</summary>
+	public System.Object Emberparametersmaximum {get { return GetParameter(122); }set { SetParameter(122, value); }}
+	/// <summary>PID: 123  | Type: read | DISCREETS: None: 0x0 = None, Read: 0x1 = Read, Write: 0x2 = Write, Readwrite: 0x3 = ReadWrite</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Identityproduct_500 {get { return GetParameter(500); }set { SetParameter(500, value); }}
-	/// <summary>PID: 500  | Type: read</summary>
-	public System.Object Identityproduct {get { return GetParameter(500); }set { SetParameter(500, value); }}
-	/// <summary>PID: 501  | Type: read</summary>
+	public System.Object Emberparametersaccess_123 {get { return GetParameter(123); }set { SetParameter(123, value); }}
+	/// <summary>PID: 123  | Type: read | DISCREETS: None: 0x0 = None, Read: 0x1 = Read, Write: 0x2 = Write, Readwrite: 0x3 = ReadWrite</summary>
+	public System.Object Emberparametersaccess {get { return GetParameter(123); }set { SetParameter(123, value); }}
+	/// <summary>PID: 124  | Type: read | DISCREETS: False = 0, True = 1</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Identitycompany_501 {get { return GetParameter(501); }set { SetParameter(501, value); }}
-	/// <summary>PID: 501  | Type: read</summary>
-	public System.Object Identitycompany {get { return GetParameter(501); }set { SetParameter(501, value); }}
-	/// <summary>PID: 502  | Type: read</summary>
+	public System.Object Emberparametersiswritable_124 {get { return GetParameter(124); }set { SetParameter(124, value); }}
+	/// <summary>PID: 124  | Type: read | DISCREETS: False = 0, True = 1</summary>
+	public System.Object Emberparametersiswritable {get { return GetParameter(124); }set { SetParameter(124, value); }}
+	/// <summary>PID: 125  | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Identityversion_502 {get { return GetParameter(502); }set { SetParameter(502, value); }}
-	/// <summary>PID: 502  | Type: read</summary>
-	public System.Object Identityversion {get { return GetParameter(502); }set { SetParameter(502, value); }}
-	/// <summary>PID: 503  | Type: read</summary>
+	public System.Object Emberparametersformat_125 {get { return GetParameter(125); }set { SetParameter(125, value); }}
+	/// <summary>PID: 125  | Type: read</summary>
+	public System.Object Emberparametersformat {get { return GetParameter(125); }set { SetParameter(125, value); }}
+	/// <summary>PID: 126  | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Identityrole_503 {get { return GetParameter(503); }set { SetParameter(503, value); }}
-	/// <summary>PID: 503  | Type: read</summary>
-	public System.Object Identityrole {get { return GetParameter(503); }set { SetParameter(503, value); }}
-	/// <summary>PID: 504  | Type: read</summary>
+	public System.Object Emberparametersfactor_126 {get { return GetParameter(126); }set { SetParameter(126, value); }}
+	/// <summary>PID: 126  | Type: read</summary>
+	public System.Object Emberparametersfactor {get { return GetParameter(126); }set { SetParameter(126, value); }}
+	/// <summary>PID: 127  | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Identityserial_504 {get { return GetParameter(504); }set { SetParameter(504, value); }}
-	/// <summary>PID: 504  | Type: read</summary>
-	public System.Object Identityserial {get { return GetParameter(504); }set { SetParameter(504, value); }}
+	public System.Object Emberparametersformula_127 {get { return GetParameter(127); }set { SetParameter(127, value); }}
+	/// <summary>PID: 127  | Type: read</summary>
+	public System.Object Emberparametersformula {get { return GetParameter(127); }set { SetParameter(127, value); }}
+	/// <summary>PID: 128  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberparametersdefaultvalue_128 {get { return GetParameter(128); }set { SetParameter(128, value); }}
+	/// <summary>PID: 128  | Type: read</summary>
+	public System.Object Emberparametersdefaultvalue {get { return GetParameter(128); }set { SetParameter(128, value); }}
+	/// <summary>PID: 129  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberparametersenummap_129 {get { return GetParameter(129); }set { SetParameter(129, value); }}
+	/// <summary>PID: 129  | Type: read</summary>
+	public System.Object Emberparametersenummap {get { return GetParameter(129); }set { SetParameter(129, value); }}
+	/// <summary>PID: 201  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embermatrixidentifier_201 {get { return GetParameter(201); }set { SetParameter(201, value); }}
+	/// <summary>PID: 201  | Type: read</summary>
+	public System.Object Embermatrixidentifier {get { return GetParameter(201); }set { SetParameter(201, value); }}
+	/// <summary>PID: 202  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embermatrixnumber_202 {get { return GetParameter(202); }set { SetParameter(202, value); }}
+	/// <summary>PID: 202  | Type: read</summary>
+	public System.Object Embermatrixnumber {get { return GetParameter(202); }set { SetParameter(202, value); }}
+	/// <summary>PID: 203  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embermatrixparent_203 {get { return GetParameter(203); }set { SetParameter(203, value); }}
+	/// <summary>PID: 203  | Type: read</summary>
+	public System.Object Embermatrixparent {get { return GetParameter(203); }set { SetParameter(203, value); }}
+	/// <summary>PID: 204  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embermatrixidentifierpath_204 {get { return GetParameter(204); }set { SetParameter(204, value); }}
+	/// <summary>PID: 204  | Type: read</summary>
+	public System.Object Embermatrixidentifierpath {get { return GetParameter(204); }set { SetParameter(204, value); }}
+	/// <summary>PID: 205  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embermatrixjoinedpath_205 {get { return GetParameter(205); }set { SetParameter(205, value); }}
+	/// <summary>PID: 205  | Type: read</summary>
+	public System.Object Embermatrixjoinedpath {get { return GetParameter(205); }set { SetParameter(205, value); }}
+	/// <summary>PID: 206  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embermatrixdescription_206 {get { return GetParameter(206); }set { SetParameter(206, value); }}
+	/// <summary>PID: 206  | Type: read</summary>
+	public System.Object Embermatrixdescription {get { return GetParameter(206); }set { SetParameter(206, value); }}
+	/// <summary>PID: 207  | Type: read | DISCREETS: Is Offline = 0, Is Online = 1</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embermatrixstate_207 {get { return GetParameter(207); }set { SetParameter(207, value); }}
+	/// <summary>PID: 207  | Type: read | DISCREETS: Is Offline = 0, Is Online = 1</summary>
+	public System.Object Embermatrixstate {get { return GetParameter(207); }set { SetParameter(207, value); }}
+	/// <summary>PID: 208  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embermatrixjoinedidentifierpath_208 {get { return GetParameter(208); }set { SetParameter(208, value); }}
+	/// <summary>PID: 208  | Type: read</summary>
+	public System.Object Embermatrixjoinedidentifierpath {get { return GetParameter(208); }set { SetParameter(208, value); }}
+	/// <summary>PID: 209  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embermatrixmaximumtotalconnects_209 {get { return GetParameter(209); }set { SetParameter(209, value); }}
+	/// <summary>PID: 209  | Type: read</summary>
+	public System.Object Embermatrixmaximumtotalconnects {get { return GetParameter(209); }set { SetParameter(209, value); }}
+	/// <summary>PID: 210  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embermatrixmaximumconnectspertarget_210 {get { return GetParameter(210); }set { SetParameter(210, value); }}
+	/// <summary>PID: 210  | Type: read</summary>
+	public System.Object Embermatrixmaximumconnectspertarget {get { return GetParameter(210); }set { SetParameter(210, value); }}
+	/// <summary>PID: 211  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embermatrixparameterslocations_211 {get { return GetParameter(211); }set { SetParameter(211, value); }}
+	/// <summary>PID: 211  | Type: read</summary>
+	public System.Object Embermatrixparameterslocations {get { return GetParameter(211); }set { SetParameter(211, value); }}
+	/// <summary>PID: 212  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embermatrixgainparameternumber_212 {get { return GetParameter(212); }set { SetParameter(212, value); }}
+	/// <summary>PID: 212  | Type: read</summary>
+	public System.Object Embermatrixgainparameternumber {get { return GetParameter(212); }set { SetParameter(212, value); }}
+	/// <summary>PID: 213  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embermatrixlabels_213 {get { return GetParameter(213); }set { SetParameter(213, value); }}
+	/// <summary>PID: 213  | Type: read</summary>
+	public System.Object Embermatrixlabels {get { return GetParameter(213); }set { SetParameter(213, value); }}
+	/// <summary>PID: 214  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embermatrixtargets_214 {get { return GetParameter(214); }set { SetParameter(214, value); }}
+	/// <summary>PID: 214  | Type: read</summary>
+	public System.Object Embermatrixtargets {get { return GetParameter(214); }set { SetParameter(214, value); }}
+	/// <summary>PID: 215  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embermatrixsources_215 {get { return GetParameter(215); }set { SetParameter(215, value); }}
+	/// <summary>PID: 215  | Type: read</summary>
+	public System.Object Embermatrixsources {get { return GetParameter(215); }set { SetParameter(215, value); }}
+	/// <summary>PID: 216  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embermatrixconnections_216 {get { return GetParameter(216); }set { SetParameter(216, value); }}
+	/// <summary>PID: 216  | Type: read</summary>
+	public System.Object Embermatrixconnections {get { return GetParameter(216); }set { SetParameter(216, value); }}
+	/// <summary>PID: 301  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberfunctionsidentifier_301 {get { return GetParameter(301); }set { SetParameter(301, value); }}
+	/// <summary>PID: 301  | Type: read</summary>
+	public System.Object Emberfunctionsidentifier {get { return GetParameter(301); }set { SetParameter(301, value); }}
+	/// <summary>PID: 302  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberfunctionsnumber_302 {get { return GetParameter(302); }set { SetParameter(302, value); }}
+	/// <summary>PID: 302  | Type: read</summary>
+	public System.Object Emberfunctionsnumber {get { return GetParameter(302); }set { SetParameter(302, value); }}
+	/// <summary>PID: 303  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberfunctionsparent_303 {get { return GetParameter(303); }set { SetParameter(303, value); }}
+	/// <summary>PID: 303  | Type: read</summary>
+	public System.Object Emberfunctionsparent {get { return GetParameter(303); }set { SetParameter(303, value); }}
+	/// <summary>PID: 304  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberfunctionsidentifierpath_304 {get { return GetParameter(304); }set { SetParameter(304, value); }}
+	/// <summary>PID: 304  | Type: read</summary>
+	public System.Object Emberfunctionsidentifierpath {get { return GetParameter(304); }set { SetParameter(304, value); }}
+	/// <summary>PID: 305  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberfunctionsjoinedpath_305 {get { return GetParameter(305); }set { SetParameter(305, value); }}
+	/// <summary>PID: 305  | Type: read</summary>
+	public System.Object Emberfunctionsjoinedpath {get { return GetParameter(305); }set { SetParameter(305, value); }}
+	/// <summary>PID: 306  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberfunctionsdescription_306 {get { return GetParameter(306); }set { SetParameter(306, value); }}
+	/// <summary>PID: 306  | Type: read</summary>
+	public System.Object Emberfunctionsdescription {get { return GetParameter(306); }set { SetParameter(306, value); }}
+	/// <summary>PID: 307  | Type: read | DISCREETS: Is Offline = 0, Is Online = 1</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberfunctionsstate_307 {get { return GetParameter(307); }set { SetParameter(307, value); }}
+	/// <summary>PID: 307  | Type: read | DISCREETS: Is Offline = 0, Is Online = 1</summary>
+	public System.Object Emberfunctionsstate {get { return GetParameter(307); }set { SetParameter(307, value); }}
+	/// <summary>PID: 308  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberfunctionsjoinedidentifierpath_308 {get { return GetParameter(308); }set { SetParameter(308, value); }}
+	/// <summary>PID: 308  | Type: read</summary>
+	public System.Object Emberfunctionsjoinedidentifierpath {get { return GetParameter(308); }set { SetParameter(308, value); }}
+	/// <summary>PID: 309  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberfunctionsarguments_309 {get { return GetParameter(309); }set { SetParameter(309, value); }}
+	/// <summary>PID: 309  | Type: read</summary>
+	public System.Object Emberfunctionsarguments {get { return GetParameter(309); }set { SetParameter(309, value); }}
+	/// <summary>PID: 310  | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberfunctionsresult_310 {get { return GetParameter(310); }set { SetParameter(310, value); }}
+	/// <summary>PID: 310  | Type: read</summary>
+	public System.Object Emberfunctionsresult {get { return GetParameter(310); }set { SetParameter(310, value); }}
 	public WriteParameters Write { get; set; }
 	public ConcreteSLProtocolExt()
 	{
 		embernodestable = new EmbernodestableQActionTable(this, 100, "embernodestable");
 		emberparameterstable = new EmberparameterstableQActionTable(this, 110, "emberparameterstable");
-		requestednodestable = new RequestednodestableQActionTable(this, 120, "requestednodestable");
+		embermatrixtable = new EmbermatrixtableQActionTable(this, 200, "embermatrixtable");
+		emberfunctionstable = new EmberfunctionstableQActionTable(this, 300, "emberfunctionstable");
 		Write = new WriteParameters(this);
 	}
 }
@@ -411,11 +1071,18 @@ public class EmberparameterstableQActionTable : QActionTable, IEnumerable<Emberp
 	public IEnumerator<EmberparameterstableQActionRow> GetEnumerator() { return new QActionTableEnumerator<EmberparameterstableQActionRow>(this); }
 }
 /// <summary>IDX: 0</summary>
-public class RequestednodestableQActionTable : QActionTable, IEnumerable<RequestednodestableQActionRow>
+public class EmbermatrixtableQActionTable : QActionTable, IEnumerable<EmbermatrixtableQActionRow>
 {
-	public RequestednodestableQActionTable(SLProtocol protocol, int tableId, string tableName) : base(protocol, tableId, tableName) { }
+	public EmbermatrixtableQActionTable(SLProtocol protocol, int tableId, string tableName) : base(protocol, tableId, tableName) { }
 	IEnumerator IEnumerable.GetEnumerator() { return (IEnumerator) GetEnumerator(); }
-	public IEnumerator<RequestednodestableQActionRow> GetEnumerator() { return new QActionTableEnumerator<RequestednodestableQActionRow>(this); }
+	public IEnumerator<EmbermatrixtableQActionRow> GetEnumerator() { return new QActionTableEnumerator<EmbermatrixtableQActionRow>(this); }
+}
+/// <summary>IDX: 0</summary>
+public class EmberfunctionstableQActionTable : QActionTable, IEnumerable<EmberfunctionstableQActionRow>
+{
+	public EmberfunctionstableQActionTable(SLProtocol protocol, int tableId, string tableName) : base(protocol, tableId, tableName) { }
+	IEnumerator IEnumerable.GetEnumerator() { return (IEnumerator) GetEnumerator(); }
+	public IEnumerator<EmberfunctionstableQActionRow> GetEnumerator() { return new QActionTableEnumerator<EmberfunctionstableQActionRow>(this); }
 }
 /// <summary>IDX: 0</summary>
 public class EmbernodestableQActionRow : QActionTableRow
@@ -437,16 +1104,38 @@ public class EmbernodestableQActionRow : QActionTableRow
 	public System.Object Embernodesparent { get { if (base.Columns.ContainsKey(2)) { return base.Columns[2]; } else { return null; } } set { if (base.Columns.ContainsKey(2)) { base.Columns[2] = value; } else { base.Columns.Add(2, value); } } }
 	/// <summary>PID: 104 | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Embernodespath_104 { get { if (base.Columns.ContainsKey(3)) { return base.Columns[3]; } else { return null; } } set { if (base.Columns.ContainsKey(3)) { base.Columns[3] = value; } else { base.Columns.Add(3, value); } } }
+	public System.Object Embernodesidentifierpath_104 { get { if (base.Columns.ContainsKey(3)) { return base.Columns[3]; } else { return null; } } set { if (base.Columns.ContainsKey(3)) { base.Columns[3] = value; } else { base.Columns.Add(3, value); } } }
 	/// <summary>PID: 104 | Type: read</summary>
-	public System.Object Embernodespath { get { if (base.Columns.ContainsKey(3)) { return base.Columns[3]; } else { return null; } } set { if (base.Columns.ContainsKey(3)) { base.Columns[3] = value; } else { base.Columns.Add(3, value); } } }
-	public EmbernodestableQActionRow() : base(0, 4) { }
-	public EmbernodestableQActionRow(System.Object[] oRow) : base(0, 4, oRow) { }
+	public System.Object Embernodesidentifierpath { get { if (base.Columns.ContainsKey(3)) { return base.Columns[3]; } else { return null; } } set { if (base.Columns.ContainsKey(3)) { base.Columns[3] = value; } else { base.Columns.Add(3, value); } } }
+	/// <summary>PID: 105 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embernodesjoinedpath_105 { get { if (base.Columns.ContainsKey(4)) { return base.Columns[4]; } else { return null; } } set { if (base.Columns.ContainsKey(4)) { base.Columns[4] = value; } else { base.Columns.Add(4, value); } } }
+	/// <summary>PID: 105 | Type: read</summary>
+	public System.Object Embernodesjoinedpath { get { if (base.Columns.ContainsKey(4)) { return base.Columns[4]; } else { return null; } } set { if (base.Columns.ContainsKey(4)) { base.Columns[4] = value; } else { base.Columns.Add(4, value); } } }
+	/// <summary>PID: 106 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embernodesdescription_106 { get { if (base.Columns.ContainsKey(5)) { return base.Columns[5]; } else { return null; } } set { if (base.Columns.ContainsKey(5)) { base.Columns[5] = value; } else { base.Columns.Add(5, value); } } }
+	/// <summary>PID: 106 | Type: read</summary>
+	public System.Object Embernodesdescription { get { if (base.Columns.ContainsKey(5)) { return base.Columns[5]; } else { return null; } } set { if (base.Columns.ContainsKey(5)) { base.Columns[5] = value; } else { base.Columns.Add(5, value); } } }
+	/// <summary>PID: 107 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embernodesstate_107 { get { if (base.Columns.ContainsKey(6)) { return base.Columns[6]; } else { return null; } } set { if (base.Columns.ContainsKey(6)) { base.Columns[6] = value; } else { base.Columns.Add(6, value); } } }
+	/// <summary>PID: 107 | Type: read</summary>
+	public System.Object Embernodesstate { get { if (base.Columns.ContainsKey(6)) { return base.Columns[6]; } else { return null; } } set { if (base.Columns.ContainsKey(6)) { base.Columns[6] = value; } else { base.Columns.Add(6, value); } } }
+	/// <summary>PID: 108 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embernodesjoinedidentifierpath_108 { get { if (base.Columns.ContainsKey(7)) { return base.Columns[7]; } else { return null; } } set { if (base.Columns.ContainsKey(7)) { base.Columns[7] = value; } else { base.Columns.Add(7, value); } } }
+	/// <summary>PID: 108 | Type: read</summary>
+	public System.Object Embernodesjoinedidentifierpath { get { if (base.Columns.ContainsKey(7)) { return base.Columns[7]; } else { return null; } } set { if (base.Columns.ContainsKey(7)) { base.Columns[7] = value; } else { base.Columns.Add(7, value); } } }
+	public EmbernodestableQActionRow() : base(0, 8) { }
+	public EmbernodestableQActionRow(System.Object[] oRow) : base(0, 8, oRow) { }
 	public static implicit operator EmbernodestableQActionRow(System.Object[] source) { return new EmbernodestableQActionRow(source); }
 	public static implicit operator System.Object[](EmbernodestableQActionRow source) { return source.ToObjectArray(); }
 	public System.Object[] GetParentRowEmbernodestableEmbernodesparent(SLProtocol protocol) { return (System.Object[])protocol.GetRow(100, (System.String)Embernodesparent); }
 	public System.String[] GetChildKeysEmbernodestableEmbernodesparent(SLProtocol protocol) { return (System.String[])protocol.NotifyProtocol(196, 103, Key); }
 	public System.String[] GetChildKeysEmberparameterstableEmberparametersparent(SLProtocol protocol) { return (System.String[])protocol.NotifyProtocol(196, 113, Key); }
+	public System.String[] GetChildKeysEmbermatrixtableEmbermatrixparent(SLProtocol protocol) { return (System.String[])protocol.NotifyProtocol(196, 203, Key); }
+	public System.String[] GetChildKeysEmberfunctionstableEmberfunctionsparent(SLProtocol protocol) { return (System.String[])protocol.NotifyProtocol(196, 303, Key); }
 }
 /// <summary>IDX: 0</summary>
 public class EmberparameterstableQActionRow : QActionTableRow
@@ -468,41 +1157,236 @@ public class EmberparameterstableQActionRow : QActionTableRow
 	public System.Object Emberparametersparent { get { if (base.Columns.ContainsKey(2)) { return base.Columns[2]; } else { return null; } } set { if (base.Columns.ContainsKey(2)) { base.Columns[2] = value; } else { base.Columns.Add(2, value); } } }
 	/// <summary>PID: 114 | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Emberparameterstype_114 { get { if (base.Columns.ContainsKey(3)) { return base.Columns[3]; } else { return null; } } set { if (base.Columns.ContainsKey(3)) { base.Columns[3] = value; } else { base.Columns.Add(3, value); } } }
+	public System.Object Emberparametersidentifierpath_114 { get { if (base.Columns.ContainsKey(3)) { return base.Columns[3]; } else { return null; } } set { if (base.Columns.ContainsKey(3)) { base.Columns[3] = value; } else { base.Columns.Add(3, value); } } }
 	/// <summary>PID: 114 | Type: read</summary>
-	public System.Object Emberparameterstype { get { if (base.Columns.ContainsKey(3)) { return base.Columns[3]; } else { return null; } } set { if (base.Columns.ContainsKey(3)) { base.Columns[3] = value; } else { base.Columns.Add(3, value); } } }
+	public System.Object Emberparametersidentifierpath { get { if (base.Columns.ContainsKey(3)) { return base.Columns[3]; } else { return null; } } set { if (base.Columns.ContainsKey(3)) { base.Columns[3] = value; } else { base.Columns.Add(3, value); } } }
 	/// <summary>PID: 115 | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Emberparametersvalue_115 { get { if (base.Columns.ContainsKey(4)) { return base.Columns[4]; } else { return null; } } set { if (base.Columns.ContainsKey(4)) { base.Columns[4] = value; } else { base.Columns.Add(4, value); } } }
+	public System.Object Emberparametersjoinedpath_115 { get { if (base.Columns.ContainsKey(4)) { return base.Columns[4]; } else { return null; } } set { if (base.Columns.ContainsKey(4)) { base.Columns[4] = value; } else { base.Columns.Add(4, value); } } }
 	/// <summary>PID: 115 | Type: read</summary>
-	public System.Object Emberparametersvalue { get { if (base.Columns.ContainsKey(4)) { return base.Columns[4]; } else { return null; } } set { if (base.Columns.ContainsKey(4)) { base.Columns[4] = value; } else { base.Columns.Add(4, value); } } }
+	public System.Object Emberparametersjoinedpath { get { if (base.Columns.ContainsKey(4)) { return base.Columns[4]; } else { return null; } } set { if (base.Columns.ContainsKey(4)) { base.Columns[4] = value; } else { base.Columns.Add(4, value); } } }
 	/// <summary>PID: 116 | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Emberparameterspath_116 { get { if (base.Columns.ContainsKey(5)) { return base.Columns[5]; } else { return null; } } set { if (base.Columns.ContainsKey(5)) { base.Columns[5] = value; } else { base.Columns.Add(5, value); } } }
+	public System.Object Emberparametersdescription_116 { get { if (base.Columns.ContainsKey(5)) { return base.Columns[5]; } else { return null; } } set { if (base.Columns.ContainsKey(5)) { base.Columns[5] = value; } else { base.Columns.Add(5, value); } } }
 	/// <summary>PID: 116 | Type: read</summary>
-	public System.Object Emberparameterspath { get { if (base.Columns.ContainsKey(5)) { return base.Columns[5]; } else { return null; } } set { if (base.Columns.ContainsKey(5)) { base.Columns[5] = value; } else { base.Columns.Add(5, value); } } }
-	public EmberparameterstableQActionRow() : base(0, 6) { }
-	public EmberparameterstableQActionRow(System.Object[] oRow) : base(0, 6, oRow) { }
+	public System.Object Emberparametersdescription { get { if (base.Columns.ContainsKey(5)) { return base.Columns[5]; } else { return null; } } set { if (base.Columns.ContainsKey(5)) { base.Columns[5] = value; } else { base.Columns.Add(5, value); } } }
+	/// <summary>PID: 117 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberparametersstate_117 { get { if (base.Columns.ContainsKey(6)) { return base.Columns[6]; } else { return null; } } set { if (base.Columns.ContainsKey(6)) { base.Columns[6] = value; } else { base.Columns.Add(6, value); } } }
+	/// <summary>PID: 117 | Type: read</summary>
+	public System.Object Emberparametersstate { get { if (base.Columns.ContainsKey(6)) { return base.Columns[6]; } else { return null; } } set { if (base.Columns.ContainsKey(6)) { base.Columns[6] = value; } else { base.Columns.Add(6, value); } } }
+	/// <summary>PID: 118 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberparametersjoinedidentifierpath_118 { get { if (base.Columns.ContainsKey(7)) { return base.Columns[7]; } else { return null; } } set { if (base.Columns.ContainsKey(7)) { base.Columns[7] = value; } else { base.Columns.Add(7, value); } } }
+	/// <summary>PID: 118 | Type: read</summary>
+	public System.Object Emberparametersjoinedidentifierpath { get { if (base.Columns.ContainsKey(7)) { return base.Columns[7]; } else { return null; } } set { if (base.Columns.ContainsKey(7)) { base.Columns[7] = value; } else { base.Columns.Add(7, value); } } }
+	/// <summary>PID: 119 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberparameterstype_119 { get { if (base.Columns.ContainsKey(8)) { return base.Columns[8]; } else { return null; } } set { if (base.Columns.ContainsKey(8)) { base.Columns[8] = value; } else { base.Columns.Add(8, value); } } }
+	/// <summary>PID: 119 | Type: read</summary>
+	public System.Object Emberparameterstype { get { if (base.Columns.ContainsKey(8)) { return base.Columns[8]; } else { return null; } } set { if (base.Columns.ContainsKey(8)) { base.Columns[8] = value; } else { base.Columns.Add(8, value); } } }
+	/// <summary>PID: 120 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberparametersvalue_120 { get { if (base.Columns.ContainsKey(9)) { return base.Columns[9]; } else { return null; } } set { if (base.Columns.ContainsKey(9)) { base.Columns[9] = value; } else { base.Columns.Add(9, value); } } }
+	/// <summary>PID: 120 | Type: read</summary>
+	public System.Object Emberparametersvalue { get { if (base.Columns.ContainsKey(9)) { return base.Columns[9]; } else { return null; } } set { if (base.Columns.ContainsKey(9)) { base.Columns[9] = value; } else { base.Columns.Add(9, value); } } }
+	/// <summary>PID: 121 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberparametersminimum_121 { get { if (base.Columns.ContainsKey(10)) { return base.Columns[10]; } else { return null; } } set { if (base.Columns.ContainsKey(10)) { base.Columns[10] = value; } else { base.Columns.Add(10, value); } } }
+	/// <summary>PID: 121 | Type: read</summary>
+	public System.Object Emberparametersminimum { get { if (base.Columns.ContainsKey(10)) { return base.Columns[10]; } else { return null; } } set { if (base.Columns.ContainsKey(10)) { base.Columns[10] = value; } else { base.Columns.Add(10, value); } } }
+	/// <summary>PID: 122 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberparametersmaximum_122 { get { if (base.Columns.ContainsKey(11)) { return base.Columns[11]; } else { return null; } } set { if (base.Columns.ContainsKey(11)) { base.Columns[11] = value; } else { base.Columns.Add(11, value); } } }
+	/// <summary>PID: 122 | Type: read</summary>
+	public System.Object Emberparametersmaximum { get { if (base.Columns.ContainsKey(11)) { return base.Columns[11]; } else { return null; } } set { if (base.Columns.ContainsKey(11)) { base.Columns[11] = value; } else { base.Columns.Add(11, value); } } }
+	/// <summary>PID: 123 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberparametersaccess_123 { get { if (base.Columns.ContainsKey(12)) { return base.Columns[12]; } else { return null; } } set { if (base.Columns.ContainsKey(12)) { base.Columns[12] = value; } else { base.Columns.Add(12, value); } } }
+	/// <summary>PID: 123 | Type: read</summary>
+	public System.Object Emberparametersaccess { get { if (base.Columns.ContainsKey(12)) { return base.Columns[12]; } else { return null; } } set { if (base.Columns.ContainsKey(12)) { base.Columns[12] = value; } else { base.Columns.Add(12, value); } } }
+	/// <summary>PID: 124 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberparametersiswritable_124 { get { if (base.Columns.ContainsKey(13)) { return base.Columns[13]; } else { return null; } } set { if (base.Columns.ContainsKey(13)) { base.Columns[13] = value; } else { base.Columns.Add(13, value); } } }
+	/// <summary>PID: 124 | Type: read</summary>
+	public System.Object Emberparametersiswritable { get { if (base.Columns.ContainsKey(13)) { return base.Columns[13]; } else { return null; } } set { if (base.Columns.ContainsKey(13)) { base.Columns[13] = value; } else { base.Columns.Add(13, value); } } }
+	/// <summary>PID: 125 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberparametersformat_125 { get { if (base.Columns.ContainsKey(14)) { return base.Columns[14]; } else { return null; } } set { if (base.Columns.ContainsKey(14)) { base.Columns[14] = value; } else { base.Columns.Add(14, value); } } }
+	/// <summary>PID: 125 | Type: read</summary>
+	public System.Object Emberparametersformat { get { if (base.Columns.ContainsKey(14)) { return base.Columns[14]; } else { return null; } } set { if (base.Columns.ContainsKey(14)) { base.Columns[14] = value; } else { base.Columns.Add(14, value); } } }
+	/// <summary>PID: 126 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberparametersfactor_126 { get { if (base.Columns.ContainsKey(15)) { return base.Columns[15]; } else { return null; } } set { if (base.Columns.ContainsKey(15)) { base.Columns[15] = value; } else { base.Columns.Add(15, value); } } }
+	/// <summary>PID: 126 | Type: read</summary>
+	public System.Object Emberparametersfactor { get { if (base.Columns.ContainsKey(15)) { return base.Columns[15]; } else { return null; } } set { if (base.Columns.ContainsKey(15)) { base.Columns[15] = value; } else { base.Columns.Add(15, value); } } }
+	/// <summary>PID: 127 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberparametersformula_127 { get { if (base.Columns.ContainsKey(16)) { return base.Columns[16]; } else { return null; } } set { if (base.Columns.ContainsKey(16)) { base.Columns[16] = value; } else { base.Columns.Add(16, value); } } }
+	/// <summary>PID: 127 | Type: read</summary>
+	public System.Object Emberparametersformula { get { if (base.Columns.ContainsKey(16)) { return base.Columns[16]; } else { return null; } } set { if (base.Columns.ContainsKey(16)) { base.Columns[16] = value; } else { base.Columns.Add(16, value); } } }
+	/// <summary>PID: 128 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberparametersdefaultvalue_128 { get { if (base.Columns.ContainsKey(17)) { return base.Columns[17]; } else { return null; } } set { if (base.Columns.ContainsKey(17)) { base.Columns[17] = value; } else { base.Columns.Add(17, value); } } }
+	/// <summary>PID: 128 | Type: read</summary>
+	public System.Object Emberparametersdefaultvalue { get { if (base.Columns.ContainsKey(17)) { return base.Columns[17]; } else { return null; } } set { if (base.Columns.ContainsKey(17)) { base.Columns[17] = value; } else { base.Columns.Add(17, value); } } }
+	/// <summary>PID: 129 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberparametersenummap_129 { get { if (base.Columns.ContainsKey(18)) { return base.Columns[18]; } else { return null; } } set { if (base.Columns.ContainsKey(18)) { base.Columns[18] = value; } else { base.Columns.Add(18, value); } } }
+	/// <summary>PID: 129 | Type: read</summary>
+	public System.Object Emberparametersenummap { get { if (base.Columns.ContainsKey(18)) { return base.Columns[18]; } else { return null; } } set { if (base.Columns.ContainsKey(18)) { base.Columns[18] = value; } else { base.Columns.Add(18, value); } } }
+	public EmberparameterstableQActionRow() : base(0, 19) { }
+	public EmberparameterstableQActionRow(System.Object[] oRow) : base(0, 19, oRow) { }
 	public static implicit operator EmberparameterstableQActionRow(System.Object[] source) { return new EmberparameterstableQActionRow(source); }
 	public static implicit operator System.Object[](EmberparameterstableQActionRow source) { return source.ToObjectArray(); }
 	public System.Object[] GetParentRowEmbernodestableEmberparametersparent(SLProtocol protocol) { return (System.Object[])protocol.GetRow(100, (System.String)Emberparametersparent); }
 }
 /// <summary>IDX: 0</summary>
-public class RequestednodestableQActionRow : QActionTableRow
+public class EmbermatrixtableQActionRow : QActionTableRow
 {
-	/// <summary>PID: 121 | Type: read</summary>
+	/// <summary>PID: 201 | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Requestednodesidentifier_121 { get { if (base.Columns.ContainsKey(0)) { return base.Columns[0]; } else { return null; } } set { if (base.Columns.ContainsKey(0)) { base.Columns[0] = value; } else { base.Columns.Add(0, value); } } }
-	/// <summary>PID: 121 | Type: read</summary>
-	public System.Object Requestednodesidentifier { get { if (base.Columns.ContainsKey(0)) { return base.Columns[0]; } else { return null; } } set { if (base.Columns.ContainsKey(0)) { base.Columns[0] = value; } else { base.Columns.Add(0, value); } } }
-	/// <summary>PID: 122 | Type: read</summary>
+	public System.Object Embermatrixidentifier_201 { get { if (base.Columns.ContainsKey(0)) { return base.Columns[0]; } else { return null; } } set { if (base.Columns.ContainsKey(0)) { base.Columns[0] = value; } else { base.Columns.Add(0, value); } } }
+	/// <summary>PID: 201 | Type: read</summary>
+	public System.Object Embermatrixidentifier { get { if (base.Columns.ContainsKey(0)) { return base.Columns[0]; } else { return null; } } set { if (base.Columns.ContainsKey(0)) { base.Columns[0] = value; } else { base.Columns.Add(0, value); } } }
+	/// <summary>PID: 202 | Type: read</summary>
 	[EditorBrowsable(EditorBrowsableState.Never)]
-	public System.Object Requestednodesnumber_122 { get { if (base.Columns.ContainsKey(1)) { return base.Columns[1]; } else { return null; } } set { if (base.Columns.ContainsKey(1)) { base.Columns[1] = value; } else { base.Columns.Add(1, value); } } }
-	/// <summary>PID: 122 | Type: read</summary>
-	public System.Object Requestednodesnumber { get { if (base.Columns.ContainsKey(1)) { return base.Columns[1]; } else { return null; } } set { if (base.Columns.ContainsKey(1)) { base.Columns[1] = value; } else { base.Columns.Add(1, value); } } }
-	public RequestednodestableQActionRow() : base(0, 2) { }
-	public RequestednodestableQActionRow(System.Object[] oRow) : base(0, 2, oRow) { }
-	public static implicit operator RequestednodestableQActionRow(System.Object[] source) { return new RequestednodestableQActionRow(source); }
-	public static implicit operator System.Object[](RequestednodestableQActionRow source) { return source.ToObjectArray(); }
+	public System.Object Embermatrixnumber_202 { get { if (base.Columns.ContainsKey(1)) { return base.Columns[1]; } else { return null; } } set { if (base.Columns.ContainsKey(1)) { base.Columns[1] = value; } else { base.Columns.Add(1, value); } } }
+	/// <summary>PID: 202 | Type: read</summary>
+	public System.Object Embermatrixnumber { get { if (base.Columns.ContainsKey(1)) { return base.Columns[1]; } else { return null; } } set { if (base.Columns.ContainsKey(1)) { base.Columns[1] = value; } else { base.Columns.Add(1, value); } } }
+	/// <summary>PID: 203 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embermatrixparent_203 { get { if (base.Columns.ContainsKey(2)) { return base.Columns[2]; } else { return null; } } set { if (base.Columns.ContainsKey(2)) { base.Columns[2] = value; } else { base.Columns.Add(2, value); } } }
+	/// <summary>PID: 203 | Type: read</summary>
+	public System.Object Embermatrixparent { get { if (base.Columns.ContainsKey(2)) { return base.Columns[2]; } else { return null; } } set { if (base.Columns.ContainsKey(2)) { base.Columns[2] = value; } else { base.Columns.Add(2, value); } } }
+	/// <summary>PID: 204 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embermatrixidentifierpath_204 { get { if (base.Columns.ContainsKey(3)) { return base.Columns[3]; } else { return null; } } set { if (base.Columns.ContainsKey(3)) { base.Columns[3] = value; } else { base.Columns.Add(3, value); } } }
+	/// <summary>PID: 204 | Type: read</summary>
+	public System.Object Embermatrixidentifierpath { get { if (base.Columns.ContainsKey(3)) { return base.Columns[3]; } else { return null; } } set { if (base.Columns.ContainsKey(3)) { base.Columns[3] = value; } else { base.Columns.Add(3, value); } } }
+	/// <summary>PID: 205 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embermatrixjoinedpath_205 { get { if (base.Columns.ContainsKey(4)) { return base.Columns[4]; } else { return null; } } set { if (base.Columns.ContainsKey(4)) { base.Columns[4] = value; } else { base.Columns.Add(4, value); } } }
+	/// <summary>PID: 205 | Type: read</summary>
+	public System.Object Embermatrixjoinedpath { get { if (base.Columns.ContainsKey(4)) { return base.Columns[4]; } else { return null; } } set { if (base.Columns.ContainsKey(4)) { base.Columns[4] = value; } else { base.Columns.Add(4, value); } } }
+	/// <summary>PID: 206 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embermatrixdescription_206 { get { if (base.Columns.ContainsKey(5)) { return base.Columns[5]; } else { return null; } } set { if (base.Columns.ContainsKey(5)) { base.Columns[5] = value; } else { base.Columns.Add(5, value); } } }
+	/// <summary>PID: 206 | Type: read</summary>
+	public System.Object Embermatrixdescription { get { if (base.Columns.ContainsKey(5)) { return base.Columns[5]; } else { return null; } } set { if (base.Columns.ContainsKey(5)) { base.Columns[5] = value; } else { base.Columns.Add(5, value); } } }
+	/// <summary>PID: 207 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embermatrixstate_207 { get { if (base.Columns.ContainsKey(6)) { return base.Columns[6]; } else { return null; } } set { if (base.Columns.ContainsKey(6)) { base.Columns[6] = value; } else { base.Columns.Add(6, value); } } }
+	/// <summary>PID: 207 | Type: read</summary>
+	public System.Object Embermatrixstate { get { if (base.Columns.ContainsKey(6)) { return base.Columns[6]; } else { return null; } } set { if (base.Columns.ContainsKey(6)) { base.Columns[6] = value; } else { base.Columns.Add(6, value); } } }
+	/// <summary>PID: 208 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embermatrixjoinedidentifierpath_208 { get { if (base.Columns.ContainsKey(7)) { return base.Columns[7]; } else { return null; } } set { if (base.Columns.ContainsKey(7)) { base.Columns[7] = value; } else { base.Columns.Add(7, value); } } }
+	/// <summary>PID: 208 | Type: read</summary>
+	public System.Object Embermatrixjoinedidentifierpath { get { if (base.Columns.ContainsKey(7)) { return base.Columns[7]; } else { return null; } } set { if (base.Columns.ContainsKey(7)) { base.Columns[7] = value; } else { base.Columns.Add(7, value); } } }
+	/// <summary>PID: 209 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embermatrixmaximumtotalconnects_209 { get { if (base.Columns.ContainsKey(8)) { return base.Columns[8]; } else { return null; } } set { if (base.Columns.ContainsKey(8)) { base.Columns[8] = value; } else { base.Columns.Add(8, value); } } }
+	/// <summary>PID: 209 | Type: read</summary>
+	public System.Object Embermatrixmaximumtotalconnects { get { if (base.Columns.ContainsKey(8)) { return base.Columns[8]; } else { return null; } } set { if (base.Columns.ContainsKey(8)) { base.Columns[8] = value; } else { base.Columns.Add(8, value); } } }
+	/// <summary>PID: 210 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embermatrixmaximumconnectspertarget_210 { get { if (base.Columns.ContainsKey(9)) { return base.Columns[9]; } else { return null; } } set { if (base.Columns.ContainsKey(9)) { base.Columns[9] = value; } else { base.Columns.Add(9, value); } } }
+	/// <summary>PID: 210 | Type: read</summary>
+	public System.Object Embermatrixmaximumconnectspertarget { get { if (base.Columns.ContainsKey(9)) { return base.Columns[9]; } else { return null; } } set { if (base.Columns.ContainsKey(9)) { base.Columns[9] = value; } else { base.Columns.Add(9, value); } } }
+	/// <summary>PID: 211 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embermatrixparameterslocations_211 { get { if (base.Columns.ContainsKey(10)) { return base.Columns[10]; } else { return null; } } set { if (base.Columns.ContainsKey(10)) { base.Columns[10] = value; } else { base.Columns.Add(10, value); } } }
+	/// <summary>PID: 211 | Type: read</summary>
+	public System.Object Embermatrixparameterslocations { get { if (base.Columns.ContainsKey(10)) { return base.Columns[10]; } else { return null; } } set { if (base.Columns.ContainsKey(10)) { base.Columns[10] = value; } else { base.Columns.Add(10, value); } } }
+	/// <summary>PID: 212 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embermatrixgainparameternumber_212 { get { if (base.Columns.ContainsKey(11)) { return base.Columns[11]; } else { return null; } } set { if (base.Columns.ContainsKey(11)) { base.Columns[11] = value; } else { base.Columns.Add(11, value); } } }
+	/// <summary>PID: 212 | Type: read</summary>
+	public System.Object Embermatrixgainparameternumber { get { if (base.Columns.ContainsKey(11)) { return base.Columns[11]; } else { return null; } } set { if (base.Columns.ContainsKey(11)) { base.Columns[11] = value; } else { base.Columns.Add(11, value); } } }
+	/// <summary>PID: 213 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embermatrixlabels_213 { get { if (base.Columns.ContainsKey(12)) { return base.Columns[12]; } else { return null; } } set { if (base.Columns.ContainsKey(12)) { base.Columns[12] = value; } else { base.Columns.Add(12, value); } } }
+	/// <summary>PID: 213 | Type: read</summary>
+	public System.Object Embermatrixlabels { get { if (base.Columns.ContainsKey(12)) { return base.Columns[12]; } else { return null; } } set { if (base.Columns.ContainsKey(12)) { base.Columns[12] = value; } else { base.Columns.Add(12, value); } } }
+	/// <summary>PID: 214 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embermatrixtargets_214 { get { if (base.Columns.ContainsKey(13)) { return base.Columns[13]; } else { return null; } } set { if (base.Columns.ContainsKey(13)) { base.Columns[13] = value; } else { base.Columns.Add(13, value); } } }
+	/// <summary>PID: 214 | Type: read</summary>
+	public System.Object Embermatrixtargets { get { if (base.Columns.ContainsKey(13)) { return base.Columns[13]; } else { return null; } } set { if (base.Columns.ContainsKey(13)) { base.Columns[13] = value; } else { base.Columns.Add(13, value); } } }
+	/// <summary>PID: 215 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embermatrixsources_215 { get { if (base.Columns.ContainsKey(14)) { return base.Columns[14]; } else { return null; } } set { if (base.Columns.ContainsKey(14)) { base.Columns[14] = value; } else { base.Columns.Add(14, value); } } }
+	/// <summary>PID: 215 | Type: read</summary>
+	public System.Object Embermatrixsources { get { if (base.Columns.ContainsKey(14)) { return base.Columns[14]; } else { return null; } } set { if (base.Columns.ContainsKey(14)) { base.Columns[14] = value; } else { base.Columns.Add(14, value); } } }
+	/// <summary>PID: 216 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Embermatrixconnections_216 { get { if (base.Columns.ContainsKey(15)) { return base.Columns[15]; } else { return null; } } set { if (base.Columns.ContainsKey(15)) { base.Columns[15] = value; } else { base.Columns.Add(15, value); } } }
+	/// <summary>PID: 216 | Type: read</summary>
+	public System.Object Embermatrixconnections { get { if (base.Columns.ContainsKey(15)) { return base.Columns[15]; } else { return null; } } set { if (base.Columns.ContainsKey(15)) { base.Columns[15] = value; } else { base.Columns.Add(15, value); } } }
+	public EmbermatrixtableQActionRow() : base(0, 16) { }
+	public EmbermatrixtableQActionRow(System.Object[] oRow) : base(0, 16, oRow) { }
+	public static implicit operator EmbermatrixtableQActionRow(System.Object[] source) { return new EmbermatrixtableQActionRow(source); }
+	public static implicit operator System.Object[](EmbermatrixtableQActionRow source) { return source.ToObjectArray(); }
+	public System.Object[] GetParentRowEmbernodestableEmbermatrixparent(SLProtocol protocol) { return (System.Object[])protocol.GetRow(100, (System.String)Embermatrixparent); }
+}
+/// <summary>IDX: 0</summary>
+public class EmberfunctionstableQActionRow : QActionTableRow
+{
+	/// <summary>PID: 301 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberfunctionsidentifier_301 { get { if (base.Columns.ContainsKey(0)) { return base.Columns[0]; } else { return null; } } set { if (base.Columns.ContainsKey(0)) { base.Columns[0] = value; } else { base.Columns.Add(0, value); } } }
+	/// <summary>PID: 301 | Type: read</summary>
+	public System.Object Emberfunctionsidentifier { get { if (base.Columns.ContainsKey(0)) { return base.Columns[0]; } else { return null; } } set { if (base.Columns.ContainsKey(0)) { base.Columns[0] = value; } else { base.Columns.Add(0, value); } } }
+	/// <summary>PID: 302 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberfunctionsnumber_302 { get { if (base.Columns.ContainsKey(1)) { return base.Columns[1]; } else { return null; } } set { if (base.Columns.ContainsKey(1)) { base.Columns[1] = value; } else { base.Columns.Add(1, value); } } }
+	/// <summary>PID: 302 | Type: read</summary>
+	public System.Object Emberfunctionsnumber { get { if (base.Columns.ContainsKey(1)) { return base.Columns[1]; } else { return null; } } set { if (base.Columns.ContainsKey(1)) { base.Columns[1] = value; } else { base.Columns.Add(1, value); } } }
+	/// <summary>PID: 303 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberfunctionsparent_303 { get { if (base.Columns.ContainsKey(2)) { return base.Columns[2]; } else { return null; } } set { if (base.Columns.ContainsKey(2)) { base.Columns[2] = value; } else { base.Columns.Add(2, value); } } }
+	/// <summary>PID: 303 | Type: read</summary>
+	public System.Object Emberfunctionsparent { get { if (base.Columns.ContainsKey(2)) { return base.Columns[2]; } else { return null; } } set { if (base.Columns.ContainsKey(2)) { base.Columns[2] = value; } else { base.Columns.Add(2, value); } } }
+	/// <summary>PID: 304 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberfunctionsidentifierpath_304 { get { if (base.Columns.ContainsKey(3)) { return base.Columns[3]; } else { return null; } } set { if (base.Columns.ContainsKey(3)) { base.Columns[3] = value; } else { base.Columns.Add(3, value); } } }
+	/// <summary>PID: 304 | Type: read</summary>
+	public System.Object Emberfunctionsidentifierpath { get { if (base.Columns.ContainsKey(3)) { return base.Columns[3]; } else { return null; } } set { if (base.Columns.ContainsKey(3)) { base.Columns[3] = value; } else { base.Columns.Add(3, value); } } }
+	/// <summary>PID: 305 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberfunctionsjoinedpath_305 { get { if (base.Columns.ContainsKey(4)) { return base.Columns[4]; } else { return null; } } set { if (base.Columns.ContainsKey(4)) { base.Columns[4] = value; } else { base.Columns.Add(4, value); } } }
+	/// <summary>PID: 305 | Type: read</summary>
+	public System.Object Emberfunctionsjoinedpath { get { if (base.Columns.ContainsKey(4)) { return base.Columns[4]; } else { return null; } } set { if (base.Columns.ContainsKey(4)) { base.Columns[4] = value; } else { base.Columns.Add(4, value); } } }
+	/// <summary>PID: 306 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberfunctionsdescription_306 { get { if (base.Columns.ContainsKey(5)) { return base.Columns[5]; } else { return null; } } set { if (base.Columns.ContainsKey(5)) { base.Columns[5] = value; } else { base.Columns.Add(5, value); } } }
+	/// <summary>PID: 306 | Type: read</summary>
+	public System.Object Emberfunctionsdescription { get { if (base.Columns.ContainsKey(5)) { return base.Columns[5]; } else { return null; } } set { if (base.Columns.ContainsKey(5)) { base.Columns[5] = value; } else { base.Columns.Add(5, value); } } }
+	/// <summary>PID: 307 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberfunctionsstate_307 { get { if (base.Columns.ContainsKey(6)) { return base.Columns[6]; } else { return null; } } set { if (base.Columns.ContainsKey(6)) { base.Columns[6] = value; } else { base.Columns.Add(6, value); } } }
+	/// <summary>PID: 307 | Type: read</summary>
+	public System.Object Emberfunctionsstate { get { if (base.Columns.ContainsKey(6)) { return base.Columns[6]; } else { return null; } } set { if (base.Columns.ContainsKey(6)) { base.Columns[6] = value; } else { base.Columns.Add(6, value); } } }
+	/// <summary>PID: 308 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberfunctionsjoinedidentifierpath_308 { get { if (base.Columns.ContainsKey(7)) { return base.Columns[7]; } else { return null; } } set { if (base.Columns.ContainsKey(7)) { base.Columns[7] = value; } else { base.Columns.Add(7, value); } } }
+	/// <summary>PID: 308 | Type: read</summary>
+	public System.Object Emberfunctionsjoinedidentifierpath { get { if (base.Columns.ContainsKey(7)) { return base.Columns[7]; } else { return null; } } set { if (base.Columns.ContainsKey(7)) { base.Columns[7] = value; } else { base.Columns.Add(7, value); } } }
+	/// <summary>PID: 309 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberfunctionsarguments_309 { get { if (base.Columns.ContainsKey(8)) { return base.Columns[8]; } else { return null; } } set { if (base.Columns.ContainsKey(8)) { base.Columns[8] = value; } else { base.Columns.Add(8, value); } } }
+	/// <summary>PID: 309 | Type: read</summary>
+	public System.Object Emberfunctionsarguments { get { if (base.Columns.ContainsKey(8)) { return base.Columns[8]; } else { return null; } } set { if (base.Columns.ContainsKey(8)) { base.Columns[8] = value; } else { base.Columns.Add(8, value); } } }
+	/// <summary>PID: 310 | Type: read</summary>
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public System.Object Emberfunctionsresult_310 { get { if (base.Columns.ContainsKey(9)) { return base.Columns[9]; } else { return null; } } set { if (base.Columns.ContainsKey(9)) { base.Columns[9] = value; } else { base.Columns.Add(9, value); } } }
+	/// <summary>PID: 310 | Type: read</summary>
+	public System.Object Emberfunctionsresult { get { if (base.Columns.ContainsKey(9)) { return base.Columns[9]; } else { return null; } } set { if (base.Columns.ContainsKey(9)) { base.Columns[9] = value; } else { base.Columns.Add(9, value); } } }
+	public EmberfunctionstableQActionRow() : base(0, 10) { }
+	public EmberfunctionstableQActionRow(System.Object[] oRow) : base(0, 10, oRow) { }
+	public static implicit operator EmberfunctionstableQActionRow(System.Object[] source) { return new EmberfunctionstableQActionRow(source); }
+	public static implicit operator System.Object[](EmberfunctionstableQActionRow source) { return source.ToObjectArray(); }
+	public System.Object[] GetParentRowEmbernodestableEmberfunctionsparent(SLProtocol protocol) { return (System.Object[])protocol.GetRow(100, (System.String)Emberfunctionsparent); }
 }
 }
