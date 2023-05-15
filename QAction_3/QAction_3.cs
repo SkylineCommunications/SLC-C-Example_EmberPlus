@@ -12,13 +12,16 @@ using Skyline.DataMiner.Scripting;
 /// <summary>
 ///     DataMiner QAction Class: Ember QAction.
 /// </summary>
-public static class QAction
+public class QAction : IDisposable
 {
+	private S101Client client;
+	private Consumer<MyRoot> consumer;
+
 	/// <summary>
 	///     The QAction entry point.
 	/// </summary>
 	/// <param name="protocol">Link with SLProtocol process.</param>
-	public static void Run(SLProtocolExt protocol)
+	public void Run(SLProtocolExt protocol)
 	{
 		try
 		{
@@ -32,16 +35,12 @@ public static class QAction
 			async Task AsyncMethod()
 			{
 				// Establish S101 protocol
-				using (var client = await ConnectAsync(ip, port).ConfigureAwait(false))
+				using (client = await ConnectAsync(ip, port))
 
 				// Retrieve *all* elements in the provider database and store them in a local copy
-				using (var consumer = await Consumer<MyRoot>.CreateAsync(client).ConfigureAwait(false))
+				using (consumer = await Consumer<MyRoot>.CreateAsync(client))
 				{
 					WriteChildren(protocol, consumer.Root);
-
-					consumer.Dispose();
-					client.Dispose();
-					protocol.DisposeResources();
 				}
 			}
 
@@ -53,11 +52,17 @@ public static class QAction
 		}
 	}
 
-	private static async Task<S101Client> ConnectAsync(string host, int port)
+	public void Dispose()
+	{
+		consumer.Dispose();
+		client.Dispose();
+	}
+
+	private async Task<S101Client> ConnectAsync(string host, int port)
 	{
 		// Create TCP connection
 		var tcpClient = new TcpClient();
-		await tcpClient.ConnectAsync(host, port).ConfigureAwait(false);
+		await tcpClient.ConnectAsync(host, port);
 
 		// Establish S101 protocol
 		// S101 provides message packaging, CRC integrity checks and a keep-alive mechanism.
@@ -66,7 +71,7 @@ public static class QAction
 		return new S101Client(tcpClient, (bytes, i, count, token) => stream.ReadAsync(bytes, i, count, token), (bytes, i, count, token) => stream.WriteAsync(bytes, i, count, token));
 	}
 
-	private static object GetValue(IParameter childParameter)
+	private object GetValue(IParameter childParameter)
 	{
 		var type = childParameter.Type;
 
@@ -91,7 +96,7 @@ public static class QAction
 		}
 	}
 
-	private static void ProcessChildFunction(SLProtocolExt protocol, IFunction childFunction)
+	private void ProcessChildFunction(SLProtocolExt protocol, IFunction childFunction)
 	{
 		var functionRow = new EmberfunctionstableQActionRow
 		{
@@ -110,7 +115,7 @@ public static class QAction
 		protocol.emberfunctionstable.SetRow(functionRow, true);
 	}
 
-	private static void ProcessChildMatrix(SLProtocolExt protocol, IMatrix childMatrix)
+	private void ProcessChildMatrix(SLProtocolExt protocol, IMatrix childMatrix)
 	{
 		var matrixRow = new EmbermatrixtableQActionRow
 		{
@@ -135,7 +140,7 @@ public static class QAction
 		protocol.embermatrixtable.SetRow(matrixRow, true);
 	}
 
-	private static void ProcessChildNode(SLProtocolExt protocol, INode childNode)
+	private void ProcessChildNode(SLProtocolExt protocol, INode childNode)
 	{
 		var nodeRow = new EmbernodestableQActionRow
 		{
@@ -154,7 +159,7 @@ public static class QAction
 		WriteChildren(protocol, childNode);
 	}
 
-	private static void ProcessChildParameter(SLProtocolExt protocol, IParameter childParameter)
+	private void ProcessChildParameter(SLProtocolExt protocol, IParameter childParameter)
 	{
 		object value = GetValue(childParameter);
 
@@ -184,7 +189,7 @@ public static class QAction
 		protocol.emberparameterstable.SetRow(parameterRow, true);
 	}
 
-	private static void WriteChildren(SLProtocolExt protocol, INode node)
+	private void WriteChildren(SLProtocolExt protocol, INode node)
 	{
 		foreach (var child in node.Children)
 		{
