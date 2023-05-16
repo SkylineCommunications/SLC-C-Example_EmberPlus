@@ -43,12 +43,13 @@ Any inquiries can be addressed to:
 	Web		: www.skyline.be
 	Contact	: Ben Vandenberghe
 
+	Version 1.0.0.X: hard-coded paths
 -->
 
 <Protocol xmlns="http://www.skyline.be/protocol">
 	<Name>SLC SDF EmberPlus</Name>
 	<Description>SLC SDF EmberPlus DataMiner driver</Description>
-	<Version>1.0.1.1</Version>
+	<Version>1.0.0.1</Version>
 	<IntegrationID>DMS-DRV-0000</IntegrationID>
 	<Provider>Skyline Communications</Provider>
 	<Vendor>Lawo</Vendor>
@@ -578,20 +579,6 @@ Any inquiries can be addressed to:
 							<MajorVersion id="0">
 								<MinorVersions>
 									<MinorVersion id="1">
-										<Date>2023-05-04</Date>
-										<Provider>
-											<Author></Author>
-											<Company>Skyline Communications</Company>
-										</Provider>
-										<Changes>
-											<NewFeature>Initial version</NewFeature>
-										</Changes>
-									</MinorVersion>
-								</MinorVersions>
-							</MajorVersion>
-							<MajorVersion id="1">
-								<MinorVersions>
-									<MinorVersion id="1" basedOn="1.0.0.1">
 										<Date>2023-05-04</Date>
 										<Provider>
 											<Author>ADK</Author>
