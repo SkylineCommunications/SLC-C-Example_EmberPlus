@@ -100,10 +100,10 @@ public class QAction : IDisposable
 	{
 		var functionRow = new EmberfunctionstableQActionRow
 		{
-			Emberfunctionsidentifier_301 = childFunction.Identifier,
+			Emberfunctionsidentifierpath_301 = childFunction.IdentifierPath,
 			Emberfunctionsnumber_302 = childFunction.Number,
 			Emberfunctionsparent_303 = childFunction.Parent.Identifier,
-			Emberfunctionsidentifierpath_304 = childFunction.IdentifierPath,
+			Emberfunctionsidentifier_304 = childFunction.Identifier,
 			Emberfunctionsjoinedpath_305 = String.Join(".", childFunction.Path),
 			Emberfunctionsdescription_306 = childFunction.Description,
 			Emberfunctionsstate_307 = Convert.ToInt32(childFunction.IsOnline),
@@ -119,10 +119,10 @@ public class QAction : IDisposable
 	{
 		var matrixRow = new EmbermatrixtableQActionRow
 		{
-			Embermatrixidentifier_201 = childMatrix.Identifier,
+			Embermatrixidentifierpath_201 = childMatrix.IdentifierPath,
 			Embermatrixnumber_202 = childMatrix.Number,
 			Embermatrixparent_203 = childMatrix.Parent.Identifier,
-			Embermatrixidentifierpath_204 = childMatrix.IdentifierPath,
+			Embermatrixidentifier_204 = childMatrix.Identifier,
 			Embermatrixjoinedpath_205 = String.Join(".", childMatrix.Path),
 			Embermatrixdescription_206 = childMatrix.Description,
 			Embermatrixstate_207 = Convert.ToInt32(childMatrix.IsOnline),
@@ -144,10 +144,10 @@ public class QAction : IDisposable
 	{
 		var nodeRow = new EmbernodestableQActionRow
 		{
-			Embernodesidentifier_101 = childNode.Identifier,
+			Embernodesidentifierpath_101 = childNode.IdentifierPath,
 			Embernodesnumber_102 = childNode.Number,
 			Embernodesparent_103 = childNode.Parent.Identifier,
-			Embernodesidentifierpath_104 = childNode.IdentifierPath,
+			Embernodesidentifier_104 = childNode.Identifier,
 			Embernodesjoinedpath_105 = String.Join(".", childNode.Path),
 			Embernodesdescription_106 = childNode.Description,
 			Embernodesstate_107 = Convert.ToInt32(childNode.IsOnline),
@@ -165,10 +165,10 @@ public class QAction : IDisposable
 
 		var parameterRow = new EmberparameterstableQActionRow
 		{
-			Emberparametersidentifier_111 = childParameter.Identifier,
+			Emberparametersidentifierpath_111 = childParameter.IdentifierPath,
 			Emberparametersnumber_112 = childParameter.Number,
 			Emberparametersparent_113 = childParameter.Parent.Identifier,
-			Emberparametersidentifierpath_114 = childParameter.IdentifierPath,
+			Emberparametersidentifier_114 = childParameter.Identifier,
 			Emberparametersjoinedpath_115 = String.Join(".", childParameter.Path),
 			Emberparametersdescription_116 = childParameter.Description,
 			Emberparametersstate_117 = Convert.ToInt32(childParameter.IsOnline),

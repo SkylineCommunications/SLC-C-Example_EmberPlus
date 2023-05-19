@@ -63,6 +63,7 @@ Any inquiries can be addressed to:
 
 	<Compliancies>
 		<CassandraReady>true</CassandraReady>
+		<MinimumRequiredVersion>10.3.0.0 - 12752</MinimumRequiredVersion>
 	</Compliancies>
 
 	<Relations>
@@ -195,8 +196,8 @@ Any inquiries can be addressed to:
 			</Measurement>
 		</Param>
 		<Param id="101" trending="false">
-			<Name>EmberNodesIdentifier</Name>
-			<Description>Identifier (Ember Nodes)</Description>
+			<Name>EmberNodesIdentifierPath</Name>
+			<Description>Identifier Path (Ember Nodes)</Description>
 			<Type>read</Type>
 			<Information>
 				<Subtext>This is the key used internally by DataMiner to identify the table entries.</Subtext>
@@ -256,11 +257,11 @@ Any inquiries can be addressed to:
 			</Measurement>
 		</Param>
 		<Param id="104" trending="false">
-			<Name>EmberNodesIdentifierPath</Name>
-			<Description>Identifier Path (Ember Nodes)</Description>
+			<Name>EmberNodesIdentifier</Name>
+			<Description>Identifier (Ember Nodes)</Description>
 			<Type>read</Type>
 			<Information>
-				<Subtext>Identifier Path of the node.</Subtext>
+				<Subtext>Identifier of the node.</Subtext>
 			</Information>
 			<Interprete>
 				<RawType>other</RawType>
@@ -403,8 +404,8 @@ Any inquiries can be addressed to:
 			</Measurement>
 		</Param>
 		<Param id="111" trending="false">
-			<Name>EmberParametersIdentifier</Name>
-			<Description>Identifier (Ember Parameters)</Description>
+			<Name>EmberParametersIdentifierPath</Name>
+			<Description>Identifier Path (Ember Parameters)</Description>
 			<Type>read</Type>
 			<Information>
 				<Subtext>This is the key used internally by DataMiner to identify the table entries.</Subtext>
@@ -464,11 +465,11 @@ Any inquiries can be addressed to:
 			</Measurement>
 		</Param>
 		<Param id="114" trending="false">
-			<Name>EmberParametersIdentifierPath</Name>
-			<Description>Identifier Path (Ember Parameters)</Description>
+			<Name>EmberParametersIdentifier</Name>
+			<Description>Identifier (Ember Parameters)</Description>
 			<Type>read</Type>
 			<Information>
-				<Subtext>Identifier path of the parameter.</Subtext>
+				<Subtext>Identifier of the parameter.</Subtext>
 			</Information>
 			<Interprete>
 				<RawType>other</RawType>
@@ -891,8 +892,8 @@ Any inquiries can be addressed to:
 			</Measurement>
 		</Param>
 		<Param id="201" trending="false">
-			<Name>EmberMatrixIdentifier</Name>
-			<Description>Identifier (Ember Matrix)</Description>
+			<Name>EmberMatrixIdentifierPath</Name>
+			<Description>Identifier Path (Ember Matrix)</Description>
 			<Type>read</Type>
 			<Information>
 				<Subtext>This is the key used internally by DataMiner to identify the table entries.</Subtext>
@@ -952,11 +953,11 @@ Any inquiries can be addressed to:
 			</Measurement>
 		</Param>
 		<Param id="204" trending="false">
-			<Name>EmberMatrixIdentifierPath</Name>
-			<Description>Identifier Path (Ember Matrix)</Description>
+			<Name>EmberMatrixIdentifier</Name>
+			<Description>Identifier (Ember Matrix)</Description>
 			<Type>read</Type>
 			<Information>
-				<Subtext>Identifier Path of the node.</Subtext>
+				<Subtext>Identifier of the node.</Subtext>
 			</Information>
 			<Interprete>
 				<RawType>other</RawType>
@@ -1254,8 +1255,8 @@ Any inquiries can be addressed to:
 			</Measurement>
 		</Param>
 		<Param id="301" trending="false">
-			<Name>EmberFunctionsIdentifier</Name>
-			<Description>Identifier (Ember Functions)</Description>
+			<Name>EmberFunctionsIdentifierPath</Name>
+			<Description>Identifier Path (Ember Functions)</Description>
 			<Type>read</Type>
 			<Information>
 				<Subtext>This is the key used internally by DataMiner to identify the table entries.</Subtext>
@@ -1315,11 +1316,11 @@ Any inquiries can be addressed to:
 			</Measurement>
 		</Param>
 		<Param id="304" trending="false">
-			<Name>EmberFunctionsIdentifierPath</Name>
-			<Description>Identifier Path (Ember Functions)</Description>
+			<Name>EmberFunctionsIdentifier</Name>
+			<Description>Identifier (Ember Functions)</Description>
 			<Type>read</Type>
 			<Information>
-				<Subtext>Identifier Path of the node.</Subtext>
+				<Subtext>Identifier of the node.</Subtext>
 			</Information>
 			<Interprete>
 				<RawType>other</RawType>
