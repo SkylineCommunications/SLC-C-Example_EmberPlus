@@ -42,7 +42,7 @@ Any inquiries can be addressed to:
 	E-mail	: info@skyline.be
 	Web		: www.skyline.be
 	Contact	: Ben Vandenberghe
-	
+
 	Version 10.0.0.X: High level, Ember+ connection made in QAction
 
 -->
@@ -78,7 +78,7 @@ Any inquiries can be addressed to:
 			<Description>Discover Ember Tree</Description>
 			<Type>dummy</Type>
 		</Param>
-		
+
 		<Param id="2">
 			<Name>IpAndPort</Name>
 			<Description>Ip and Port</Description>
@@ -168,7 +168,7 @@ Any inquiries can be addressed to:
 			<Name>EmberNodesTable</Name>
 			<Description>Ember Nodes</Description>
 			<Type>array</Type>
-			<ArrayOptions index="0">
+			<ArrayOptions index="0" partial="true:200">
 				<ColumnOption idx="0" pid="101" type="retrieved" options="" />
 				<ColumnOption idx="1" pid="102" type="retrieved" options="" />
 				<ColumnOption idx="2" pid="103" type="retrieved" options=";foreignKey=100" />
@@ -365,7 +365,7 @@ Any inquiries can be addressed to:
 			<Name>EmberParametersTable</Name>
 			<Description>Ember Parameters</Description>
 			<Type>array</Type>
-			<ArrayOptions index="0">
+			<ArrayOptions index="0" partial="true:200">
 				<ColumnOption idx="0" pid="111" type="retrieved" options="" />
 				<ColumnOption idx="1" pid="112" type="retrieved" options="" />
 				<ColumnOption idx="2" pid="113" type="retrieved" options=";foreignKey=100" />
@@ -856,7 +856,7 @@ Any inquiries can be addressed to:
 			<Name>EmberMatrixTable</Name>
 			<Description>Ember Matrix</Description>
 			<Type>array</Type>
-			<ArrayOptions index="0">
+			<ArrayOptions index="0" partial="true:200">
 				<ColumnOption idx="0" pid="201" type="retrieved" options="" />
 				<ColumnOption idx="1" pid="202" type="retrieved" options="" />
 				<ColumnOption idx="2" pid="203" type="retrieved" options=";foreignKey=100" />
@@ -1225,7 +1225,7 @@ Any inquiries can be addressed to:
 			<Name>EmberFunctionsTable</Name>
 			<Description>Ember Functions</Description>
 			<Type>array</Type>
-			<ArrayOptions index="0">
+			<ArrayOptions index="0" partial="true:200">
 				<ColumnOption idx="0" pid="301" type="retrieved" options="" />
 				<ColumnOption idx="1" pid="302" type="retrieved" options="" />
 				<ColumnOption idx="2" pid="303" type="retrieved" options=";foreignKey=100" />
@@ -1576,5 +1576,4 @@ Any inquiries can be addressed to:
 			</Branch>
 		</Branches>
 	</VersionHistory>
-
 </Protocol>

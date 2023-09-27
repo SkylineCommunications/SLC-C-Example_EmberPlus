@@ -3,10 +3,13 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+
 using Lawo.EmberPlusSharp.Model;
 using Lawo.EmberPlusSharp.S101;
 using Lawo.Threading.Tasks;
+
 using Newtonsoft.Json;
+
 using Skyline.DataMiner.Scripting;
 
 /// <summary>
@@ -16,6 +19,13 @@ public class QAction : IDisposable
 {
 	private S101Client client;
 	private Consumer<MyRoot> consumer;
+	private double count;
+
+	public void Dispose()
+	{
+		consumer.Dispose();
+		client.Dispose();
+	}
 
 	/// <summary>
 	///     The QAction entry point.
@@ -26,7 +36,7 @@ public class QAction : IDisposable
 		try
 		{
 			string[] ipAndPort = Convert.ToString(protocol.GetParameter(2)).Split(':');
-
+			count = 0;
 			string ip = ipAndPort[0];
 			var port = Convert.ToInt32(ipAndPort[1]);
 			protocol.Log($"{ip}:{port}");
@@ -45,17 +55,13 @@ public class QAction : IDisposable
 			}
 
 			AsyncPump.Run(AsyncMethod, CancellationToken.None);
+
+			protocol.SetParameter(Parameter.discoverednodescount_60, count);
 		}
 		catch (Exception ex)
 		{
 			protocol.Log("QA" + protocol.QActionID + "|" + protocol.GetTriggerParameter() + "|Run|Exception thrown:" + Environment.NewLine + ex, LogType.Error, LogLevel.NoLogging);
 		}
-	}
-
-	public void Dispose()
-	{
-		consumer.Dispose();
-		client.Dispose();
 	}
 
 	private async Task<S101Client> ConnectAsync(string host, int port)
@@ -79,18 +85,25 @@ public class QAction : IDisposable
 		{
 			case ParameterType.Integer:
 				return childParameter.Factor != null && childParameter.Factor != 0 ? (double)childParameter.Value / childParameter.Factor : Convert.ToInt32(childParameter.Value);
+
 			case ParameterType.Real:
 				return Convert.ToDouble(childParameter.Value);
+
 			case ParameterType.String:
 				return Convert.ToString(childParameter.Value).Trim();
+
 			case ParameterType.Boolean:
 				return Convert.ToInt32(childParameter.Value);
+
 			case ParameterType.Trigger:
 				return childParameter.Value;
+
 			case ParameterType.Enum:
 				return Convert.ToInt32(childParameter.Value);
+
 			case ParameterType.Octets:
 				return Encoding.ASCII.GetString((byte[])childParameter.Value);
+
 			default:
 				return new ArgumentOutOfRangeException($"Type: {type}, Value: {Convert.ToString(childParameter.Value)}");
 		}
@@ -193,6 +206,8 @@ public class QAction : IDisposable
 	{
 		foreach (var child in node.Children)
 		{
+			count++;
+
 			switch (child)
 			{
 				case IMatrix childMatrix:
@@ -214,6 +229,7 @@ public class QAction : IDisposable
 					ProcessChildParameter(protocol, childParameter);
 
 					break;
+
 				default:
 					throw new ArgumentOutOfRangeException($"Type: {child.GetType()}");
 			}
