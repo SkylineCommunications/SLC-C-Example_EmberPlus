@@ -50,7 +50,7 @@ Any inquiries can be addressed to:
 <Protocol xmlns="http://www.skyline.be/protocol">
 	<Name>Skyline Example EmberPlus</Name>
 	<Description>SLC SDF EmberPlus DataMiner driver</Description>
-	<Version>1.0.0.1</Version>
+	<Version>2.0.0.1</Version>
 	<IntegrationID>DMS-DRV-9025</IntegrationID>
 	<Provider>Skyline Communications</Provider>
 	<Vendor>Skyline Example</Vendor>
